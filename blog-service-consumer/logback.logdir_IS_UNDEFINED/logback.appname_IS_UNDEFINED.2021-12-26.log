@@ -1,0 +1,49 @@
+2021-12-26 00:01:12,872 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 55 - Starting BlogServiceConsumerApplicationTests on DESKTOP-6ED7KPQ with PID 10800 (started by Administrator in D:\javaspace\Blog\blog_spring\blog-service-consumer)
+2021-12-26 00:01:12,881 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 651 - No active profile set, falling back to default profiles: default
+2021-12-26 00:01:13,625 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 249 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-26 00:01:13,628 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-26 00:01:13,661 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 20ms. Found 0 Redis repository interfaces.
+2021-12-26 00:01:15,334 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-26 00:01:15,952 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 61 - Started BlogServiceConsumerApplicationTests in 3.538 seconds (JVM running for 4.523)
+2021-12-26 00:01:17,247 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor 218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-26 12:32:44,898 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 55 - Starting BlogServiceConsumerApplicationTests on DESKTOP-6ED7KPQ with PID 19448 (started by Administrator in D:\javaspace\Blog\blog_spring\blog-service-consumer)
+2021-12-26 12:32:44,901 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 651 - No active profile set, falling back to default profiles: default
+2021-12-26 12:32:47,173 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 249 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-26 12:32:47,182 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-26 12:32:47,287 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 35ms. Found 0 Redis repository interfaces.
+2021-12-26 12:37:58,662 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-26 12:37:59,798 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 61 - Started BlogServiceConsumerApplicationTests in 316.067 seconds (JVM running for 327.479)
+2021-12-26 12:38:00,391 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor 218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-26 12:38:11,285 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 55 - Starting BlogServiceConsumerApplicationTests on DESKTOP-6ED7KPQ with PID 15600 (started by Administrator in D:\javaspace\Blog\blog_spring\blog-service-consumer)
+2021-12-26 12:38:11,289 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 651 - No active profile set, falling back to default profiles: default
+2021-12-26 12:38:13,307 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 249 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-26 12:38:13,312 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-26 12:38:13,413 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 43ms. Found 0 Redis repository interfaces.
+2021-12-26 23:32:37,577 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 55 - Starting BlogServiceConsumerApplicationTests on DESKTOP-6ED7KPQ with PID 10092 (started by Administrator in D:\javaspace\Blog\blog_spring\blog-service-consumer)
+2021-12-26 23:32:37,579 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 651 - No active profile set, falling back to default profiles: default
+2021-12-26 23:32:38,179 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 249 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-26 23:32:38,182 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-26 23:32:38,219 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 21ms. Found 0 Redis repository interfaces.
+2021-12-26 23:32:40,481 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-26 23:32:40,853 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 61 - Started BlogServiceConsumerApplicationTests in 3.744 seconds (JVM running for 4.952)
+2021-12-26 23:32:41,136 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor 218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-26 23:34:28,472 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 55 - Starting BlogServiceConsumerApplicationTests on DESKTOP-6ED7KPQ with PID 14424 (started by Administrator in D:\javaspace\Blog\blog_spring\blog-service-consumer)
+2021-12-26 23:34:28,474 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 651 - No active profile set, falling back to default profiles: default
+2021-12-26 23:34:29,080 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 249 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-26 23:34:29,083 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-26 23:34:29,117 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 18ms. Found 0 Redis repository interfaces.
+2021-12-26 23:34:31,036 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-26 23:34:31,427 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 61 - Started BlogServiceConsumerApplicationTests in 3.375 seconds (JVM running for 4.29)
+2021-12-26 23:34:31,699 [main] INFO  io.lettuce.core.EpollProvider 68 - Starting without optional epoll library
+2021-12-26 23:34:31,700 [main] INFO  io.lettuce.core.KqueueProvider 70 - Starting without optional kqueue library
+2021-12-26 23:34:33,580 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor 218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-26 23:37:35,312 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 55 - Starting BlogServiceConsumerApplicationTests on DESKTOP-6ED7KPQ with PID 21328 (started by Administrator in D:\javaspace\Blog\blog_spring\blog-service-consumer)
+2021-12-26 23:37:35,315 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 651 - No active profile set, falling back to default profiles: default
+2021-12-26 23:37:36,832 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 249 - Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-26 23:37:36,842 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-26 23:37:36,954 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 49ms. Found 0 Redis repository interfaces.
+2021-12-26 23:37:40,530 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor 181 - Initializing ExecutorService 'applicationTaskExecutor'
+2021-12-26 23:37:41,250 [main] INFO  c.k.b.s.c.BlogServiceConsumerApplicationTests 61 - Started BlogServiceConsumerApplicationTests in 6.91 seconds (JVM running for 11.924)
+2021-12-26 23:37:41,777 [main] INFO  io.lettuce.core.EpollProvider 68 - Starting without optional epoll library
+2021-12-26 23:37:41,780 [main] INFO  io.lettuce.core.KqueueProvider 70 - Starting without optional kqueue library
+2021-12-26 23:37:43,157 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor 218 - Shutting down ExecutorService 'applicationTaskExecutor'

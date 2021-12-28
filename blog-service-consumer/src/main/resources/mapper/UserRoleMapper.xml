@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.keovi.blog.service.consumer.mapper.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="cn.keovi.crm.po.UserRole">
+    <!--@mbg.generated-->
+    <!--@Table user_role-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, description, is_delete, create_time, last_update_time, create_by, last_update_by
+  </sql>
+</mapper>

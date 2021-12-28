@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.keovi.blog.service.consumer.mapper.FilesMapper">
+  <resultMap id="BaseResultMap" type="cn.keovi.crm.po.Files">
+    <!--@mbg.generated-->
+    <!--@Table files-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+    <result column="file_size" jdbcType="DOUBLE" property="fileSize" />
+    <result column="extension" jdbcType="VARCHAR" property="extension" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, file_name, file_url, file_size, extension, user_id, is_delete, create_time, last_update_time, 
+    create_by, last_update_by
+  </sql>
+</mapper>

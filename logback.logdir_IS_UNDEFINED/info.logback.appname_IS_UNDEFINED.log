@@ -1,0 +1,35 @@
+2021-12-28 00:11:16,353 [http-nio-9004-exec-5] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-28 00:11:16,364 [http-nio-9004-exec-5] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2021-12-28 00:11:16,366 [http-nio-9004-exec-5] WARN  o.m.s.mapper.ClassPathMapperScanner 44 - No MyBatis mapper was found in '[cn.keovi.blog.service.consumer.mapper]' package. Please check your configuration.
+2021-12-28 00:11:16,375 [http-nio-9004-exec-5] WARN  o.m.s.mapper.ClassPathMapperScanner 44 - No MyBatis mapper was found in '[cn.keovi.blog.service.consumer.service.*.mapper*]' package. Please check your configuration.
+2021-12-28 00:11:16,810 [http-nio-9004-exec-5] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==>  Preparing: SELECT id,role_id,username,password,avatar,qq,wechat,email,mobile,intro,is_delete,create_time,last_update_time,last_update_by FROM `user`
+2021-12-28 00:11:16,811 [http-nio-9004-exec-5] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==> Parameters: 
+2021-12-28 00:11:16,814 [http-nio-9004-exec-5] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - <==      Total: 4
+2021-12-28 00:11:26,919 [http-nio-9004-exec-6] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==>  Preparing: SELECT id,role_id,username,password,avatar,qq,wechat,email,mobile,intro,is_delete,create_time,last_update_time,last_update_by FROM `user`
+2021-12-28 00:11:26,920 [http-nio-9004-exec-6] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==> Parameters: 
+2021-12-28 00:11:26,924 [http-nio-9004-exec-6] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - <==      Total: 4
+2021-12-28 00:11:47,266 [http-nio-9004-exec-8] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==>  Preparing: SELECT id,role_id,username,password,avatar,qq,wechat,email,mobile,intro,is_delete,create_time,last_update_time,last_update_by FROM `user`
+2021-12-28 00:11:47,266 [http-nio-9004-exec-8] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==> Parameters: 
+2021-12-28 00:11:47,270 [http-nio-9004-exec-8] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - <==      Total: 4
+2021-12-28 00:17:07,949 [http-nio-9004-exec-9] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-28 00:17:07,954 [http-nio-9004-exec-9] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 5ms. Found 0 Redis repository interfaces.
+2021-12-28 00:17:07,957 [http-nio-9004-exec-9] WARN  o.m.s.mapper.ClassPathMapperScanner 44 - No MyBatis mapper was found in '[cn.keovi.blog.service.consumer.mapper]' package. Please check your configuration.
+2021-12-28 00:17:07,966 [http-nio-9004-exec-9] WARN  o.m.s.mapper.ClassPathMapperScanner 44 - No MyBatis mapper was found in '[cn.keovi.blog.service.consumer.service.*.mapper*]' package. Please check your configuration.
+2021-12-28 00:17:08,016 [http-nio-9004-exec-9] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==>  Preparing: SELECT id,role_id,username,password,avatar,qq,wechat,email,mobile,intro,is_delete,create_time,last_update_time,last_update_by FROM `user`
+2021-12-28 00:17:08,017 [http-nio-9004-exec-9] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==> Parameters: 
+2021-12-28 00:17:08,019 [http-nio-9004-exec-9] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - <==      Total: 4
+2021-12-28 00:17:16,333 [http-nio-9004-exec-1] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==>  Preparing: SELECT id,role_id,username,password,avatar,qq,wechat,email,mobile,intro,is_delete,create_time,last_update_time,last_update_by FROM `user`
+2021-12-28 00:17:16,334 [http-nio-9004-exec-1] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==> Parameters: 
+2021-12-28 00:17:16,340 [http-nio-9004-exec-1] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - <==      Total: 4
+2021-12-28 00:19:54,736 [http-nio-9004-exec-3] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 127 - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-28 00:19:54,744 [http-nio-9004-exec-3] INFO  o.s.d.r.c.RepositoryConfigurationDelegate 187 - Finished Spring Data repository scanning in 7ms. Found 0 Redis repository interfaces.
+2021-12-28 00:19:54,747 [http-nio-9004-exec-3] WARN  o.m.s.mapper.ClassPathMapperScanner 44 - No MyBatis mapper was found in '[cn.keovi.blog.service.consumer.mapper]' package. Please check your configuration.
+2021-12-28 00:19:54,757 [http-nio-9004-exec-3] WARN  o.m.s.mapper.ClassPathMapperScanner 44 - No MyBatis mapper was found in '[cn.keovi.blog.service.consumer.service.*.mapper*]' package. Please check your configuration.
+2021-12-28 00:19:54,804 [http-nio-9004-exec-3] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==>  Preparing: SELECT id,role_id,username,password,avatar,qq,wechat,email,mobile,intro,is_delete,create_time,last_update_time,last_update_by FROM `user`
+2021-12-28 00:19:54,806 [http-nio-9004-exec-3] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - ==> Parameters: 
+2021-12-28 00:19:54,810 [http-nio-9004-exec-3] DEBUG c.k.b.s.c.m.UserMapper.selectList 137 - <==      Total: 4
+2021-12-28 00:19:54,812 [http-nio-9004-exec-3] DEBUG c.k.b.s.c.m.UserMapper.selectCount 137 - ==>  Preparing: SELECT COUNT( * ) FROM `user`
+2021-12-28 00:19:54,813 [http-nio-9004-exec-3] DEBUG c.k.b.s.c.m.UserMapper.selectCount 137 - ==> Parameters: 
+2021-12-28 00:19:54,814 [http-nio-9004-exec-3] DEBUG c.k.b.s.c.m.UserMapper.selectCount 137 - <==      Total: 1
+2021-12-28 00:29:24,621 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor 218 - Shutting down ExecutorService 'applicationTaskExecutor'
+2021-12-28 00:29:24,672 [SpringContextShutdownHook] INFO  c.alibaba.druid.pool.DruidDataSource 1908 - {dataSource-1} closed

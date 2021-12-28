@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="JRebelWorkspace">
+    <option name="jrebelEnabledAutocompile" value="true" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
+        <option name="localRepository" value="D:\software\aptche\apache-maven-3.6.3\maven-repository" />
+        <option name="userSettingsFile" value="D:\software\aptche\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="1.8" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="22VRXeOy39wHORnxewZ1fzBeZIw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="MyBatisLogPluginindexNum" value="205" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.1747851" />
+    <property name="project.structure.side.proportion" value="0.17678815" />
+    <property name="settings.editor.selected.configurable" value="com.zeroturnaround.javarebel.idea.plugin.settings.AboutConfigurable" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaspace\Blog\blog_spring\blog-service-consumer\src\main\java\cn\keovi\blog\service\consumer" />
+      <recent name="D:\javaspace\Blog\blog_spring\blog-service-consumer\src\main\resources" />
+      <recent name="D:\javaspace\Blog\blog_spring\blog-common\src\main\java\cn\keovi" />
+      <recent name="D:\javaspace\Blog\blog_spring\blog-bean\src\main\java\cn\keovi\crm" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="cn.keovi.blog.service.consumer" />
+      <recent name="cn.keovi.blog.service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.keovi.utils" />
+      <recent name="cn.keovi.session" />
+      <recent name="cn.keovi.constants" />
+      <recent name="cn.keovi.crm.dto" />
+      <recent name="cn.keovi.crm.enums" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BlogServiceConsumerApplication (1)">
+    <configuration name="BlogServiceConsumerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.keovi.blogserviceconsumer.BlogServiceConsumerApplication" />
+      <module name="blog-service-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.keovi.blogserviceconsumer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogServiceConsumerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-service-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.keovi.blog.service.consumer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.keovi.blog.service.consumer" />
+      <option name="MAIN_CLASS_NAME" value="cn.keovi.blog.service.consumer.BlogServiceConsumerApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogServiceConsumerApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-service-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.keovi.blog.service.consumer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.keovi.blog.service.consumer" />
+      <option name="MAIN_CLASS_NAME" value="cn.keovi.blog.service.consumer.BlogServiceConsumerApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogServiceConsumerApplicationTests.sessionTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="blog-service-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.keovi.blog.service.consumer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.keovi.blog.service.consumer" />
+      <option name="MAIN_CLASS_NAME" value="cn.keovi.blog.service.consumer.BlogServiceConsumerApplicationTests" />
+      <option name="METHOD_NAME" value="sessionTests" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="blog-common" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="blog-common" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlogServiceConsumerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog-service-consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.keovi.blog.service.BlogServiceConsumerApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.BlogServiceConsumerApplication" />
+      <item itemvalue="JUnit.BlogServiceConsumerApplicationTests" />
+      <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.contextLoads" />
+      <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.sessionTests" />
+      <item itemvalue="Spring Boot.BlogServiceConsumerApplication (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.sessionTests" />
+        <item itemvalue="JUnit.BlogServiceConsumerApplicationTests" />
+        <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.contextLoads" />
+        <item itemvalue="Application.BlogServiceConsumerApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="" />
+      <created>1639920808514</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1639920808514</updated>
+      <workItem from="1639920809849" duration="2687000" />
+      <workItem from="1639926051220" duration="1000" />
+      <workItem from="1639926057931" duration="151000" />
+      <workItem from="1639926215383" duration="961000" />
+      <workItem from="1639927189280" duration="871000" />
+      <workItem from="1639928071559" duration="411000" />
+      <workItem from="1639928514271" duration="368000" />
+      <workItem from="1639928952123" duration="114000" />
+      <workItem from="1639929188548" duration="59000" />
+      <workItem from="1639929282240" duration="488000" />
+      <workItem from="1639960198657" duration="35000" />
+      <workItem from="1639961777474" duration="598000" />
+      <workItem from="1640005188713" duration="627000" />
+      <workItem from="1640047181717" duration="4000" />
+      <workItem from="1640263072620" duration="3794000" />
+      <workItem from="1640348124317" duration="9829000" />
+      <workItem from="1640394358602" duration="12442000" />
+      <workItem from="1640432837585" duration="594000" />
+      <workItem from="1640447190145" duration="4598000" />
+      <workItem from="1640484253731" duration="21066000" />
+      <workItem from="1640570453934" duration="28540000" />
+      <workItem from="1640659551661" duration="4161000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
