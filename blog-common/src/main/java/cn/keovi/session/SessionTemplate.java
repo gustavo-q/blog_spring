@@ -5,25 +5,29 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 @Component
 public class SessionTemplate {
-
-
-	@Autowired
-	private RedisTemplate<String,String> redisTemplate;
-
-
-	@Autowired
-	private HttpServletRequest httpServletRequest;
 	
-
+	@Resource
+	private  RedisTemplate<String, String> redisTemplate;
+	
+	@Autowired
+	private  HttpServletRequest httpServletRequest;
 	   
 	String CORTICKET = "corTicket";
-
+	/*
+	public String getTicket(){
+		String corTicket = (corTicket = httpServletRequest.getHeader(CORTICKET)) == null ?
+				httpServletRequest.getParameter(CORTICKET):corTicket;
+        return corTicket= corTicket != null ? corTicket
+                : (String)httpServletRequest.getSession().getAttribute(CORTICKET);
+	}*/
 	
 	public String getTicket(){
 		String corTicket = (corTicket = httpServletRequest.getHeader(CORTICKET)) == null ?
@@ -46,7 +50,7 @@ public class SessionTemplate {
 
 	public UserSession getUserSession(){
 		String json = redisTemplate.opsForValue().get(RedisCacheConstans.getSessionUserTicketKey(getTicket()));
-		return json==null?null:JSONObject.parseObject(json, UserSession.class);
+		return json==null?null:JSONObject.parseObject(json,UserSession.class);
 	}
 
 
@@ -60,8 +64,9 @@ public class SessionTemplate {
 		
 		//save
 		httpServletRequest.getSession().setAttribute(CORTICKET, ticket);
+		
 		//cache
-		redisTemplate.opsForValue().set(RedisCacheConstans.getSessionUserTicketKey(ticket),
+		redisTemplate.opsForValue().set(RedisCacheConstans.getSessionUserTicketKey(ticket), 
 				JSONObject.toJSONString(userSession),
 				365,
 				TimeUnit.DAYS);
@@ -84,10 +89,6 @@ public class SessionTemplate {
 	public Long getUserId(){
 		return getUserSession().getId();
 	}
-
-
-
-
 }
 
 

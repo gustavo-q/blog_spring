@@ -25,7 +25,7 @@ spring:
 
 
 logging:
-  config: classpath:logging-config.xml
+#  config: classpath:logging-config.xml
   level:
     cn.keovi.blog.service.consumer.mapper: debug #dao所在的包文件
     org.springframework.jdbc.core: error

@@ -1,10 +1,13 @@
 package cn.keovi.blog.service.consumer.service;
 
+import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.UserDto;
 import cn.keovi.crm.po.User;
 import cn.keovi.constants.Result;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fasterxml.jackson.databind.JsonNode;
+
+import java.util.List;
 
 /**
  * @ClassName UserService
@@ -15,7 +18,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 public interface UserService extends IService<User>{
 
 
-    Result login(JsonNode map);
 
-    Result register(UserDto userDto);
+
+    List<User> findList(BaseDto baseDto);
+
+    User userDetails(long id);
 }

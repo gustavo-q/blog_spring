@@ -32,7 +32,7 @@ public class Result<T> implements Serializable {
 
 //    private int pageNum = 1;
 
-    private int totalCount;
+    private Long totalCount;
 
     public T getData(){
         return this.data;
@@ -142,7 +142,7 @@ public class Result<T> implements Serializable {
         this.setData(data);
         return this;
     }
-    public Result data200(T data,Integer totalCount) {
+    public Result data200(T data,Long totalCount) {
         this.setData(data);
 //        this.setPageNum(pageNum);
         this.setTotalCount(totalCount);
@@ -155,7 +155,7 @@ public class Result<T> implements Serializable {
 
 
 
-    public Result data(T data,Integer code,Integer totalCount) {
+    public Result data(T data,Integer code,Long totalCount) {
         this.setData(data);
 //        this.setPageNum(pageNum);
         this.setTotalCount(totalCount);

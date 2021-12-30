@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
-
 @Controller
 public abstract class AbstractController {
 
@@ -19,7 +17,6 @@ public abstract class AbstractController {
         //获取用户信息 根据票据
         return sessionTemplate.getUserSession();
     }
-
 
 
     protected Long getUserId() {

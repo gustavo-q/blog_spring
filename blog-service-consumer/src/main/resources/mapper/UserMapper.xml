@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.keovi.blog.service.consumer.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="cn.keovi.crm.po.User">
-    <!--@mbg.generated-->
-    <!--@Table `user`-->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="role_id" jdbcType="INTEGER" property="roleId" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
-    <result column="qq" jdbcType="INTEGER" property="qq" />
-    <result column="wechat" jdbcType="VARCHAR" property="wechat" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="mobile" jdbcType="INTEGER" property="mobile" />
-    <result column="intro" jdbcType="VARCHAR" property="intro" />
-    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
-    <result column="create_time" jdbcType="DATE" property="createTime" />
-    <result column="last_update_time" jdbcType="DATE" property="lastUpdateTime" />
-    <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, role_id, username, `password`, avatar, qq, wechat, email, mobile, intro, is_delete, 
-    create_time, last_update_time, last_update_by
-  </sql>
+    <resultMap id="BaseResultMap" type="cn.keovi.crm.po.User">
+        <!--@mbg.generated-->
+        <!--@Table `user`-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="qq" jdbcType="INTEGER" property="qq"/>
+        <result column="wechat" jdbcType="VARCHAR" property="wechat"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="mobile" jdbcType="INTEGER" property="mobile"/>
+        <result column="intro" jdbcType="VARCHAR" property="intro"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+        <result column="create_time" jdbcType="DATE" property="createTime"/>
+        <result column="last_update_time" jdbcType="DATE" property="lastUpdateTime"/>
+        <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, role_id, username, `password`, avatar, qq, wechat, email, mobile, intro, is_delete,
+        create_time, last_update_time, last_update_by
+    </sql>
+
+
+    <select id="findList" resultType="cn.keovi.crm.po.User">
+        select id                             as id,
+               ifnull(role_id, "")            as roleId,
+               ifnull(username, "")           as username,
+               ifnull(email, "")              as email,
+               ifnull(create_time, null)      as createTime,
+               ifnull(last_update_time, null) as lastUpdateTime,
+               ifnull(last_update_by, "")     as lastUpdateBy
+        from `user`
+        where is_delete = 0
+        <if test="keyword != null and keyword != ''">
+            and (username like CONCAT('%',#{keyword},'%') or
+            email like CONCAT('%',#{keyword},'%'))
+        </if>
+        order by role_id asc, create_time desc
+                limit #{startIndex}, #{pageSize}
+    </select>
 </mapper>

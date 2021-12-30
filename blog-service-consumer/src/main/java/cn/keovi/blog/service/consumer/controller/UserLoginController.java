@@ -2,27 +2,21 @@ package cn.keovi.blog.service.consumer.controller;
 
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.ShearCaptcha;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.lang.Validator;
 import cn.keovi.blog.service.consumer.service.EmailService;
+import cn.keovi.blog.service.consumer.service.LoginService;
 import cn.keovi.blog.service.consumer.service.UserService;
-import cn.keovi.constants.RedisCacheConstans;
 import cn.keovi.crm.dto.UserDto;
-import cn.keovi.crm.po.User;
 import cn.keovi.constants.Result;
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.concurrent.TimeUnit;
 
-import static cn.keovi.constants.RedisCacheConstans.getTicket;
 
 
 /**
@@ -32,11 +26,11 @@ import static cn.keovi.constants.RedisCacheConstans.getTicket;
  * @Date 2021/12/24/22:05
  */
 
+@Slf4j
 @RestController
 @RequestMapping("/userLogin")
 public class UserLoginController extends BaseController{
 
-    protected Logger logger = LoggerFactory.getLogger(UserLoginController.class);
 
 
     @Autowired
@@ -48,6 +42,9 @@ public class UserLoginController extends BaseController{
     @Autowired
     RedisTemplate redisTemplate;
 
+    @Autowired
+    LoginService loginService;
+
 
 
 
@@ -55,9 +52,9 @@ public class UserLoginController extends BaseController{
     @PostMapping("/login")
     public Result Login(@RequestBody JsonNode map) {
         try {
-            return userService.login(map);
+            return loginService.login(map);
         }catch (Exception e){
-            logger.error("登录失败!",e);
+            log.error("登录失败!",e);
             return Result.error(500,e.getMessage());
 
         }
@@ -69,9 +66,9 @@ public class UserLoginController extends BaseController{
     @PostMapping("/register")
     public Object register(@RequestBody UserDto userDto){
         try{
-            return userService.register(userDto);
+            return loginService.register(userDto);
         }catch (Exception e){
-            logger.error("注册失败!",e);
+            log.error("注册失败!",e);
             return Result.error(500,e.getMessage());
         }
     }
@@ -89,7 +86,7 @@ public class UserLoginController extends BaseController{
            }
            return Result.ok(200,"发送成功！");
        }catch (Exception e){
-           logger.error("邮件发送失败！",e);
+           log.error("邮件发送失败！",e);
            return Result.error(500,e.getMessage());
        }
     }
@@ -110,7 +107,7 @@ public class UserLoginController extends BaseController{
            //存入session
            request.getSession().setAttribute("captchaCode",captcha.getCode());
        }catch (Exception e){
-           logger.error("验证码生成失败!",e);
+           log.error("验证码生成失败!",e);
            return Result.error(500,e.getMessage());
        }
         return null;
@@ -130,7 +127,7 @@ public class UserLoginController extends BaseController{
             }
             return Result.error(500,"验证码错误！");
         }catch (Exception e){
-            logger.error("验证码错误!",e);
+            log.error("验证码错误!",e);
             return Result.error(500,e.getMessage());
         }
     }

@@ -2,29 +2,26 @@ package cn.keovi.session;
 
 import cn.keovi.constants.RedisCacheConstans;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * @ClassName LoginManager
- * @Description
- * @Author gustavo
- * @Date 2021/12/26/22:15
- */
-public class LoginManager {
+@Component
+public final class LoginManager {
+    private static final Logger logger = LoggerFactory.getLogger(LoginManager.class);
 
-
-    @Autowired
+    @Resource
     private RedisTemplate<String, String> redisTemplate;
 
     private static LoginManager loginManager;
-
 
     @PostConstruct
     public void init() {
@@ -60,14 +57,14 @@ public class LoginManager {
      */
     public static UserSession getUserSession() {
         String json = loginManager.redisTemplate.opsForValue().get(RedisCacheConstans.getSessionUserTicketKey(getTicket()));
-        return json==null?null: JSONObject.parseObject(json, UserSession.class);
+        return json==null?null:JSONObject.parseObject(json, UserSession.class);
     }
 
     /**
      * 清除用户实体缓存
      *
-     * @author gustavo
-     * @date
+     * @author jianglingfeng
+     * @date 2007-11-9
      * @see
      */
     public static void clearUserSession() {
@@ -86,4 +83,7 @@ public class LoginManager {
         }
         return null;
     }
+
+
+
 }

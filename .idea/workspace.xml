@@ -4,7 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="" />
+    <list default="true" id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/BaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/BaseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/BaseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/BaseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/exception/AllExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/AbstractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/AbstractController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/LoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/LoginManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/SessionTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/SessionTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/exception/AllExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/AbstractController.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/AbstractController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/LoginManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/LoginManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/SessionTemplate.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/SessionTemplate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/UserSession$UserSessionBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/UserSession$UserSessionBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/UserSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/UserSession.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/logback.logdir_IS_UNDEFINED/info.logback.appname_IS_UNDEFINED.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/logback.logdir_IS_UNDEFINED/logback.appname_IS_UNDEFINED.2021-12-25.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/logback.logdir_IS_UNDEFINED/logback.appname_IS_UNDEFINED.2021-12-26.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/test/java/cn/keovi/blog/service/consumer/BlogServiceConsumerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/test/java/cn/keovi/blog/service/consumer/BlogServiceConsumerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logback.logdir_IS_UNDEFINED/info.logback.appname_IS_UNDEFINED.log" beforeDir="false" afterPath="$PROJECT_DIR$/logback.logdir_IS_UNDEFINED/info.logback.appname_IS_UNDEFINED.log" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +53,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -47,6 +83,7 @@
     </option>
   </component>
   <component name="ProjectId" id="22VRXeOy39wHORnxewZ1fzBeZIw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -54,7 +91,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="MyBatisLogPluginindexNum" value="205" />
+    <property name="MyBatisLogPluginindexNum" value="295" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -64,9 +101,10 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.1747851" />
@@ -81,9 +119,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaspace\Blog\blog_spring\blog-common\src\main\java\cn\keovi" />
       <recent name="D:\javaspace\Blog\blog_spring\blog-service-consumer\src\main\java\cn\keovi\blog\service\consumer" />
       <recent name="D:\javaspace\Blog\blog_spring\blog-service-consumer\src\main\resources" />
-      <recent name="D:\javaspace\Blog\blog_spring\blog-common\src\main\java\cn\keovi" />
       <recent name="D:\javaspace\Blog\blog_spring\blog-bean\src\main\java\cn\keovi\crm" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -91,20 +129,38 @@
       <recent name="cn.keovi.blog.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.keovi.blog.service.consumer.session" />
       <recent name="cn.keovi.utils" />
       <recent name="cn.keovi.session" />
       <recent name="cn.keovi.constants" />
       <recent name="cn.keovi.crm.dto" />
-      <recent name="cn.keovi.crm.enums" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BlogServiceConsumerApplication (1)">
-    <configuration name="BlogServiceConsumerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.keovi.blogserviceconsumer.BlogServiceConsumerApplication" />
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="BlogServiceConsumerApplication" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BlogServiceConsumerApplication">
+    <configuration name="LoginManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.keovi.session.LoginManager" />
       <module name="blog-service-consumer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cn.keovi.blogserviceconsumer.*" />
+          <option name="PATTERN" value="cn.keovi.session.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.keovi.blog.service.session.LoginManager" />
+      <module name="blog-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.keovi.session.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,7 +183,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlogServiceConsumerApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BlogServiceConsumerApplicationTests.password" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="blog-service-consumer" />
       <extension name="coverage">
         <pattern>
@@ -137,7 +193,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="cn.keovi.blog.service.consumer" />
       <option name="MAIN_CLASS_NAME" value="cn.keovi.blog.service.consumer.BlogServiceConsumerApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="METHOD_NAME" value="password" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,7 +228,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlogServiceConsumerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <configuration name="BlogServiceConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="blog-service-consumer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.keovi.blog.service.BlogServiceConsumerApplication" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -184,18 +240,18 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.BlogServiceConsumerApplication" />
+      <item itemvalue="Application.LoginManager" />
       <item itemvalue="JUnit.BlogServiceConsumerApplicationTests" />
-      <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.contextLoads" />
       <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.sessionTests" />
-      <item itemvalue="Spring Boot.BlogServiceConsumerApplication (1)" />
+      <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.password" />
+      <item itemvalue="Spring Boot.BlogServiceConsumerApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LoginManager" />
+        <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.password" />
         <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.sessionTests" />
         <item itemvalue="JUnit.BlogServiceConsumerApplicationTests" />
-        <item itemvalue="JUnit.BlogServiceConsumerApplicationTests.contextLoads" />
-        <item itemvalue="Application.BlogServiceConsumerApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -228,12 +284,29 @@
       <workItem from="1640447190145" duration="4598000" />
       <workItem from="1640484253731" duration="21066000" />
       <workItem from="1640570453934" duration="28540000" />
-      <workItem from="1640659551661" duration="4161000" />
+      <workItem from="1640659551661" duration="16673000" />
+      <workItem from="1640693232866" duration="6973000" />
+      <workItem from="1640703532297" duration="1403000" />
+      <workItem from="1640769901930" duration="2349000" />
+      <workItem from="1640858479431" duration="2708000" />
+      <workItem from="1640867045072" duration="1491000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
