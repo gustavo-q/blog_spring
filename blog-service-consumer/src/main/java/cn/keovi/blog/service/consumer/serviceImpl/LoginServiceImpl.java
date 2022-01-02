@@ -4,11 +4,11 @@ import cn.hutool.core.date.DateUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.service.LoginService;
 import cn.keovi.blog.service.consumer.service.UserService;
+import cn.keovi.blog.service.consumer.session.UserSession;
 import cn.keovi.constants.RedisCacheConstans;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.UserDto;
 import cn.keovi.crm.po.User;
-import cn.keovi.session.UserSession;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,13 +73,13 @@ public class LoginServiceImpl implements LoginService {
                 .build();
 
         //save
-        String s=  getTicket(String.valueOf(us.getId()));
-        httpServletRequest.getSession().setAttribute(CORTICKET, getTicket(String.valueOf(us.getId())));
+//        String s=  getTicket(String.valueOf(us.getId()));
+//        httpServletRequest.getSession().setAttribute(CORTICKET, getTicket(String.valueOf(us.getId())));
 
         //cache
         redisTemplate.opsForValue().set(RedisCacheConstans.getSessionUserTicketKey(getTicket(String.valueOf(us.getId()))),
                 JSONObject.toJSONString(userSession),
-                1,
+                365,
                 TimeUnit.DAYS);
 
         return Result.ok(200, "登录成功！");

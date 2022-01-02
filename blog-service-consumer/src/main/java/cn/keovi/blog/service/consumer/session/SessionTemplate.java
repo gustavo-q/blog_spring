@@ -1,4 +1,4 @@
-package cn.keovi.session;
+package cn.keovi.blog.service.consumer.session;
 
 import cn.keovi.constants.RedisCacheConstans;
 import com.alibaba.fastjson.JSONObject;
@@ -50,7 +50,7 @@ public class SessionTemplate {
 
 	public UserSession getUserSession(){
 		String json = redisTemplate.opsForValue().get(RedisCacheConstans.getSessionUserTicketKey(getTicket()));
-		return json==null?null:JSONObject.parseObject(json,UserSession.class);
+		return json==null?null:JSONObject.parseObject(json, UserSession.class);
 	}
 
 

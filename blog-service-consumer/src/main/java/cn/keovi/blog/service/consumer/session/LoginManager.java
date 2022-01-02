@@ -1,9 +1,10 @@
-package cn.keovi.session;
+package cn.keovi.blog.service.consumer.session;
 
 import cn.keovi.constants.RedisCacheConstans;
 import com.alibaba.fastjson.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -18,10 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 public final class LoginManager {
     private static final Logger logger = LoggerFactory.getLogger(LoginManager.class);
 
-    @Resource
+    @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
-    private static LoginManager loginManager;
+    private LoginManager loginManager;
 
     @PostConstruct
     public void init() {
@@ -55,7 +56,7 @@ public final class LoginManager {
      * @return
      * @see
      */
-    public static UserSession getUserSession() {
+    public UserSession getUserSession() {
         String json = loginManager.redisTemplate.opsForValue().get(RedisCacheConstans.getSessionUserTicketKey(getTicket()));
         return json==null?null:JSONObject.parseObject(json, UserSession.class);
     }
@@ -76,7 +77,7 @@ public final class LoginManager {
      * 获取用户信息
      * @see
      */
-    public static Long getUserId() {
+    public Long getUserId() {
         UserSession userSession = getUserSession();
         if(userSession != null){
             return userSession.getId();

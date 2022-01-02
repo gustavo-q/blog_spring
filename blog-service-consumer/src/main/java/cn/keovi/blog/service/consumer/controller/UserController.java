@@ -3,10 +3,12 @@ package cn.keovi.blog.service.consumer.controller;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
+import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.UserService;
-import cn.keovi.session.LoginManager;
+import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
+import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.User;
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @ClassName UserController
@@ -31,12 +30,17 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
+   @Autowired
+    private LoginManager loginManager;
 
     @Autowired
     private UserService userService;
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    ArticleService articleService;
 
 
     //用户列表
@@ -47,7 +51,7 @@ public class UserController {
             ArrayList<Map<String, Object>> maps=new ArrayList<>();
             userList.forEach(user -> {
                 Map<String, Object> map = BeanUtil.beanToMap(user);
-                map.put("article",5);
+                map.put("article",articleService.lambdaQuery().eq(Article::getIsDelete,0).count());
                 maps.add(map);
             });
             long count = userService.lambdaQuery().like(User::getEmail, baseDto.getKeyword()).or().like(User::getUsername, baseDto.getKeyword()).count();
@@ -78,7 +82,9 @@ public class UserController {
     @PutMapping("/deleteUser/{id}")
     public Result deleteUser(@PathVariable long id) {
         try {
-            if (userService.lambdaUpdate().set(User::getIsDelete, 1).eq(User::getId, id).update()) {
+            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (userService.lambdaUpdate().set(User::getIsDelete, 1).set(User::getLastUpdateTime,new Date())
+                    .set(User::getLastUpdateBy,loginManager.getUserId()).eq(User::getId, id).update()) {
                 log.info("删除成功,用户{}", id);
                 return Result.ok("删除成功！");
             }
@@ -94,6 +100,7 @@ public class UserController {
     @PutMapping("/editUser")
     public Result editUser(@RequestBody User user) {
         try {
+            if (loginManager.getUserId()==null) return Result.error("登录失效！");
             if (userService.lambdaUpdate()
                     .set(User::getUsername, user.getUsername())
                     .set(User::getPassword, SecureUtil.md5(SecureUtil.md5(user.getPassword() + user.getEmail())))
@@ -101,7 +108,7 @@ public class UserController {
                     .set(User::getMobile, user.getMobile())
                     .set(User::getQq, user.getQq())
                     .set(User::getWechat, user.getWechat())
-                    .set(User::getLastUpdateBy, "")
+                    .set(User::getLastUpdateBy, loginManager.getUserId())
                     .eq(User::getIsDelete, 0).eq(User::getId, user.getId()).update()) {
                 log.info("更新成功,用户{}", user);
                 return Result.ok("更新成功！");

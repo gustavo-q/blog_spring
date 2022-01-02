@@ -1,4 +1,4 @@
-package cn.keovi.session;
+package cn.keovi.blog.service.consumer.session;
 
 
 import org.slf4j.Logger;

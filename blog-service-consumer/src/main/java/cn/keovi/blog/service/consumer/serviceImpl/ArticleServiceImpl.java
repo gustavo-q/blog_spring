@@ -1,5 +1,7 @@
 package cn.keovi.blog.service.consumer.serviceImpl;
 
+import cn.keovi.crm.dto.BaseDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,4 +18,12 @@ import cn.keovi.blog.service.consumer.service.ArticleService;
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService{
 
+    @Autowired
+    private ArticleMapper articleMapper;
+
+    @Override
+    public List<Article> pageList(BaseDto baseDto) {
+        return  articleMapper.pageList(baseDto);
+
+    }
 }
