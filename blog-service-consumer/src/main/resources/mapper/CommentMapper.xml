@@ -1,22 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.keovi.blog.service.consumer.mapper.CommentMapper">
-  <resultMap id="BaseResultMap" type="cn.keovi.crm.po.Comment">
-    <!--@mbg.generated-->
-    <!--@Table `comment`-->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="topic_id" jdbcType="VARCHAR" property="topicId" />
-    <result column="content" jdbcType="LONGVARCHAR" property="content" />
-    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
-    <result column="create_by" jdbcType="BIGINT" property="createBy" />
-    <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, parent_id, topic_id, content, is_delete, create_time, last_update_time, create_by, 
-    last_update_by
-  </sql>
+    <resultMap id="BaseResultMap" type="cn.keovi.crm.po.Comment">
+        <!--@mbg.generated-->
+        <!--@Table `comment`-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="topic_id" jdbcType="VARCHAR" property="topicId"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+        <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
+        <result column="create_by" jdbcType="BIGINT" property="createBy"/>
+        <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, parent_id, topic_id, content, is_delete, create_time, last_update_time, create_by,
+        last_update_by
+    </sql>
+
+    <select id="pageList" resultMap="BaseResultMap">
+        select b.id        as id,
+               b.parent_id as parentId,
+               b.content   as content,
+               b.create_by as createBy
+        from (select *
+              from comment
+              where topic_id = #{topicId}
+                and is_delete = 0
+                and parent_id = 0
+              order by create_time desc
+                      limit #{startIndex}, #{pageSize}) as b
+
+        union
+
+        select id        as id,
+               parent_id as parentId,
+               content   as content,
+               create_by as createBy
+        from comment
+        where parent_id in (
+                select s.create_by
+                from (select *
+                      from comment
+                      where topic_id = #{topicId}
+                        and is_delete = 0
+                        and parent_id = 0
+                              limit #{startIndex}
+                          , #{pageSize}) as s
+                )
+          and is_delete = 0
+          and topic_id = #{topicId}
+    </select>
 </mapper>

@@ -5,41 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/ArticleController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TapController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/CommentDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleTap.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleTap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Files.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Files.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Tap.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Tap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/UserDonate.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/UserDonate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleCategory.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleCategory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleTap.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleTap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Comment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Files.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Files.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Tap.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Tap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserDonate.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserDonate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/AbstractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/session/AbstractController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/LoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/session/LoginManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/SessionTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/session/SessionTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/session/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/session/UserSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/AbstractController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/LoginManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/SessionTemplate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/UserSession$UserSessionBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/session/UserSession.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/CommentMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,7 +268,7 @@
       <workItem from="1640870106961" duration="46000" />
       <workItem from="1640910816324" duration="182000" />
       <workItem from="1641043958733" duration="386000" />
-      <workItem from="1641089061378" duration="22773000" />
+      <workItem from="1641089061378" duration="27050000" />
     </task>
     <servers />
   </component>

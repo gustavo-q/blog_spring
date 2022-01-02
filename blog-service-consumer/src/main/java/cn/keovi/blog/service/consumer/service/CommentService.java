@@ -1,8 +1,12 @@
 package cn.keovi.blog.service.consumer.service;
 
+import cn.keovi.crm.dto.CommentDto;
 import cn.keovi.crm.po.Comment;
 import com.baomidou.mybatisplus.extension.service.IService;
-    /**
+
+import java.util.List;
+
+/**
  * @ClassName CommentService
  * @Description ${DESCRIPTION}
  * @Author gustavo
@@ -11,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface CommentService extends IService<Comment>{
 
 
-}
+        List<Comment> pageList(CommentDto commentDto);
+    }
