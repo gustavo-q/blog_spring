@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/CommentDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/CommentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/CommentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TapController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +62,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="MyBatisLogPluginindexNum" value="322" />
+    <property name="MyBatisLogPluginindexNum" value="324" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -268,7 +264,8 @@
       <workItem from="1640870106961" duration="46000" />
       <workItem from="1640910816324" duration="182000" />
       <workItem from="1641043958733" duration="386000" />
-      <workItem from="1641089061378" duration="27050000" />
+      <workItem from="1641089061378" duration="27413000" />
+      <workItem from="1641179510254" duration="3913000" />
     </task>
     <servers />
   </component>
