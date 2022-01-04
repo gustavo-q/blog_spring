@@ -3,8 +3,6 @@ package cn.keovi.blog.service.consumer.controller;
 import cn.keovi.blog.service.consumer.service.TapService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
-import cn.keovi.crm.po.Article;
-import cn.keovi.crm.po.ArticleCategory;
 import cn.keovi.crm.po.Tap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
