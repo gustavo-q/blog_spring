@@ -5,11 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26bc3944-eec3-419d-921b-c75ec7c79bdd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/CurrentUserInfoDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MyBatisCodeHelperDatasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MyBatisCodeHelperDatasource.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01192068-d612-4ea1-89e4-738415a3c15b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/01192068-d612-4ea1-89e4-738415a3c15b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Result.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TapController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/session/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/session/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +75,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="MyBatisLogPluginindexNum" value="324" />
+    <property name="MyBatisLogPluginindexNum" value="563" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -77,7 +88,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/springboot_service-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.1747851" />
@@ -102,11 +113,11 @@
       <recent name="cn.keovi.blog.service" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.keovi.blog.service.consumer.config" />
       <recent name="cn.keovi.blog.service.consumer.session" />
       <recent name="cn.keovi.utils" />
       <recent name="cn.keovi.session" />
       <recent name="cn.keovi.constants" />
-      <recent name="cn.keovi.crm.dto" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -270,6 +281,14 @@
       <workItem from="1641179510254" duration="5875000" />
       <workItem from="1641207667328" duration="2157000" />
       <workItem from="1641256111709" duration="21000" />
+      <workItem from="1641464265471" duration="697000" />
+      <workItem from="1641801773483" duration="298000" />
+      <workItem from="1642062662945" duration="3239000" />
+      <workItem from="1642125903311" duration="10349000" />
+      <workItem from="1642168234382" duration="2351000" />
+      <workItem from="1642207939098" duration="4274000" />
+      <workItem from="1642467696354" duration="746000" />
+      <workItem from="1642469051660" duration="11210000" />
     </task>
     <servers />
   </component>

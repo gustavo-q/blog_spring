@@ -116,6 +116,12 @@ public class User{
     private Date lastUpdateTime;
 
 
+    /**
+    *@Author gustavo  2022/1/18 22:26
+    * 性别
+    **/
+    private Integer sex;
+
 
     /**
      * 更新人

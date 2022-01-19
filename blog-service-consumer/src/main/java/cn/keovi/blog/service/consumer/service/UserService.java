@@ -1,6 +1,7 @@
 package cn.keovi.blog.service.consumer.service;
 
 import cn.keovi.crm.dto.BaseDto;
+import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.dto.UserDto;
 import cn.keovi.crm.po.User;
 import cn.keovi.constants.Result;
@@ -23,4 +24,6 @@ public interface UserService extends IService<User>{
     List<User> findList(BaseDto baseDto);
 
     User userDetails(long id);
+
+    CurrentUserInfoDto currentUserInfo();
 }

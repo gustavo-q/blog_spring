@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static cn.keovi.constants.RedisCacheConstans.getTicket;
@@ -68,21 +70,26 @@ public class LoginServiceImpl implements LoginService {
                 .userName(us.getUsername())
                 .email(us.getEmail())
                 .qq(us.getQq())
+                .sex(us.getSex())
                 .wechat(us.getWechat())
                 .mobile(us.getMobile())
+                .intro(us.getIntro())
                 .build();
 
         //save
 //        String s=  getTicket(String.valueOf(us.getId()));
-//        httpServletRequest.getSession().setAttribute(CORTICKET, getTicket(String.valueOf(us.getId())));
+        String corTicket = getTicket(String.valueOf(us.getId()));
 
+        //session
+        httpServletRequest.getSession().setAttribute(CORTICKET, corTicket);
         //cache
-        redisTemplate.opsForValue().set(RedisCacheConstans.getSessionUserTicketKey(getTicket(String.valueOf(us.getId()))),
+        redisTemplate.opsForValue().set(RedisCacheConstans.getSessionUserTicketKey(corTicket),
                 JSONObject.toJSONString(userSession),
-                365,
+                1,
                 TimeUnit.DAYS);
-
-        return Result.ok(200, "登录成功！");
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("corTicket",corTicket);
+        return Result.ok().data(200,hashMap);
 
     }
 

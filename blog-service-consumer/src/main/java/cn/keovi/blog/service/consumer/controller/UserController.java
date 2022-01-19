@@ -4,13 +4,17 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
+import cn.keovi.blog.service.consumer.service.MenuService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
+import cn.keovi.blog.service.consumer.session.UserSession;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
+import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.User;
 
+import cn.keovi.exception.ServiceException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -42,6 +46,9 @@ public class UserController {
     @Autowired
     ArticleService articleService;
 
+    @Autowired
+    MenuService menuService;
+
 
     //用户列表
     @PostMapping("/pageList")
@@ -70,7 +77,7 @@ public class UserController {
     public Object userDetails(@PathVariable long id) {
         try {
             User userList = userService.userDetails(id);
-            return Result.ok().data(userList);
+            return Result.ok().data(200,userList);
         } catch (Exception e) {
             log.error("登录失败!", e);
             return Result.error(500, e.getMessage());
@@ -107,6 +114,7 @@ public class UserController {
                     .set(User::getEmail, user.getEmail())
                     .set(User::getMobile, user.getMobile())
                     .set(User::getQq, user.getQq())
+                    .set(User::getSex,user.getSex())
                     .set(User::getWechat, user.getWechat())
                     .set(User::getLastUpdateBy, loginManager.getUserId())
                     .eq(User::getIsDelete, 0).eq(User::getId, user.getId()).update()) {
@@ -137,6 +145,21 @@ public class UserController {
             log.error("更新状态失败!", e);
             return Result.error(500, e.getMessage());
         }
+    }
+
+
+
+    //获取该用户的信息
+    @PostMapping("/getCurrentUserInfo")
+    public Result getCurrentUserInfo(){
+        try{
+            CurrentUserInfoDto currentUserInfoDto = userService.currentUserInfo();
+            return Result.ok().data(200,currentUserInfoDto);
+        }catch (Exception e){
+            log.error("获取该用户的信息失败",e);
+            return Result.error(500,e.getMessage());
+        }
+
     }
 
 

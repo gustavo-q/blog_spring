@@ -76,7 +76,7 @@ public class CategoryController {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             List<ArticleCategory> articleCategories=articleCategoryService.lambdaQuery().eq(ArticleCategory::getCreateBy,loginManager.getUserId())
                     .eq(ArticleCategory::getIsDelete,0).list();
-            return Result.ok().data(articleCategories);
+            return Result.ok().data(200,articleCategories);
         } catch (Exception e) {
             log.error("文章显示错误!", e);
             return Result.error(500, e.getMessage());

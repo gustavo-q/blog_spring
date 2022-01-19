@@ -31,6 +31,8 @@ public class UserSession implements Serializable {
   private Integer qq;
   private String wechat;
   private Integer mobile;
+  private String intro;
+  private Integer sex;
 
   private String avatar;
 

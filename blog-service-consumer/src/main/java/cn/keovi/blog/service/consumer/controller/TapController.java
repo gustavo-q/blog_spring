@@ -76,7 +76,7 @@ public class TapController {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             List<Tap> tapList=tapService.lambdaQuery().eq(Tap::getCreateBy,loginManager.getUserId())
                     .eq(Tap::getIsDelete,0).list();
-            return Result.ok().data(tapList);
+            return Result.ok().data(200,tapList);
         } catch (Exception e) {
             log.error("文章显示错误!", e);
             return Result.error(500, e.getMessage());

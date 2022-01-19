@@ -138,7 +138,8 @@ public class Result<T> implements Serializable {
         return r;
     }
 
-    public Result data(T data) {
+    public Result data(Integer code,T data) {
+        this.setCode(code);
         this.setData(data);
         return this;
     }
