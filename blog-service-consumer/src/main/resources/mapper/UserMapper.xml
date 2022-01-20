@@ -52,7 +52,7 @@
          <if test="id != null ">
            and id = #{id}
         </if>
-        order by role_id asc, create_time desc 
+        order by role_id asc, create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
     <select id="findListCount" resultType="long">

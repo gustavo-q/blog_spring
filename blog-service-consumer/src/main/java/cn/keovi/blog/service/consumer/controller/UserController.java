@@ -1,6 +1,7 @@
 package cn.keovi.blog.service.consumer.controller;
 
 
+import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.MenuService;
@@ -126,6 +127,8 @@ public class UserController {
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             user.setCreateTime(new Date());
+            //默认密码
+            user.setPassword(SecureUtil.md5(SecureUtil.md5("123456")));
             if (userService.save(user)) {
                 log.info("更新成功,用户{}", user);
                 return Result.ok("更新成功！");

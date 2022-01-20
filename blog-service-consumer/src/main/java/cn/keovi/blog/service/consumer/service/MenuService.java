@@ -1,8 +1,12 @@
 package cn.keovi.blog.service.consumer.service;
 
+import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
-    /**
+
+import java.util.List;
+
+/**
  * @ClassName MenuService
  * @Description ${DESCRIPTION}
  * @Author gustavo
@@ -11,4 +15,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface MenuService extends IService<Menu>{
 
 
-}
+    }

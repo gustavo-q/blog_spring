@@ -55,6 +55,31 @@ public class Menu {
     @TableField(value = "create_by")
     private Long createBy;
 
+    /**
+     * 更新时间
+     */
+    @TableField(value = "last_update_time")
+    private Date LastUpdateTime;
+
+    /**
+     * 更新人
+     */
+    @TableField(value = "last_update_by")
+    private Long LastUpdateBy;
+
+    /**
+     * 状态
+     */
+    @TableField(value = "status")
+    private Integer status;
+
+    /**
+     * 软更新
+     */
+    @TableField(value = "is_delete")
+    private int isDelete;
+
+
     public static final String COL_ID = "id";
 
     public static final String COL_NAME = "name";
