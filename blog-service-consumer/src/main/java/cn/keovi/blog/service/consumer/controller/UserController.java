@@ -1,24 +1,19 @@
 package cn.keovi.blog.service.consumer.controller;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.crypto.SecureUtil;
+
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.MenuService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
-import cn.keovi.blog.service.consumer.session.UserSession;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
-import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.User;
 
-import cn.keovi.exception.ServiceException;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -56,12 +51,6 @@ public class UserController {
     public Result pageList(@RequestBody BaseDto baseDto) {
         try {
             Result result = userService.findList(baseDto);
-//            ArrayList<Map<String, Object>> maps=new ArrayList<>();
-//            userList.forEach(user -> {
-//                Map<String, Object> map = BeanUtil.beanToMap(user);
-//                map.put("article",articleService.lambdaQuery().eq(Article::getIsDelete,0).count());
-//                maps.add(map);
-//            });
             return result;
         } catch (Exception e) {
             log.error("登录失败!", e);
@@ -86,8 +75,8 @@ public class UserController {
 
 
     //删除用户
-    @PutMapping("/deleteUser/{id}")
-    public Result deleteUser(@PathVariable long id) {
+    @GetMapping("/deleteUser")
+    public Result deleteUser(@RequestParam long id) {
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             if (userService.lambdaUpdate().set(User::getIsDelete, 1).set(User::getLastUpdateTime,new Date())
@@ -110,14 +99,34 @@ public class UserController {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             if (userService.lambdaUpdate()
                     .set(User::getUsername, user.getUsername())
-                    .set(User::getPassword, SecureUtil.md5(SecureUtil.md5(user.getPassword() + user.getEmail())))
                     .set(User::getEmail, user.getEmail())
+                    .set(User::getRoleId,user.getRoleId())
                     .set(User::getMobile, user.getMobile())
                     .set(User::getQq, user.getQq())
                     .set(User::getSex,user.getSex())
+                    .set(User::getIntro,user.getIntro())
+                    .set(User::getStatus,user.getStatus())
                     .set(User::getWechat, user.getWechat())
                     .set(User::getLastUpdateBy, loginManager.getUserId())
                     .eq(User::getIsDelete, 0).eq(User::getId, user.getId()).update()) {
+                log.info("更新成功,用户{}", user);
+                return Result.ok("更新成功！");
+            }
+            return Result.error("更新失败！");
+        } catch (Exception e) {
+            log.error("更新失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
+    //新增用户
+    @PostMapping("/saveUser")
+    public Result saveUser(@RequestBody User user) {
+        try {
+            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            user.setCreateTime(new Date());
+            if (userService.save(user)) {
                 log.info("更新成功,用户{}", user);
                 return Result.ok("更新成功！");
             }

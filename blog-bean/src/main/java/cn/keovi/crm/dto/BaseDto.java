@@ -13,4 +13,8 @@ public class BaseDto extends PageDto{
 
     private String keyword;
 
+    private Long id;
+
+    private Integer status;
+
 }
