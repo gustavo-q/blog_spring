@@ -21,9 +21,11 @@ public interface UserService extends IService<User>{
 
 
 
-    List<User> findList(BaseDto baseDto);
+    Result findList(BaseDto baseDto);
 
     User userDetails(long id);
 
     CurrentUserInfoDto currentUserInfo();
+
+    void resetPas(int id);
 }

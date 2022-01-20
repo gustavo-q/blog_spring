@@ -55,15 +55,14 @@ public class UserController {
     @PostMapping("/pageList")
     public Result pageList(@RequestBody BaseDto baseDto) {
         try {
-            List<User> userList = userService.findList(baseDto);
+            Result result = userService.findList(baseDto);
 //            ArrayList<Map<String, Object>> maps=new ArrayList<>();
 //            userList.forEach(user -> {
 //                Map<String, Object> map = BeanUtil.beanToMap(user);
 //                map.put("article",articleService.lambdaQuery().eq(Article::getIsDelete,0).count());
 //                maps.add(map);
 //            });
-            long count = userService.lambdaQuery().like(User::getEmail, baseDto.getKeyword()).or().like(User::getUsername, baseDto.getKeyword()).count();
-            return Result.ok().data200(userList, count);
+            return result;
         } catch (Exception e) {
             log.error("登录失败!", e);
             return Result.error(500, e.getMessage());
@@ -190,7 +189,20 @@ public class UserController {
     }
 
 
- 
+    /**
+    *@Author gustavo  2022/1/20 11:10
+    *
+    **/
+    @GetMapping("/resetPas")
+    public Result resetPas(@RequestParam int id){
+        try{
+            userService.resetPas(id);
+            return Result.ok(200,"重置密码成功");
+        }catch (Exception e){
+            log.error("重置密码失败",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
 
 
 

@@ -1,10 +1,12 @@
 package cn.keovi.blog.service.consumer.serviceImpl;
 
 
+import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.mapper.MenuMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.MenuService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
+import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.Menu;
@@ -16,7 +18,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.keovi.crm.po.User;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.UserService;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,9 +55,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     //用户列表
     @Override
-    public List<User> findList(BaseDto baseDto) {
-        return userMapper.findList(baseDto);
+    public Result findList(BaseDto baseDto) {
 
+        List<User> list = userMapper.findList(baseDto);
+        long count = userMapper.findListCount(baseDto);
+        return Result.ok().data200(list,count);
     }
 
     //详情
@@ -90,6 +96,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 .build();
 
         return currentUserInfoDto;
+    }
+
+
+    //重置密码
+    @Override
+    @Transactional
+    public void resetPas(int id) {
+        if (loginManager.getUserSession() == null) throw new ServiceException("登录失效!");
+        boolean update = this.lambdaUpdate().set(User::getPassword, SecureUtil.md5(SecureUtil.md5("123456")))
+                .set(User::getLastUpdateBy, loginManager.getUserId())
+                .set(User::getLastUpdateTime, new Date())
+                .eq(User::getId, id).eq(User::getIsDelete, 0).update();
+        if (!update) throw new ServiceException("重置密码失败");
     }
 
 
