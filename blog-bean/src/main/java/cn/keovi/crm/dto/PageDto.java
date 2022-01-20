@@ -15,14 +15,14 @@ public class PageDto {
     private Integer pageSize = 10;
 
     //页码
-    private Integer pageNum = 1;
+    private Integer currentPage = 1;
 
     private Integer startIndex;
 
     public Integer getStartIndex() {
-        if (pageNum == null || pageSize == null){
+        if (currentPage == null || pageSize == null){
             return 0;
         }
-        return (pageNum - 1) * pageSize;
+        return (currentPage - 1) * pageSize;
     }
 }

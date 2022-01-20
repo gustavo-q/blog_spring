@@ -31,6 +31,7 @@
                ifnull(role_id, "")            as roleId,
                ifnull(username, "")           as username,
                ifnull(email, "")              as email,
+               ifnull(status,"")              as status,
                ifnull(create_time, null)      as createTime,
                ifnull(last_update_time, null) as lastUpdateTime,
                ifnull(last_update_by, "")     as lastUpdateBy

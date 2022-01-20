@@ -51,13 +51,15 @@ public class LoginServiceImpl implements LoginService {
     public Result login(JsonNode map) {
         //邮箱是否存在
         Long count = userService.lambdaQuery()
-                .eq(User::getEmail, map.get("email").asText()).count();
+                .eq(User::getEmail, map.get("username").asText())
+                .or().eq(User::getUsername,map.get("username").asText()).count();
         if (count == 0) {
-            return Result.error(500, "邮箱不存在");
+            return Result.error(500, "邮箱或者用户名不存在");
         }
-        String password = SecureUtil.md5(SecureUtil.md5(map.get("password").asText()+map.get("email").asText()));
+        String password = SecureUtil.md5(SecureUtil.md5(map.get("password").asText()));
         //密码是否相同
-        User us = userService.lambdaQuery().eq(User::getEmail, map.get("email").asText())
+        User us = userService.lambdaQuery().eq(User::getEmail, map.get("username").asText()).or()
+                .eq(User::getUsername,map.get("username").asText())
                 .eq(User::getPassword, password).one();
         if (us == null) {
             return Result.error(500, "密码错误");
@@ -98,8 +100,10 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Result register(UserDto userDto) {
         if (userService.lambdaQuery()
-                .eq(User::getEmail, userDto.getEmail()).eq(User::getIsDelete, 0).count() > 0) {
-            return Result.error(500, "邮箱存在");
+                .eq(User::getEmail, userDto.getEmail())
+                .eq(User::getUsername,userDto.getUsername())
+                .eq(User::getIsDelete, 0).count() > 0) {
+            return Result.error(500, "邮箱或者账号存在");
         }
         if (redisTemplate.opsForValue().get(userDto.getEmail()) == null) {
             return Result.error("注册失败！");
@@ -107,7 +111,7 @@ public class LoginServiceImpl implements LoginService {
         if (userDto.getEmailCode()!=null && userDto.getEmailCode().equals(redisTemplate.opsForValue().get(userDto.getEmail()))) {
             User user = User.builder().username(userDto.getUsername())
                     .email(userDto.getEmail())
-                    .password(SecureUtil.md5(SecureUtil.md5(userDto.getPassword()+userDto.getEmail())))
+                    .password(SecureUtil.md5(SecureUtil.md5(userDto.getPassword())))
                     .createTime(DateUtil.date())
                     .roleId(2)
                     .build();

@@ -15,6 +15,7 @@ import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.User;
 
 import cn.keovi.exception.ServiceException;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -55,14 +56,14 @@ public class UserController {
     public Result pageList(@RequestBody BaseDto baseDto) {
         try {
             List<User> userList = userService.findList(baseDto);
-            ArrayList<Map<String, Object>> maps=new ArrayList<>();
-            userList.forEach(user -> {
-                Map<String, Object> map = BeanUtil.beanToMap(user);
-                map.put("article",articleService.lambdaQuery().eq(Article::getIsDelete,0).count());
-                maps.add(map);
-            });
+//            ArrayList<Map<String, Object>> maps=new ArrayList<>();
+//            userList.forEach(user -> {
+//                Map<String, Object> map = BeanUtil.beanToMap(user);
+//                map.put("article",articleService.lambdaQuery().eq(Article::getIsDelete,0).count());
+//                maps.add(map);
+//            });
             long count = userService.lambdaQuery().like(User::getEmail, baseDto.getKeyword()).or().like(User::getUsername, baseDto.getKeyword()).count();
-            return Result.ok().data200(maps, count);
+            return Result.ok().data200(userList, count);
         } catch (Exception e) {
             log.error("登录失败!", e);
             return Result.error(500, e.getMessage());
@@ -104,7 +105,7 @@ public class UserController {
 
 
     //修改用户
-    @PutMapping("/editUser")
+    @PostMapping("/editUser")
     public Result editUser(@RequestBody User user) {
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
@@ -162,6 +163,34 @@ public class UserController {
 
     }
 
+
+    //修改用户基本信息
+    @PostMapping("/editPersonal")
+    public Result editPersonal(@RequestBody JsonNode map){
+        try{
+            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (userService.lambdaUpdate()
+                    .set(User::getUsername, map.get("username").asText())
+                    .set(User::getMobile, map.get("mobile").asInt())
+                    .set(User::getQq,map.get("qq").asInt())
+                    .set(User::getSex,map.get("sex").asInt())
+                    .set(User::getWechat, map.get("wechat").asText())
+                    .set(User::getIntro,map.get("intro").asText())
+                    .set(User::getLastUpdateTime, new Date())
+                    .set(User::getLastUpdateBy, loginManager.getUserId())
+                    .eq(User::getIsDelete, 0).eq(User::getId, loginManager.getUserId()).update()) {
+                return Result.ok("更新成功！");
+            }
+            return Result.error("更新失败！");
+        } catch (Exception e) {
+            log.error("更新失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+
+    }
+
+
+ 
 
 
 
