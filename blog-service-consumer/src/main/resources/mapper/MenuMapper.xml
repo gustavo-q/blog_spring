@@ -14,10 +14,11 @@
         <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, `name`, `path`, parent_id, create_time, create_by,status,is_delete,last_update_time,last_update_by
+        id, `name`, `path`, parent_id, create_time, create_by,status,is_delete,last_update_time,last_update_by,description
     </sql>
     <select id="selectMenuByRoleId" resultMap="BaseResultMap">
         select

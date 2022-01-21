@@ -79,6 +79,9 @@ public class Menu {
     @TableField(value = "is_delete")
     private int isDelete;
 
+    //说明
+    private String description;
+
 
     public static final String COL_ID = "id";
 

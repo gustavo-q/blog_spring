@@ -60,6 +60,7 @@ public class MenuController {
            if ( menuService.lambdaUpdate().set(Menu::getName,menu.getName())
                    .set(Menu::getParentId,menu.getParentId())
                    .set(Menu::getPath,menu.getPath())
+                   .set(Menu::getDescription,menu.getDescription())
                    .set(Menu::getStatus,menu.getStatus())
                    .set(Menu::getLastUpdateTime,new Date())
                    .set(Menu::getLastUpdateBy,loginManager.getUserId())
@@ -84,6 +85,8 @@ public class MenuController {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             menu.setCreateTime(new Date());
             menu.setCreateBy(loginManager.getUserId());
+            menu.setLastUpdateTime(new Date());
+            menu.setLastUpdateBy(loginManager.getUserId());
             boolean save = menuService.save(menu);
             if (save) return Result.ok("新增成功");
             return Result.error("新增失败");
