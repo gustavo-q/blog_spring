@@ -51,7 +51,7 @@ public class LoginServiceImpl implements LoginService {
     public Result login(JsonNode map) {
         //邮箱是否存在
         Long count = userService.lambdaQuery()
-                .eq(User::getEmail, map.get("username").asText())
+                    .eq(User::getEmail, map.get("username").asText())
                 .or().eq(User::getUsername,map.get("username").asText()).count();
         if (count == 0) {
             return Result.error(500, "邮箱或者用户名不存在");
