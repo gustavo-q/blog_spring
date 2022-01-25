@@ -21,11 +21,11 @@
         id, `name`, `path`, parent_id, create_time, create_by,status,is_delete,last_update_time,last_update_by,description
     </sql>
     <select id="selectMenuByRoleId" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from menu
-        where id in (select menu_id from role_menu where role_id = #{roleId})
-          and is_delete = 0
+            select
+            <include refid="Base_Column_List"/>
+            from menu
+            where name in (select menu from role_menu where role_id = #{roleId})
+              and is_delete = 0
     </select>
     <select id="findList" resultMap="BaseResultMap">
         select

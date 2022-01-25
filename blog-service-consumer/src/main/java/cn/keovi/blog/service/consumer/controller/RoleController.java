@@ -1,14 +1,13 @@
 package cn.keovi.blog.service.consumer.controller;
 
+import cn.hutool.core.collection.CollectionUtil;
+import cn.keovi.blog.service.consumer.service.RoleMenuService;
 import cn.keovi.blog.service.consumer.service.UserRoleService;
 import cn.keovi.constants.Result;
-import cn.keovi.crm.po.UserRole;
+import cn.keovi.crm.dto.RoleDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,13 +27,30 @@ public class RoleController {
     @Autowired
     UserRoleService roleService;
 
+    @Autowired
+    RoleMenuService roleMenuService;
+
 
     //获取用户角色
     @GetMapping("/getRoles")
     public Result getRoles(){
         try{
-            List<UserRole> list = roleService.lambdaQuery().eq(UserRole::getIsDelete, 0).list();
+            List<RoleDto> list = roleService.getRoles();
             return Result.ok().data(200,list);
+        }catch (Exception e){
+            log.error("获取角色失败",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
+
+
+    //更新用户角色权限
+    @PostMapping("/updateRoles")
+    public Result updateRoles(@RequestBody RoleDto roledto){
+        try{
+            if (CollectionUtil.isEmpty(roledto.getMenus()))  return Result.ok("更新用户权限成功！");
+            roleMenuService.updateRoles(roledto);
+            return Result.ok("更新用户权限成功！");
         }catch (Exception e){
             log.error("获取角色失败",e);
             return Result.error(500,e.getMessage());
