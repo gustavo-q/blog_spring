@@ -3,6 +3,7 @@ package cn.keovi.blog.service.consumer.controller;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
+import cn.keovi.crm.dto.ArticleDto;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.User;
@@ -54,9 +55,10 @@ public class ArticleController {
 
     //文章新增修改
     @PostMapping("/addArticle")
-    public Result addArticle(@RequestBody Article article) {
+    public Result addArticle(@RequestBody ArticleDto articleDto) {
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            Article article = new Article();
             if (article.getId()!=null){
                 article.setLastUpdateBy(loginManager.getUserId());
                 article.setLastUpdateTime(new Date());
@@ -64,8 +66,11 @@ public class ArticleController {
                 article.setCreateBy(loginManager.getUserId());
                 article.setCreateTime(new Date());
             }
+            article.setTitle(articleDto.getTitle());
+            article.setCategoryId(articleDto.getCategoryId());
+            article.setContent(articleDto.getContent());
             if (articleService.saveOrUpdate(article)){
-                return Result.ok();
+                return Result.ok(200,"添加成功");
             }
             return Result.error();
         } catch (Exception e) {
