@@ -15,4 +15,6 @@ import java.util.List;
 public interface ArticleMapper extends BaseMapper<Article> {
 
     List<Article> pageList(BaseDto baseDto);
+
+    long pageListCount(BaseDto baseDto);
 }

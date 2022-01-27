@@ -17,4 +17,6 @@ public class BaseDto extends PageDto{
 
     private Integer status;
 
+    private Integer category;
+
 }

@@ -32,6 +32,10 @@ public class CategoryController {
     private ArticleCategoryService articleCategoryService;
 
 
+
+
+
+
     //新增修改标签
     @PostMapping("/addCategory")
     public Result addCategory(@RequestBody ArticleCategory articleCategory){
@@ -51,7 +55,7 @@ public class CategoryController {
     }
 
     //删除分类
-    @DeleteMapping("/deleteCategory/{id}")
+    @PostMapping("/deleteCategory/{id}")
     public Result deleteCategory(@PathVariable Long id){
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
@@ -73,8 +77,7 @@ public class CategoryController {
     @PostMapping("/pageList")
     public Result pageList() {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
-            List<ArticleCategory> articleCategories=articleCategoryService.lambdaQuery().eq(ArticleCategory::getCreateBy,loginManager.getUserId())
+            List<ArticleCategory> articleCategories=articleCategoryService.lambdaQuery()
                     .eq(ArticleCategory::getIsDelete,0).list();
             return Result.ok().data(200,articleCategories);
         } catch (Exception e) {

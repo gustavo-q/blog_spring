@@ -6,11 +6,9 @@
         <!--@Table article-->
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="title" jdbcType="VARCHAR" property="title"/>
-        <result column="brief_content" jdbcType="LONGVARCHAR" property="briefContent"/>
         <result column="content" jdbcType="LONGVARCHAR" property="content"/>
         <result column="category_id" jdbcType="INTEGER" property="categoryId"/>
         <result column="views" jdbcType="INTEGER" property="views"/>
-        <result column="cover_image" jdbcType="VARCHAR" property="coverImage"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
@@ -20,27 +18,36 @@
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, title, brief_content, content, category_id, views, cover_image, `status`, is_delete,
+        id, title,  content, category_id, views,  `status`, is_delete,
         create_time, last_update_time, create_by, last_update_by
     </sql>
 
 
     <select id="pageList" resultMap="BaseResultMap">
-           select id                             as id,
-               ifnull(title, "")            as title,
-               ifnull(status, "")           as status,
+        select id                             as id,
+               ifnull(title, "")              as title,
+               ifnull(status, null)             as status,
                ifnull(create_time, null)      as createTime,
-                ifnull(create_by, null)      as createBy,
                ifnull(last_update_time, null) as lastUpdateTime,
-               ifnull(last_update_by, "")     as lastUpdateBy
-        from `user`
-        where is_delete = 0
+               ifnull(category_id,null) as categoryId
+        from article
+                where is_delete = 0
         <if test="keyword != null and keyword != ''">
-            and (title like CONCAT('%',#{keyword},'%') or
-            create_by like CONCAT('%',#{keyword},'%'))
+            and (title like CONCAT('%', #{keyword}, '%') or
+                 create_by like CONCAT('%', #{keyword}, '%'))
         </if>
-        order by role_id asc, create_time desc
+        order by  create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
 
+    <select id="pageListCount" resultType="long">
+        select count(1)
+     from article
+                where is_delete = 0
+        <if test="keyword != null and keyword != ''">
+            and (title like CONCAT('%', #{keyword}, '%') or
+                 create_by like CONCAT('%', #{keyword}, '%'))
+        </if>
+
+    </select>
 </mapper>

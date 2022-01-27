@@ -35,11 +35,6 @@ public class Article {
     @TableField(value = "title")
     private String title;
 
-    /**
-     * 内容摘要
-     */
-    @TableField(value = "brief_content")
-    private String briefContent;
 
     /**
      * 文章内容
@@ -59,11 +54,6 @@ public class Article {
     @TableField(value = "views")
     private Integer views;
 
-    /**
-     * 封面地址
-     */
-    @TableField(value = "cover_image")
-    private String coverImage;
 
     /**
      * 0：发布   1：草稿   2:上线
@@ -102,6 +92,9 @@ public class Article {
      */
     @TableField(value = "last_update_by")
     private Long lastUpdateBy;
+
+
+    private String categoryText;
 
     public static final String COL_ID = "id";
 

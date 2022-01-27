@@ -41,7 +41,7 @@ public class ArticleController {
     public Result pageList(@RequestBody BaseDto baseDto) {
         try {
             List<Article> articles=articleService.pageList(baseDto);
-            long count = articleService.lambdaQuery().like(Article::getTitle,baseDto.getKeyword()).eq(Article::getIsDelete,0).count();
+            long count = articleService.pageListCount(baseDto);
             return Result.ok().data200(articles,count);
         } catch (Exception e) {
             log.error("文章显示错误!", e);

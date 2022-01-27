@@ -16,4 +16,6 @@ public interface ArticleService extends IService<Article>{
 
 
         List<Article> pageList(BaseDto baseDto);
-    }
+
+    long pageListCount(BaseDto baseDto);
+}
