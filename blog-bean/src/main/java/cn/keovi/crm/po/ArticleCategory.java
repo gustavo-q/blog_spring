@@ -35,6 +35,10 @@ public class ArticleCategory {
     @TableField(value = "type")
     private String type;
 
+
+    //状态
+    private Integer status;
+
     /**
      * 0：未删除   1：删除
      */

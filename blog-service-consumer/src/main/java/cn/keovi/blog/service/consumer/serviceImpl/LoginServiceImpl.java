@@ -64,6 +64,7 @@ public class LoginServiceImpl implements LoginService {
         if (us == null) {
             return Result.error(500, "密码错误");
         }
+        if (us.getStatus()==1)   return Result.error(500, "账号被禁用,请联系管理员");
 
         //将登录信息传入redis
         UserSession userSession = UserSession.builder()

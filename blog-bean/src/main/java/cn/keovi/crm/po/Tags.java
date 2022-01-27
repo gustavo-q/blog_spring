@@ -13,18 +13,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @ClassName Tap
+ * @ClassName Tags
  * @Description ${DESCRIPTION}
  * @Author gustavo
  * @Date 2021/12/23/21:07
  */
 @Data
-@TableName(value = "tap")
+@TableName(value = "tags")
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Tap {
+public class Tags {
     /**
      * id
      */
@@ -34,8 +34,11 @@ public class Tap {
     /**
      * 标签
      */
-    @TableField(value = "tap")
-    private String tap;
+    @TableField(value = "tag")
+    private String tag;
+
+    //状态
+    private Integer status;
 
     /**
      * 0：未删除   1：删除
@@ -69,7 +72,6 @@ public class Tap {
 
     public static final String COL_ID = "id";
 
-    public static final String COL_TAP = "tap";
 
     public static final String COL_IS_DELETE = "is_delete";
 

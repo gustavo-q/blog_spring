@@ -49,8 +49,6 @@ public class Result<T> implements Serializable {
     public static Result ok() {
         Result r = new Result();
         r.setCode(ResultCodeEnum.SUCCESS.getCode());
-//        r.setMsg(ResultCodeEnum.SUCCESS.getMessage());
-//        r.setRes(ResultCodeEnum.RES_SUCCESS.getCode());
         r.setMessage(ResultCodeEnum.SUCCESS.getMessage());
         r.setStatus(true);
         return r;
@@ -156,7 +154,7 @@ public class Result<T> implements Serializable {
 
 
 
-    public Result data(T data,Integer code,Long totalCount) {
+    public Result data(Integer code,T data,Long totalCount) {
         this.setData(data);
 //        this.setPageNum(pageNum);
         this.setTotalCount(totalCount);

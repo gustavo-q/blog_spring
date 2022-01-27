@@ -6,17 +6,219 @@
   <component name="ChangeListManager">
     <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/BaseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/BaseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/BaseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/BaseDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article$ArticleBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article$ArticleBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Tap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/BaseDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/CommentDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/CurrentUserInfoDto$CurrentUserInfoDtoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/CurrentUserInfoDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/PageDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/RoleDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/UserDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article$ArticleBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleCategory$ArticleCategoryBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleTap$ArticleTapBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleTap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Comment$CommentBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Files$FilesBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Files.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Menu$MenuBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/RoleMenu$RoleMenuBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/RoleMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Tap$TapBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Tap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/User$UserBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserDonate$UserDonateBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserDonate.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserRole$UserRoleBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/UserRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/vo/ResultCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/rebel.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/ResultCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/ResultCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Constants$MQContentType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Constants$MQType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Constants$User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ACCOUNT_SOURCE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ACCOUNT_STATUS_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ACC_ORDER_AUDIT_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ACC_ORDER_DETAIL_AUDIT_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ACTIVE_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$AUDIT_OPINION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$BILL_PREFIX.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$BUSINESS_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$CATALOGUE_RELATED_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$COMMON_ATTACH_FILE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$COMMON_REMARK_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$COMMON_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$CUSTOMER_INPUT_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$DICTIONARY_KEY.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$IM_ACTIVE_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$IM_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$MESSAGE_ENTITY_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$MESSAGE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_ACC_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_BALANCE_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_CHECK_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_DEAL_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_ENGINEER_RELA_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_FAULT_REPORT_CELL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_FINISH_REPORT_CELL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_FINISH_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_OTHER_RELATION.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$ORDER_REPORT_CELL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$PAY_RECORD_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$PAY_RELATION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$PAY_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$PROCESS_OPERATE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$STATUS_FLAG.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums$STORE_POST.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/CsConstantEnums.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DataScopeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ACCOUNT_SOURCE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ACCOUNT_STATUS_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ACTIVE_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$APPROVE_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ATTACHMENT_RELATED_TABLE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$AUDIT_OPINION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$CHANNEL_INFOMATION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$CHANNEL_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$CONTACT_RELATED_TABLE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$CONTACT_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$DEFAULT_ROLE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$DELIVERY_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$DIRECTION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$EMP_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$FUNCTION_KEY.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$HOME_IMAGES_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$INVOICE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$MESSAGE_ENTITY_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$MESSAGE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$NEWS_RELATED_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$NEWS_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$NOTICE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ORDER_OPER_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ORDER_STATUS_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ORDER_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$ORG_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PAYMENT_CONFIRM_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PAYMENT_STATUS_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PAYMENT_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PROCESS_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PRODUCT_LABEL.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PROMOTION_ACTIVE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$PROMOTION_SCOPE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RANGE_RELATION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RANGE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RANK_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RECEIVE_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RECUND_COLLECTION_APPROVAL_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RECUND_COLLECTION_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RECUND_COLLECTION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RELATION_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$REMARK_RELATED_TABLE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$REMOVE_FLAG_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RETURN_AUDIT_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RETURN_BUYER_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RETURN_ORDER_DELIVERY_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RETURN_ORDER_SOURCE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RETURN_ORDER_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$RETURN_SELLER_STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$SIGN_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$STORAGE_OUTIN.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$STORAGE_OUTIN_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$STORAGE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$STORE_OPERATE_WAY.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$STORE_POST.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$TRANSFER_APPLY_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$TREE_RELATED_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums$USER_SOURCE_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsModuleEnums.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/DmsOrgTypeConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/IResultCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/RedisCacheConstans.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/ResultCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/UtilConstants$checkCodeEncodings.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/UtilConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/constants/WechartConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/enums/IResultCodeEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/exception/BaseRuntimeException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/exception/BusinessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/exception/ControllerException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/exception/Exceptions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/exception/ServiceException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/handler/AllExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/ApplicationContextUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/ArithUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/ArrayUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/BeanConvertHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/BlankUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/BooleanUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/BytesUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/CharStack.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/ClassCompareUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/ClassUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/CollectionsUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/DecimalUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/Encript.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/FileNameUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$10.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$8.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$9.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$Base64.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$CloseOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$ConnectionFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$ConnectionFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$FlushOperation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$HttpRequestException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$Operation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$RequestOutputStream.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$UploadProgress$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest$UploadProgress.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/HttpRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/IOUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/IntegerUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/JsonResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/LocationUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/MD5Util.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/NativePlaceUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/NumberUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/PageHelper$Page.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/PageHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/PathUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/RandomUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/RedisUtil$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/RedisUtil$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/RedisUtil$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/RedisUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/SortConstant.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/TimeUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/UUIDUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/target/classes/cn/keovi/utils/VerifyCodeUtils.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TapController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleCategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleCategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/TapMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/TapService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/TapServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleCategoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleCategoryMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/TapMapper.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +244,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="6964" />
+    <property name="MyBatisLogPluginindexNum" value="7514" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -73,6 +275,10 @@
         </pattern>
       </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="cn.keovi.blog.service.BlogServiceConsumerApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,7 +309,7 @@
       <workItem from="1643073912617" duration="5720000" />
       <workItem from="1643162454059" duration="5470000" />
       <workItem from="1643207224847" duration="594000" />
-      <workItem from="1643252291445" duration="2632000" />
+      <workItem from="1643252291445" duration="13643000" />
     </task>
     <servers />
   </component>

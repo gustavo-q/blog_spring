@@ -1,8 +1,10 @@
 package cn.keovi.blog.service.consumer.controller;
 
+import cn.keovi.blog.service.consumer.mapper.ArticleCategoryMapper;
 import cn.keovi.blog.service.consumer.service.ArticleCategoryService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
+import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.ArticleCategory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,20 +33,28 @@ public class CategoryController {
     @Autowired
     private ArticleCategoryService articleCategoryService;
 
+    @Autowired
+    private ArticleCategoryMapper articleCategoryMapper;
 
 
 
 
 
-    //新增修改标签
+
+    //新增修改分类
     @PostMapping("/addCategory")
     public Result addCategory(@RequestBody ArticleCategory articleCategory){
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
-            articleCategory.setCreateBy(loginManager.getUserId());
-            articleCategory.setCreateTime(new Date());
+            if (articleCategory.getId()!=null){
+                articleCategory.setLastUpdateBy(loginManager.getUserId());
+                articleCategory.setLastUpdateTime(new Date());
+            }else {
+                articleCategory.setCreateBy(loginManager.getUserId());
+                articleCategory.setCreateTime(new Date());
+            }
             if (articleCategoryService.saveOrUpdate(articleCategory)){
-                return Result.ok();
+                return Result.ok(200,"添加成功");
             }
             return Result.error();
         } catch (Exception e) {
@@ -55,8 +65,8 @@ public class CategoryController {
     }
 
     //删除分类
-    @PostMapping("/deleteCategory/{id}")
-    public Result deleteCategory(@PathVariable Long id){
+    @GetMapping("/deleteCategory")
+    public Result deleteCategory(@RequestParam Long id){
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             if (articleCategoryService.lambdaUpdate().set(ArticleCategory::getIsDelete, 1).set(ArticleCategory::getLastUpdateTime,new Date())
@@ -73,15 +83,31 @@ public class CategoryController {
 
 
 
-    //根据用户id查询标签
+    //分页
     @PostMapping("/pageList")
-    public Result pageList() {
+    public Result pageList(@RequestBody BaseDto baseDto) {
         try {
-            List<ArticleCategory> articleCategories=articleCategoryService.lambdaQuery()
-                    .eq(ArticleCategory::getIsDelete,0).list();
+            List<ArticleCategory> articleCategories=articleCategoryMapper.pageList(baseDto);
+            long count=articleCategoryMapper.pageListCount(baseDto);
+            return Result.ok().data(200,articleCategories,count);
+        } catch (Exception e) {
+            log.error("查询分类列表失败!", e);
+            return Result.error(500, e.getMessage());
+
+        }
+
+    }
+
+
+    //根据用户id查询标签
+    @GetMapping("/getAllCategory")
+    public Result getAllCategory() {
+        try {
+            List<ArticleCategory> articleCategories=articleCategoryService.lambdaQuery().eq(ArticleCategory::getIsDelete,0)
+                    .eq(ArticleCategory::getStatus,0).list();
             return Result.ok().data(200,articleCategories);
         } catch (Exception e) {
-            log.error("文章显示错误!", e);
+            log.error("查询分类列表失败!", e);
             return Result.error(500, e.getMessage());
 
         }

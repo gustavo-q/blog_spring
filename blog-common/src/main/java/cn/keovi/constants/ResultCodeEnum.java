@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public enum ResultCodeEnum implements IResultCodeEnum {
-    SUCCESS(0, "ok"),
+    SUCCESS(200, "ok"),
 
-    STATUS(0, "true"),
+    STATUS(200, "true"),
 
 
     RES_SUCCESS(1, "1"),

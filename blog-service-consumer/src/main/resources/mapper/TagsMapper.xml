@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.keovi.blog.service.consumer.mapper.ArticleCategoryMapper">
-    <resultMap id="BaseResultMap" type="cn.keovi.crm.po.ArticleCategory">
+<mapper namespace="cn.keovi.blog.service.consumer.mapper.TagsMapper">
+    <resultMap id="BaseResultMap" type="cn.keovi.crm.po.Tags">
         <!--@mbg.generated-->
-        <!--@Table article_category-->
+        <!--@Table tags-->
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="tag" jdbcType="VARCHAR" property="tag"/>
         <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
         <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
@@ -15,33 +15,38 @@
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, `type`, is_delete, create_time, last_update_time, create_by, last_update_by,status
+        id, tag, is_delete, create_time, last_update_time, create_by, last_update_by,status
     </sql>
-
 
     <select id="pageList" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from article_category
+        from tags
                 where is_delete = 0
         <if test="keyword != null and keyword != ''">
-            and type like CONCAT('%', #{keyword}, '%')
+            and tag like CONCAT('%', #{keyword}, '%')
         </if>
         <if test="status != null">
             and status = #{status}
+        </if>
+        <if test="id != null">
+            and create_by = #{id}
         </if>
         order by create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
-    <select id="pageListCount" resultType="long">
+    <select id="pageListCount" resultType="java.lang.Long">
         select count(1)
-        from article_category
+        from tags
                 where is_delete = 0
         <if test="keyword != null and keyword != ''">
-            and type like CONCAT('%', #{keyword}, '%')
+            and tag like CONCAT('%', #{keyword}, '%')
         </if>
         <if test="status != null">
             and status = #{status}
+        </if>
+         <if test="id != null">
+            and create_by = #{id}
         </if>
     </select>
 </mapper>
