@@ -13,13 +13,27 @@ import java.util.List;
 @Data
 public class ArticleDto {
 
+    private Long id;
+
     private String title;
 
+    private Integer status;
 
     private Integer categoryId;
 
-    private List<Integer> tagList;
+    private List<Object> tagList;
 
     private String content;
+
+    //置顶
+    private Boolean top;
+
+    //评论
+    private Boolean commentEnabled;
+
+    //赞赏
+    private Boolean appreciation;
+
+
 
 }

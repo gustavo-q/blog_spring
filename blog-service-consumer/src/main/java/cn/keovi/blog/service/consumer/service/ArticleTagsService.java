@@ -1,14 +1,14 @@
 package cn.keovi.blog.service.consumer.service;
 
-import cn.keovi.crm.po.ArticleTap;
+import cn.keovi.crm.po.ArticleTags;
 import com.baomidou.mybatisplus.extension.service.IService;
     /**
- * @ClassName ArticleTapService
+ * @ClassName ArticleTagsService
  * @Description ${DESCRIPTION}
  * @Author gustavo
  * @Date 2021/12/23/21:07
  */
-public interface ArticleTapService extends IService<ArticleTap>{
+public interface ArticleTagsService extends IService<ArticleTags>{
 
 
 }

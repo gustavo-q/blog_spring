@@ -11,18 +11,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @ClassName ArticleTap
+ * @ClassName ArticleTags
  * @Description ${DESCRIPTION}
  * @Author gustavo
  * @Date 2021/12/23/21:07
  */
 @Data
-@TableName(value = "article_tap")
+@TableName(value = "article_tags")
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArticleTap {
+public class ArticleTags {
     /**
      * id
      */
@@ -32,18 +32,18 @@ public class ArticleTap {
     /**
      * 标签id
      */
-    @TableField(value = "tap_id")
-    private Long tapId;
+    @TableField(value = "tag_id")
+    private Long tagId;
 
     /**
      * 用户id
      */
-    @TableField(value = "user_id")
-    private Long userId;
+    @TableField(value = "article_id")
+    private Long articleId;
 
     public static final String COL_ID = "id";
 
-    public static final String COL_TAP_ID = "tap_id";
+    public static final String COL_TAG_ID = "tag_id";
 
-    public static final String COL_USER_ID = "user_id";
+    public static final String COL_ARTICLE_ID = "article_id";
 }

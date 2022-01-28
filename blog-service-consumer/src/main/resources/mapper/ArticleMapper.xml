@@ -15,39 +15,43 @@
         <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime"/>
         <result column="create_by" jdbcType="BIGINT" property="createBy"/>
         <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy"/>
+        <result column="top" jdbcType="INTEGER" property="top"/>
+        <result column="comment_enabled" jdbcType="INTEGER" property="commentEnabled"/>
+        <result column="appreciation" jdbcType="INTEGER" property="appreciation"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, title,  content, category_id, views,  `status`, is_delete,
-        create_time, last_update_time, create_by, last_update_by
+        id, title, content, category_id, views, `status`, is_delete,
+        create_time, last_update_time, create_by, last_update_by,top,commentEnabled,appreciation
     </sql>
 
 
-    <select id="pageList" resultMap="BaseResultMap">
-        select id                             as id,
-               ifnull(title, "")              as title,
-               ifnull(status, null)             as status,
-               ifnull(create_time, null)      as createTime,
-               ifnull(last_update_time, null) as lastUpdateTime,
-               ifnull(category_id,null) as categoryId
+    <select id="pageList" resultType="cn.keovi.crm.po.Article">
+        select id                as id,
+               ifnull(title, "") as title,
+               `status`          as status,
+               create_time       as createTime,
+               last_update_time  as lastUpdateTime,
+               category_id       as categoryId
+        from article
+                where is_delete = 0
+        <if test="keyword != null and keyword != ''">
+            and title like CONCAT('%', #{keyword}, '%')
+        </if>
+        <if test="status != null ">
+            and status = #{status}
+        </if>
+        order by top desc,last_update_time desc, create_time desc
+                limit #{startIndex}, #{pageSize}
+    </select>
+
+    <select id="pageListCount" resultType="long">
+        select count(1)
         from article
                 where is_delete = 0
         <if test="keyword != null and keyword != ''">
             and (title like CONCAT('%', #{keyword}, '%') or
                  create_by like CONCAT('%', #{keyword}, '%'))
         </if>
-        order by  create_time desc
-                limit #{startIndex}, #{pageSize}
-    </select>
-
-    <select id="pageListCount" resultType="long">
-        select count(1)
-     from article
-                where is_delete = 0
-        <if test="keyword != null and keyword != ''">
-            and (title like CONCAT('%', #{keyword}, '%') or
-                 create_by like CONCAT('%', #{keyword}, '%'))
-        </if>
-
     </select>
 </mapper>

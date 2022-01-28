@@ -1,5 +1,6 @@
 package cn.keovi.blog.service.consumer.controller;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
@@ -41,7 +42,7 @@ public class ArticleController {
     @PostMapping("/pageList")
     public Result pageList(@RequestBody BaseDto baseDto) {
         try {
-            List<Article> articles=articleService.pageList(baseDto);
+            List<Map<String,Object>> articles=articleService.pageList(baseDto);
             long count = articleService.pageListCount(baseDto);
             return Result.ok().data200(articles,count);
         } catch (Exception e) {
@@ -57,22 +58,8 @@ public class ArticleController {
     @PostMapping("/addArticle")
     public Result addArticle(@RequestBody ArticleDto articleDto) {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
-            Article article = new Article();
-            if (article.getId()!=null){
-                article.setLastUpdateBy(loginManager.getUserId());
-                article.setLastUpdateTime(new Date());
-            }else {
-                article.setCreateBy(loginManager.getUserId());
-                article.setCreateTime(new Date());
-            }
-            article.setTitle(articleDto.getTitle());
-            article.setCategoryId(articleDto.getCategoryId());
-            article.setContent(articleDto.getContent());
-            if (articleService.saveOrUpdate(article)){
-                return Result.ok(200,"添加成功");
-            }
-            return Result.error();
+           articleService.addArticle(articleDto);
+           return Result.ok();
         } catch (Exception e) {
             log.error("文章新增失败!", e);
             return Result.error(500, e.getMessage());
@@ -82,8 +69,8 @@ public class ArticleController {
 
 
     //删除文章
-    @DeleteMapping("/deleteArticle/{id}")
-    public Result deleteArticle(@PathVariable Long id) {
+    @GetMapping("/deleteArticle")
+    public Result deleteArticle(@RequestParam Long id) {
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             if (articleService.lambdaUpdate().set(Article::getIsDelete, 1).set(Article::getLastUpdateTime,new Date())
@@ -98,7 +85,17 @@ public class ArticleController {
         }
     }
 
-
+    //根据id查询文章
+    @GetMapping("/articleById")
+    public Result articleById(@RequestParam Long id) {
+        try {
+            ArticleDto articleDto = articleService.articleById(id);
+            return Result.ok().data(200,articleDto);
+        }catch (Exception e){
+            log.error("文章查询失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
 
 
 

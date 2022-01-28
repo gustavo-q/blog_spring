@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/ArticleDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01192068-d612-4ea1-89e4-738415a3c15b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/01192068-d612-4ea1-89e4-738415a3c15b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/ArticleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/ArticleDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleTap.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/ArticleTags.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/ArticleDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/dto/ArticleDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article$ArticleBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article$ArticleBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Article.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleTap$ArticleTapBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/ArticleTap.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleTapMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleTagsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleTapService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleTagsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleTapServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleTagsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleTapMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleTagsMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +48,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="7547" />
+    <property name="MyBatisLogPluginindexNum" value="10350" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -100,6 +115,7 @@
       <workItem from="1643207224847" duration="594000" />
       <workItem from="1643252291445" duration="13643000" />
       <workItem from="1643300437902" duration="1599000" />
+      <workItem from="1643335786701" duration="18816000" />
     </task>
     <servers />
   </component>

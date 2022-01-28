@@ -56,7 +56,7 @@ public class Article {
 
 
     /**
-     * 0：发布   1：草稿   2:上线
+     * 0：草稿   1：上线
      */
     @TableField(value = "status")
     private Integer status;
@@ -93,8 +93,16 @@ public class Article {
     @TableField(value = "last_update_by")
     private Long lastUpdateBy;
 
+    //置顶
+    private Integer top;
 
-    private String categoryText;
+    //评论
+    private Integer commentEnabled;
+
+    //赞赏
+    private Integer appreciation;
+
+
 
     public static final String COL_ID = "id";
 
