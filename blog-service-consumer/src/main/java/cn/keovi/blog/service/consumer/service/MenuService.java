@@ -15,4 +15,5 @@ import java.util.List;
 public interface MenuService extends IService<Menu>{
 
 
-    }
+    void updateMenu(Menu menu);
+}

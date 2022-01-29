@@ -57,17 +57,8 @@ public class MenuController {
     public Result updateMenu(@RequestBody Menu menu) {
         try {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
-           if ( menuService.lambdaUpdate().set(Menu::getName,menu.getName())
-                   .set(Menu::getParentId,menu.getParentId())
-                   .set(Menu::getPath,menu.getPath())
-                   .set(Menu::getDescription,menu.getDescription())
-                   .set(Menu::getStatus,menu.getStatus())
-                   .set(Menu::getLastUpdateTime,new Date())
-                   .set(Menu::getLastUpdateBy,loginManager.getUserId())
-                   .eq(Menu::getId,menu.getId()).update()){
-               return Result.ok("更新成功");
-           }
-            return Result.error("更新失败");
+            menuService.updateMenu(menu);
+            return Result.ok("更新成功");
         } catch (Exception e) {
             log.error("更新失败!", e);
             return Result.error(500, e.getMessage());
