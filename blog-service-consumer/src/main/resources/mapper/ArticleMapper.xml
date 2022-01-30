@@ -38,10 +38,10 @@
         <if test="keyword != null and keyword != ''">
             and title like CONCAT('%', #{keyword}, '%')
         </if>
-        <if test="status != null ">
+        <if test="status != null">
             and status = #{status}
         </if>
-        order by top desc,last_update_time desc, create_time desc
+        order by top desc, create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
 

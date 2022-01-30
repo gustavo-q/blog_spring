@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/BlogServiceConsumerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/BlogServiceConsumerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/FilesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/FilesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/FilesServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/FilesServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +49,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="12032" />
+    <property name="MyBatisLogPluginindexNum" value="12313" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -120,7 +122,8 @@
       <workItem from="1643252291445" duration="13643000" />
       <workItem from="1643300437902" duration="1599000" />
       <workItem from="1643335786701" duration="18816000" />
-      <workItem from="1643426033758" duration="22325000" />
+      <workItem from="1643426033758" duration="23008000" />
+      <workItem from="1643509839340" duration="7293000" />
     </task>
     <servers />
   </component>
