@@ -1,7 +1,6 @@
 package cn.keovi.blog.service.consumer.serviceImpl;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.service.LoginService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.UserSession;
@@ -9,16 +8,15 @@ import cn.keovi.constants.RedisCacheConstans;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.UserDto;
 import cn.keovi.crm.po.User;
+import cn.keovi.utils.MD5Util;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import static cn.keovi.constants.RedisCacheConstans.getTicket;
@@ -49,21 +47,13 @@ public class LoginServiceImpl implements LoginService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Result login(JsonNode map) {
-        //邮箱是否存在
-        Long count = userService.lambdaQuery()
-                    .eq(User::getEmail, map.get("username").asText())
-                .or().eq(User::getUsername,map.get("username").asText()).count();
-        if (count == 0) {
-            return Result.error(500, "邮箱或者用户名不存在");
-        }
-        String password = SecureUtil.md5(SecureUtil.md5(map.get("password").asText()));
         //密码是否相同
         User us = userService.lambdaQuery().eq(User::getEmail, map.get("username").asText()).or()
-                .eq(User::getUsername,map.get("username").asText())
-                .eq(User::getPassword, password).one();
+                .eq(User::getUsername,map.get("username").asText()).one();
         if (us == null) {
-            return Result.error(500, "密码错误");
+            return Result.error(500, "邮箱或者用户名不存在");
         }
+        if (!MD5Util.checkedPassword(map.get("password").asText(),us.getPassword())) return Result.error("密码错误");
         if (us.getStatus()==1)   return Result.error(500, "账号被禁用,请联系管理员");
 
         //将登录信息传入redis
@@ -77,6 +67,7 @@ public class LoginServiceImpl implements LoginService {
                 .wechat(us.getWechat())
                 .mobile(us.getMobile())
                 .intro(us.getIntro())
+                .avatar(us.getAvatar())
                 .build();
 
         //save
@@ -112,7 +103,7 @@ public class LoginServiceImpl implements LoginService {
         if (userDto.getEmailCode()!=null && userDto.getEmailCode().equals(redisTemplate.opsForValue().get(userDto.getEmail()))) {
             User user = User.builder().username(userDto.getUsername())
                     .email(userDto.getEmail())
-                    .password(SecureUtil.md5(SecureUtil.md5(userDto.getPassword())))
+                    .password(MD5Util.encrypt(userDto.getPassword()))
                     .createTime(DateUtil.date())
                     .roleId(2)
                     .build();

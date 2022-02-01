@@ -28,9 +28,9 @@ public class FilesController {
 
     //文章新增修改
     @PostMapping("/saveFiles")
-        public Result saveFiles(@RequestParam(value = "file")MultipartFile file) {
+        public Result saveFiles(@RequestParam(value = "file")MultipartFile file,@RequestParam(value = "source")String source) {
         try {
-            String filesPath = filesService.saveFiles(file);
+            String filesPath = filesService.saveFiles(file,source);
             return Result.ok().data(200,filesPath);
         } catch (Exception e) {
             log.error("文件保存失败!", e);

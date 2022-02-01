@@ -9,7 +9,6 @@
     <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
     <result column="file_size" jdbcType="DOUBLE" property="fileSize" />
     <result column="extension" jdbcType="VARCHAR" property="extension" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
@@ -18,7 +17,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, file_name, file_url, file_size, extension, user_id, is_delete, create_time, last_update_time, 
+    id, file_name, file_url, file_size, extension, is_delete, create_time, last_update_time,
     create_by, last_update_by
   </sql>
 </mapper>

@@ -1,116 +1,92 @@
 package cn.keovi.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
+import org.apache.tomcat.util.codec.binary.Base64;
+
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
-/*
- * MD5 算法
-*/
-@SuppressWarnings("unused")
+
+
+/**
+ * 加密、密码判断
+ * @date   2017年11月28日
+ */
 public class MD5Util {
-    private static final String hexDigits[] = { "0", "1", "2", "3", "4", "5",
-            "6", "7", "8", "9", "a", "b", "c", "d", "e", "f" };
 
-    // 全局数组
+    private static final int PASSWORDKEYLENGTH = 8;
 
-
-    public MD5Util() {
+    public static void main(String[] args) {
+        System.out.println(encrypt("123"));
     }
 
-    // 返回形式为数字跟字符串
-    private static String byteToArrayString(byte bByte) {
-        int iRet = bByte;
-        // System.out.println("iRet="+iRet);
-        if (iRet < 0) {
-            iRet += 256;
+    /**
+     * 加密
+     * @param password
+     * @return
+     * @throws Exception
+     */
+    public static String encrypt(String password) {
+        String sSafeCode = getRandomString(PASSWORDKEYLENGTH);// 产生一段随机字符串，作为安全域。
+        return sSafeCode + encryptWithSafeCode(password, sSafeCode);
+    }
+
+    /**
+     * 密码校验<br/>
+     * password-明文<br/>
+     * safePassword-密文<br/>
+     * @param password-明文
+     * @param safePassword-密文
+     * @return
+     * @throws Exception
+     */
+    public static boolean checkedPassword(String password,String safePassword){
+        if(encryptWithSafeCode(password,safePassword.trim().substring(0, PASSWORDKEYLENGTH)).equals(safePassword.trim().substring(PASSWORDKEYLENGTH, safePassword.length()))){
+            return true;
         }
-        int iD1 = iRet / 16;
-        int iD2 = iRet % 16;
-        return hexDigits[iD1] + hexDigits[iD2];
+        return false;
     }
 
-    private static String byteArrayToHexString(byte b[]) {
-        StringBuffer resultSb = new StringBuffer();
-        for (int i = 0; i < b.length; i++)
-            resultSb.append(byteToHexString(b[i]));
-
-        return resultSb.toString();
-    }
-
-    private static String byteToHexString(byte b) {
-        int n = b;
-        if (n < 0)
-            n += 256;
-        int d1 = n / 16;
-        int d2 = n % 16;
-        return hexDigits[d1] + hexDigits[d2];
-    }
-
-    // 返回形式只为数字
-	private static String byteToNum(byte bByte) {
-        int iRet = bByte;
-        System.out.println("iRet1=" + iRet);
-        if (iRet < 0) {
-            iRet += 256;
-        }
-        return String.valueOf(iRet);
-    }
-
-    // 转换字节数组为16进制字串
-    private static String byteToString(byte[] bByte) {
-        StringBuffer sBuffer = new StringBuffer();
-        for (int i = 0; i < bByte.length; i++) {
-            sBuffer.append(byteToArrayString(bByte[i]));
-        }
-        return sBuffer.toString();
-    }
-
-    public static String GetMD5Code(String strObj) {
-        String resultString = null;
+    private static String encryptWithSafeCode(String password, String safeCode){
         try {
-            resultString = new String(strObj);
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            // md.digest() 该函数返回值为存放哈希值结果的byte数组
-            resultString = byteToString(md.digest(strObj.getBytes()));
-        } catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
+            byte[] abyteSafeCode = Base64.decodeBase64(safeCode);
+            MessageDigest messagedigest = MessageDigest.getInstance("MD5");
+            //messagedigest.update(abyteSafeCode); 此句在最后加密中没有实际意义
+            messagedigest.update(password.getBytes("UTF8"));
+            return Base64.encodeBase64String(messagedigest.digest());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return resultString;
-    }
-
-    public static String MD5Encode(String origin, String charsetname) {
-        String resultString = null;
-        try {
-            resultString = new String(origin);
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            if (charsetname == null || "".equals(charsetname))
-                resultString = byteArrayToHexString(md.digest(resultString
-                        .getBytes()));
-            else
-                resultString = byteArrayToHexString(md.digest(resultString
-                        .getBytes(charsetname)));
-        } catch (Exception exception) {
-        }
-        return resultString;
-    }
-
-
-    private static String md5(String text) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        return getCode(MessageDigest.getInstance("md5").digest(text.getBytes("UTF-8")));
-    }
-
-    private static String getCode(byte[] secretBytes) {
-        String md5code = (new BigInteger(1, secretBytes)).toString(16);
-        return String.format("%1$32s", md5code).replaceAll(" ", "0");
-    }
-
-    public static String encrypt(String src) throws Exception {
-        return md5(src);
-    }
-
-    public static String decrypt(String src) throws Exception {
         return null;
+    }
+
+    public static java.util.Random random = new java.util.Random();
+
+    private static String getRandomString(int length) {
+        char[] ach = new char[length];
+        for (int i = 0; i < ach.length; i++) {
+            ach[i] = getRandomChar();
+        }
+
+        return new String(ach);
+    }
+
+    private static char getRandomChar() {
+        char ch;
+
+        int iRandomInt = random.nextInt(52);
+
+        if (iRandomInt < 10) {
+            // 数字，0的ASCII码是48。
+            ch = (char) (iRandomInt + 48);
+        } else if (iRandomInt < 36) {
+            // 大写字母，A的ASCII码是65。
+            // ch = (char)(iRandomInt - 10 + 66);
+            ch = (char) (iRandomInt + 56);
+        } else {
+            // 小写字母，a的ASCII码是97。
+            // ch = (char)(iRandomInt - 36 + 97);
+            ch = (char) (iRandomInt + 61);
+        }
+
+        return ch;
     }
 }

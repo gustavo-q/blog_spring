@@ -53,11 +53,7 @@ public class Files {
     @TableField(value = "extension")
     private String extension;
 
-    /**
-     * 用户id
-     */
-    @TableField(value = "user_id")
-    private Integer userId;
+
 
     /**
      * 0：未删除   1：删除
@@ -101,7 +97,6 @@ public class Files {
 
     public static final String COL_EXTENSION = "extension";
 
-    public static final String COL_USER_ID = "user_id";
 
     public static final String COL_IS_DELETE = "is_delete";
 

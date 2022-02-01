@@ -1,16 +1,16 @@
 package cn.keovi.blog.service.consumer.serviceImpl;
 
 
-import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.mapper.MenuMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
-import cn.keovi.blog.service.consumer.service.MenuService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.Menu;
 import cn.keovi.exception.ServiceException;
+import cn.keovi.utils.MD5Util;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -104,11 +104,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Transactional
     public void resetPas(int id) {
         if (loginManager.getUserSession() == null) throw new ServiceException("登录失效!");
-        boolean update = this.lambdaUpdate().set(User::getPassword, SecureUtil.md5(SecureUtil.md5("123456")))
+        boolean update = this.lambdaUpdate().set(User::getPassword, MD5Util.encrypt("123456"))
                 .set(User::getLastUpdateBy, loginManager.getUserId())
                 .set(User::getLastUpdateTime, new Date())
                 .eq(User::getId, id).eq(User::getIsDelete, 0).update();
         if (!update) throw new ServiceException("重置密码失败");
+    }
+
+
+
+    //修改密码
+    @Override
+    @Transactional
+    public void editPass(JsonNode map) {
+
+
+
     }
 
 

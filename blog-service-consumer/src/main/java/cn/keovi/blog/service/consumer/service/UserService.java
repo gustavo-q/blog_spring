@@ -28,4 +28,6 @@ public interface UserService extends IService<User>{
     CurrentUserInfoDto currentUserInfo();
 
     void resetPas(int id);
+
+    void editPass(JsonNode map);
 }

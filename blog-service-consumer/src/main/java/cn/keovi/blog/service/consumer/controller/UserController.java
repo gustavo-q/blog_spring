@@ -1,6 +1,7 @@
 package cn.keovi.blog.service.consumer.controller;
 
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
@@ -12,6 +13,8 @@ import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.User;
 
+import cn.keovi.exception.ServiceException;
+import cn.keovi.utils.MD5Util;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -128,7 +131,7 @@ public class UserController {
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             user.setCreateTime(new Date());
             //默认密码
-            user.setPassword(SecureUtil.md5(SecureUtil.md5("123456")));
+            user.setPassword(MD5Util.encrypt("123456"));
             if (userService.save(user)) {
                 log.info("更新成功,用户{}", user);
                 return Result.ok("更新成功！");
@@ -181,7 +184,6 @@ public class UserController {
         try{
             if (loginManager.getUserId()==null) return Result.error("登录失效！");
             if (userService.lambdaUpdate()
-                    .set(User::getUsername, map.get("username").asText())
                     .set(User::getMobile, map.get("mobile").asInt())
                     .set(User::getQq,map.get("qq").asInt())
                     .set(User::getSex,map.get("sex").asInt())
@@ -217,5 +219,25 @@ public class UserController {
     }
 
 
+    //修改密码
+    @PostMapping("/editPass")
+    public Result editPass(@RequestBody JsonNode map){
+        try{
+            if (loginManager.getUserSession() == null) return Result.error("登录失效！");
+            if (!map.get("newPass").asText().equals(map.get("agreePass").asText())) throw new ServiceException("两次输入新密码不一致!");
+            User user = userService.lambdaQuery().eq(User::getId, loginManager.getUserId()).eq(User::getIsDelete,0).one();
+            if (ObjectUtil.isEmpty(user)) throw new ServiceException("未知错误!");
+            if (!MD5Util.checkedPassword(map.get("oldPass").asText(),user.getPassword())) return Result.error("旧密码错误!");
+            boolean update = userService.lambdaUpdate().set(User::getPassword, MD5Util.encrypt(map.get("newPass").asText()))
+                    .set(User::getLastUpdateBy, loginManager.getUserId())
+                    .set(User::getLastUpdateTime, new Date())
+                    .eq(User::getId, loginManager.getUserId()).update();
+            if (!update)     return Result.error("修改密码失败!");
+            return Result.ok(200,"修改密码成功!");
+        }catch (Exception e){
+            log.error("修改密码失败",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
 
 }
