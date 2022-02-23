@@ -60,6 +60,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public List<Map<String,Object>> pageList(BaseDto baseDto) {
+        if (loginManager.getUserSession()==null) throw new ServiceException("登录失效");
+        if (loginManager.getUserSession().getRoleId()!=1) baseDto.setId(loginManager.getUserId());
         List<Article> articles = articleMapper.pageList(baseDto);
         if (CollectionUtil.isEmpty(articles)) return null;
         List<Map<String,Object>> mapList = new ArrayList<>();
@@ -77,6 +79,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public long pageListCount(BaseDto baseDto) {
+        if (loginManager.getUserSession()==null) throw new ServiceException("登录失效");
+        if (loginManager.getUserSession().getRoleId()!=1) baseDto.setId(loginManager.getUserId());
         return articleMapper.pageListCount(baseDto);
     }
 

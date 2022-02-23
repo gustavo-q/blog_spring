@@ -41,6 +41,9 @@
         <if test="status != null">
             and status = #{status}
         </if>
+        <if test="id != null">
+            and create_by = #{id}
+        </if>
         order by top desc, create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
@@ -52,6 +55,12 @@
         <if test="keyword != null and keyword != ''">
             and (title like CONCAT('%', #{keyword}, '%') or
                  create_by like CONCAT('%', #{keyword}, '%'))
+        </if>
+            <if test="status != null">
+            and status = #{status}
+        </if>
+              <if test="id != null">
+            and create_by = #{id}
         </if>
     </select>
 </mapper>
