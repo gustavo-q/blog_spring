@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/annotation/APPLoginUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/annotation/IgnoreAuth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/annotation/LoginUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/interceptor/AuthorizationInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/blog-bean.iml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/blog-bean.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/AuthInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/WebConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +41,18 @@
       </list>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/TagsMapper.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/FilesMapper.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/constants/Minio.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/TagsController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/ArticleController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/TagsMapper.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
@@ -45,7 +62,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="13488" />
+    <property name="MyBatisLogPluginindexNum" value="13633" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -55,7 +72,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/files" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3222061" />
@@ -68,7 +85,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\javaspace\Blog\blog_spring\blog-common\src\main\java\cn\keovi" />
       <recent name="D:\javaspace\Blog\blog_spring\blog-service-consumer\src\main\java\cn\keovi\blog\service\consumer\config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.keovi.blog.service.consumer.interceptor" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.BlogServiceConsumerApplication">
@@ -141,7 +162,17 @@
       <workItem from="1644412044386" duration="214000" />
       <workItem from="1644755707587" duration="715000" />
       <workItem from="1645179347078" duration="608000" />
-      <workItem from="1645595091502" duration="2419000" />
+      <workItem from="1645595091502" duration="2816000" />
+      <workItem from="1645612070938" duration="855000" />
+      <workItem from="1645617952079" duration="9000" />
+      <workItem from="1645751020578" duration="6000" />
+      <workItem from="1645751668344" duration="1955000" />
+      <workItem from="1646131162363" duration="1036000" />
+      <workItem from="1646220210124" duration="594000" />
+      <workItem from="1647328557873" duration="15000" />
+      <workItem from="1648111086182" duration="366000" />
+      <workItem from="1648114414878" duration="5499000" />
+      <workItem from="1648177640437" duration="972000" />
     </task>
     <servers />
   </component>
