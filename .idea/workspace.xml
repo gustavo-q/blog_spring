@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/annotation/APPLoginUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/annotation/IgnoreAuth.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-common/src/main/java/cn/keovi/annotation/LoginUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/interceptor/AuthorizationInterceptor.java" afterDir="false" />
+    <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="前台首页显示">
+      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/SiteController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/blog-bean.iml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/blog-bean.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/AuthInterceptor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/ArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,13 +56,21 @@
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\software\aptche\apache-maven-3.6.3\maven-repository" />
+        <option name="userSettingsFile" value="D:\software\aptche\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="23zBqFi8vAiUl7DqB7p4Ln7w887" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="13633" />
+    <property name="MyBatisLogPluginindexNum" value="14139" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -76,6 +84,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3222061" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -172,8 +181,24 @@
       <workItem from="1647328557873" duration="15000" />
       <workItem from="1648111086182" duration="366000" />
       <workItem from="1648114414878" duration="5499000" />
-      <workItem from="1648177640437" duration="972000" />
+      <workItem from="1648177640437" duration="18821000" />
+      <workItem from="1648258764594" duration="9882000" />
     </task>
+    <task id="LOCAL-00001" summary="修改拦截器">
+      <created>1648216502140</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648216502140</updated>
+    </task>
+    <task id="LOCAL-00002" summary="mybatisplus分页">
+      <created>1648221861044</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648221861044</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,5 +215,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="修改拦截器" />
+    <MESSAGE value="mybatisplus分页" />
+    <MESSAGE value="前台首页显示" />
+    <option name="LAST_COMMIT_MESSAGE" value="前台首页显示" />
   </component>
 </project>

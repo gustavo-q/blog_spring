@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Wrapper;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName BlogController
@@ -35,10 +37,43 @@ public class BlogController {
         try {
             QueryWrapper<Article> queryWrapper= new QueryWrapper<Article>();
             queryWrapper.eq("is_delete",0);
-            queryWrapper.orderByDesc("create_time");
+            queryWrapper.eq("status",1);
+            queryWrapper.orderByDesc("top","create_time");
 
             IPage<Article> page1 = articleService.page(new Page<>(page, showCount),queryWrapper );
             return Result.ok().data(200,page1.getRecords(),page1.getTotal());
+        }catch (Exception e){
+            log.error("博客显示失败!",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
+
+
+    //热门文章
+    @GetMapping("/hotBlog")
+    public Result hotBlog() {
+        try {
+            QueryWrapper<Article> queryWrapper= new QueryWrapper<>();
+            queryWrapper.eq("is_delete",0);
+            queryWrapper.eq("status",1);
+            queryWrapper.orderByDesc("views","create_time");
+
+            IPage<Article> page1 = articleService.page(new Page<>(1, 10),queryWrapper );
+            return Result.ok().data(200,page1.getRecords());
+        }catch (Exception e){
+            log.error("博客显示失败!",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
+
+
+
+    //文章归档
+    @GetMapping("/statisticalBlogByMonth")
+    public Result statisticalBlogByMonth() {
+        try {
+            List<Map<String,Object>> map = articleService.statisticalBlogByMonth();
+            return Result.ok().data(200,map);
         }catch (Exception e){
             log.error("博客显示失败!",e);
             return Result.error(500,e.getMessage());

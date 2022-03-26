@@ -24,4 +24,7 @@ public interface ArticleService extends IService<Article> {
     ArticleDto articleById(Long id);
 
     void addArticle(ArticleDto articleDto);
+
+    List<Map<String,Object>> statisticalBlogByMonth();
+
 }

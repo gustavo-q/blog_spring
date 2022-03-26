@@ -56,11 +56,15 @@
             and (title like CONCAT('%', #{keyword}, '%') or
                  create_by like CONCAT('%', #{keyword}, '%'))
         </if>
-            <if test="status != null">
+        <if test="status != null">
             and status = #{status}
         </if>
-              <if test="id != null">
+        <if test="id != null">
             and create_by = #{id}
         </if>
+    </select>
+
+    <select id="statisticalBlogByMonth" resultType="java.util.Map">
+        select concat(year(create_time),'-',month(create_time)) as time,count(id) as count from article group by time
     </select>
 </mapper>

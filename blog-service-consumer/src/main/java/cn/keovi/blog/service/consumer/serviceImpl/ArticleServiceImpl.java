@@ -148,4 +148,17 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             }
         }
     }
+
+
+
+    //文章归档
+    @Override
+    public List<Map<String,Object>> statisticalBlogByMonth() {
+        List<Map<String,Object>> mapList = articleMapper.statisticalBlogByMonth();
+        mapList.forEach(map ->{
+            map.put("year",map.get("time").toString().split("-")[0]);
+            map.put("month",map.get("time").toString().split("-")[1]);
+        });
+        return mapList;
+    }
 }
