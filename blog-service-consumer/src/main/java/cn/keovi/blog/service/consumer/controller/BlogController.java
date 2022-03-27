@@ -1,6 +1,7 @@
 package cn.keovi.blog.service.consumer.controller;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.keovi.annotation.AccessLimit;
 import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.service.*;
 import cn.keovi.crm.po.*;
@@ -155,6 +156,25 @@ public class BlogController {
             return Result.error(500,e.getMessage());
         }
     }
+
+
+
+    //修改访问量
+    @GetMapping("/updateViews/{id}")
+    @IgnoreAuth
+    @AccessLimit(seconds = 30, maxCount = 1, msg = "30秒内只能增加一次访问量")
+    public Object updateViews(@PathVariable("id") Integer id) {
+        try {
+            Article article = articleService.lambdaQuery().eq(Article::getId, id).one();
+            article.setViews(article.getViews()+1);
+            articleService.updateById(article);
+            return Result.ok();
+        }catch (Exception e){
+            log.error("博客显示失败!",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
+
 
 
 }

@@ -59,7 +59,6 @@ public class SiteController {
 
     //博客显示
     @GetMapping
-//    @AccessLimit(seconds = 30, maxCount = 1, msg = "30秒内只能提交一次评论")
     public Result site() {
         try {
             User admin = userService.lambdaQuery().eq(User::getUsername, "admin").one();
