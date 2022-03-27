@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="">
+    <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="前台首页显示">
+      <change afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MyBatisCodeHelperDatasource.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MyBatisCodeHelperDatasource.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/01192068-d612-4ea1-89e4-738415a3c15b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/01192068-d612-4ea1-89e4-738415a3c15b.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/BlogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/SiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/SiteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +67,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="14846" />
+    <property name="MyBatisLogPluginindexNum" value="15647" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -180,7 +181,7 @@
       <workItem from="1648114414878" duration="5499000" />
       <workItem from="1648177640437" duration="18821000" />
       <workItem from="1648258764594" duration="19243000" />
-      <workItem from="1648349368100" duration="10791000" />
+      <workItem from="1648349368100" duration="14355000" />
     </task>
     <task id="LOCAL-00001" summary="修改拦截器">
       <created>1648216502140</created>
