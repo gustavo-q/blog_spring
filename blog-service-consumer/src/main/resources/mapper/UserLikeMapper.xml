@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.keovi.blog.service.consumer.mapper.UserLikeMapper">
+  <resultMap id="BaseResultMap" type="cn.keovi.crm.po.UserLike">
+    <!--@mbg.generated-->
+    <!--@Table user_like-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="like" jdbcType="INTEGER" property="like" />
+    <result column="article_id" jdbcType="BIGINT" property="articleId" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="last_update_by" jdbcType="BIGINT" property="lastUpdateBy" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `like`, article_id, is_delete, create_time, create_by, last_update_by, last_update_time
+  </sql>
+</mapper>
