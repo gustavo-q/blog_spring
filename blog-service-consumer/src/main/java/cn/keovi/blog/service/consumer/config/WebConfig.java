@@ -1,6 +1,8 @@
 package cn.keovi.blog.service.consumer.config;
 
+import cn.keovi.blog.service.consumer.interceptor.AccessLimitInterceptor;
 import cn.keovi.blog.service.consumer.interceptor.AuthorizationInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -11,13 +13,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    @Autowired
+    private AuthorizationInterceptor authorizationInterceptor;
+    @Autowired
+    private AccessLimitInterceptor accessLimitInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        registry.addInterceptor(authInterceptor())
+        registry.addInterceptor(accessLimitInterceptor)
+                .addPathPatterns("/**");
+
+        registry.addInterceptor(authorizationInterceptor)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/userLogin/**", "/imserver/**", "/files/**", "/alipay/**",
-                        "/doc.html", "/webjars/**", "/swagger-resources/**","/blog/**","/site");
+                        "/doc.html", "/webjars/**", "/swagger-resources/**","/site/**");
 
     }
 
@@ -29,8 +39,5 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 
-    @Bean
-    public AuthorizationInterceptor authInterceptor() {
-        return new AuthorizationInterceptor();
-    }
+
 }

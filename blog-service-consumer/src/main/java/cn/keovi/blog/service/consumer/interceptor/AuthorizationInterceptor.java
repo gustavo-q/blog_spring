@@ -1,14 +1,15 @@
 package cn.keovi.blog.service.consumer.interceptor;
 
+
 import cn.keovi.annotation.IgnoreAuth;
-import cn.keovi.blog.service.consumer.session.UserSession;
 import cn.keovi.constants.Result;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
@@ -18,6 +19,8 @@ import java.io.PrintWriter;
  */
 @Component
 public class AuthorizationInterceptor implements HandlerInterceptor {
+
+
 
     public static final String LOGIN_TOKEN_KEY = "corTicket";
 
@@ -39,16 +42,15 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        //从header中获取token
-        String token = request.getHeader(LOGIN_TOKEN_KEY);
-
         /**
          * 不需要验证权限的方法直接放过
          */
         if(annotation!=null) {
-        	return true;
+            return true;
         }
 
+        //从header中获取token
+        String token = request.getHeader(LOGIN_TOKEN_KEY);
         if(StringUtils.isNotBlank(token)) {
             return true;
         }

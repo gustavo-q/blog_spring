@@ -1,5 +1,6 @@
 package cn.keovi.blog.service.consumer.controller;
 
+import cn.keovi.annotation.IgnoreAuth;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -33,6 +34,7 @@ public class BlogController {
 
     //博客显示
     @GetMapping("/home/{page}/{showCount}")
+    @IgnoreAuth
     public Result Login(@PathVariable("page") Integer page,@PathVariable("showCount") Integer showCount) {
         try {
             QueryWrapper<Article> queryWrapper= new QueryWrapper<Article>();
@@ -51,6 +53,7 @@ public class BlogController {
 
     //热门文章
     @GetMapping("/hotBlog")
+    @IgnoreAuth
     public Result hotBlog() {
         try {
             QueryWrapper<Article> queryWrapper= new QueryWrapper<>();
@@ -70,6 +73,7 @@ public class BlogController {
 
     //文章归档
     @GetMapping("/statisticalBlogByMonth")
+    @IgnoreAuth
     public Result statisticalBlogByMonth() {
         try {
             List<Map<String,Object>> map = articleService.statisticalBlogByMonth();
@@ -79,4 +83,19 @@ public class BlogController {
             return Result.error(500,e.getMessage());
         }
     }
+
+    //文章查看
+    @GetMapping("/getBlogLikeCount/{id}")
+    @IgnoreAuth
+    public Result getBlogLikeCount(@PathVariable("id") Integer id) {
+        try {
+            Article one = articleService.lambdaQuery().eq(Article::getId, id).one();
+            return Result.ok().data(200,one);
+        }catch (Exception e){
+            log.error("博客显示失败!",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
+
+
 }

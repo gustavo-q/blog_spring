@@ -65,6 +65,7 @@
     </select>
 
     <select id="statisticalBlogByMonth" resultType="java.util.Map">
-        select concat(year(create_time),'-',month(create_time)) as time,count(id) as count from article group by time
+        select concat(year(create_time),'-',month(create_time)) as time,count(id) as count from article
+         where is_delete=0 and status=1 group by time
     </select>
 </mapper>
