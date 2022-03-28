@@ -3,6 +3,7 @@ package cn.keovi.blog.service.consumer.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.ShearCaptcha;
 import cn.hutool.core.lang.Validator;
+import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.service.EmailService;
 import cn.keovi.blog.service.consumer.service.LoginService;
 import cn.keovi.blog.service.consumer.service.UserService;
@@ -50,11 +51,27 @@ public class UserLoginController extends BaseController{
 
     //邮箱登录
     @PostMapping("/login")
-    public Result Login(@RequestBody JsonNode map) {
+    public Object Login(@RequestBody JsonNode map) {
         try {
             return loginService.login(map);
         }catch (Exception e){
             log.error("登录失败!",e);
+            return Result.error(500,e.getMessage());
+
+        }
+
+    }
+
+
+
+    //邮箱登录
+    @GetMapping("/logout")
+    public Object logout() {
+        try {
+            loginService.logout();
+            return Result.ok();
+        }catch (Exception e){
+            log.error("登出失败!",e);
             return Result.error(500,e.getMessage());
 
         }

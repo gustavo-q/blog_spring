@@ -56,7 +56,7 @@ public class MenuController {
     @PostMapping("/updateMenu")
     public Result updateMenu(@RequestBody Menu menu) {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             menuService.updateMenu(menu);
             return Result.ok("更新成功");
         } catch (Exception e) {
@@ -73,7 +73,7 @@ public class MenuController {
     @PostMapping("/saveMenu")
     public Result saveMenu(@RequestBody Menu menu) {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             menu.setCreateTime(new Date());
             menu.setCreateBy(loginManager.getUserId());
             menu.setLastUpdateTime(new Date());
@@ -96,7 +96,7 @@ public class MenuController {
     @GetMapping("/deleteMenu")
     public Result deleteMenu(@RequestParam Long id) {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
            if (menuService.lambdaUpdate().set(Menu::getIsDelete,1)
                    .set(Menu::getLastUpdateBy,loginManager.getUserId())
                    .set(Menu::getLastUpdateTime,new Date())

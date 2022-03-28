@@ -10,6 +10,7 @@ import cn.hutool.extra.mail.MailUtil;
 import cn.keovi.blog.service.consumer.service.EmailService;
 import cn.keovi.constants.RedisCacheConstans;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
@@ -33,8 +34,7 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
-    @Autowired
-    private HttpServletRequest httpServletRequest;
+
 
 
     @Override
@@ -100,6 +100,7 @@ public class EmailServiceImpl implements EmailService {
         //验证码
         String code = RandomUtil.randomNumbers(6);
 
+        if (StringUtils.isNotBlank(redisTemplate.opsForValue().get(to)))  redisTemplate.delete(to);
         //存入redis
         redisTemplate.opsForValue().set(to, code, 5, TimeUnit.MINUTES);
 

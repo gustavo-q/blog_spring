@@ -45,7 +45,7 @@ public class CategoryController {
     @PostMapping("/addCategory")
     public Result addCategory(@RequestBody ArticleCategory articleCategory){
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (articleCategory.getId()!=null){
                 articleCategory.setLastUpdateBy(loginManager.getUserId());
                 articleCategory.setLastUpdateTime(new Date());
@@ -68,7 +68,7 @@ public class CategoryController {
     @GetMapping("/deleteCategory")
     public Result deleteCategory(@RequestParam Long id){
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (articleCategoryService.lambdaUpdate().set(ArticleCategory::getIsDelete, 1).set(ArticleCategory::getLastUpdateTime,new Date())
                     .set(ArticleCategory::getLastUpdateBy,loginManager.getUserId()).eq(ArticleCategory::getId, id).update()) {
                 log.info("删除成功,id{}", id);

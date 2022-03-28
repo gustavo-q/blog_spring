@@ -30,5 +30,6 @@ public class CurrentUserInfoDto {
     private Integer mobile;
     private List<String> menus;
     private Integer sex;
+    private Long id;
 
 }

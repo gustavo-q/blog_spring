@@ -38,7 +38,7 @@ public class TagsController {
     @PostMapping("/addTags")
     public Result addTags(@RequestBody Tags tags){
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (tags.getId()!=null){
                 tags.setLastUpdateBy(loginManager.getUserId());
                 tags.setLastUpdateTime(new Date());
@@ -61,7 +61,7 @@ public class TagsController {
     @DeleteMapping("/deleteTags/{id}")
     public Result deleteTags(@PathVariable Long id){
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (tagsService.lambdaUpdate().set(Tags::getIsDelete, 1).set(Tags::getLastUpdateTime,new Date())
                     .set(Tags::getLastUpdateBy,loginManager.getUserId()).eq(Tags::getId, id).update()) {
                 log.info("删除成功,id{}", id);
@@ -79,7 +79,7 @@ public class TagsController {
     @PostMapping("/pageList")
     public Result pageList(@RequestBody BaseDto baseDto) {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             baseDto.setId(loginManager.getUserId());
             System.out.println(baseDto);
             List<Tags> TagsList=tagsMapper.pageList(baseDto);
@@ -98,7 +98,7 @@ public class TagsController {
     @GetMapping("/getAllTags")
     public Result getAllTags() {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             List<Tags> tagsList=tagsService.lambdaQuery().eq(Tags::getIsDelete,0)
                     .eq(Tags::getStatus,0).eq(Tags::getCreateBy,loginManager.getUserId()).list();
             return Result.ok().data(200,tagsList);

@@ -44,7 +44,10 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> i
             roleDto.setName(userRole.getName());
             roleDto.setDescription(userRole.getDescription());
             List<RoleMenu> roleMenuList = roleMenuService.lambdaQuery().eq(RoleMenu::getRoleId, userRole.getId()).list();
-            if (CollectionUtil.isEmpty(roleMenuList)) continue;
+            if (CollectionUtil.isEmpty(roleMenuList)){
+                roleDtoList.add(roleDto);
+                continue;
+            }
             roleDto.setMenus(roleMenuList.stream().map(RoleMenu::getMenu).collect(Collectors.toList()));
             roleDtoList.add(roleDto);
         }

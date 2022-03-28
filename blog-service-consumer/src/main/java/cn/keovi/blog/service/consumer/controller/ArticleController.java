@@ -72,7 +72,7 @@ public class ArticleController {
     @GetMapping("/deleteArticle")
     public Result deleteArticle(@RequestParam Long id) {
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (articleService.lambdaUpdate().set(Article::getIsDelete, 1).set(Article::getLastUpdateTime,new Date())
                     .set(Article::getLastUpdateBy,loginManager.getUserId()).eq(Article::getId, id).update()) {
                 log.info("删除成功,id{}", id);

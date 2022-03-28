@@ -55,7 +55,7 @@ public class CommentController {
     @PostMapping("/addComment")
     public Result addComment(@RequestBody Comment comment){
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
                 comment.setCreateBy(loginManager.getUserId());
                 comment.setCreateTime(new Date());
             if (commentService.save(comment)){
@@ -74,7 +74,7 @@ public class CommentController {
     @DeleteMapping("/deleteTap/{id}")
     public Result deleteTap(@PathVariable Long id){
         try {
-            if (loginManager.getUserId()==null) return Result.error("登录失效！");
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (commentService.lambdaUpdate().set(Comment::getIsDelete, 1).set(Comment::getLastUpdateTime,new Date())
                     .set(Comment::getLastUpdateBy,loginManager.getUserId()).eq(Comment::getId, id).update()) {
                 log.info("删除成功,id{}", id);

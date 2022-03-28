@@ -15,4 +15,6 @@ public interface LoginService {
     Result login(JsonNode map);
 
     Result register(UserDto userDto);
+
+    void logout();
 }

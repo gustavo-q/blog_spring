@@ -93,6 +93,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                 .roleId(user.getRoleId())
                 .menus(menusName)
                 .sex(user.getSex())
+                .id(loginManager.getUserId())
                 .build();
 
         return currentUserInfoDto;
@@ -113,14 +114,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
 
-    //修改密码
-    @Override
-    @Transactional
-    public void editPass(JsonNode map) {
 
-
-
-    }
 
 
 }
