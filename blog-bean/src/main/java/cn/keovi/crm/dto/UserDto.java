@@ -11,10 +11,20 @@ import lombok.Data;
  */
 
 @Data
-public class UserDto extends User{
+public class UserDto {
 
     //验证码
     private String emailCode;
+
+    //用户名
+    private String username;
+
+    //密码
+    private String password;
+
+    //邮箱
+    private String email;
+
 
 
 

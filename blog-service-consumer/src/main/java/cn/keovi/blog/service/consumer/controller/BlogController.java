@@ -4,6 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.keovi.annotation.AccessLimit;
 import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.service.*;
+import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.crm.po.*;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -53,17 +54,20 @@ public class BlogController {
     @Autowired
     private UserDonateService userDonateService;
 
+    @Autowired
+    private LoginManager loginManager;
+
 
 
     //博客显示
     @GetMapping("/home/{page}/{showCount}")
     @IgnoreAuth
-    public Object Login(@PathVariable("page") Integer page,@PathVariable("showCount") Integer showCount) {
+    public Object home(@PathVariable("page") Integer page,@PathVariable("showCount") Integer showCount) {
         try {
             QueryWrapper<Article> queryWrapper= new QueryWrapper<Article>();
             queryWrapper.eq("is_delete",0);
             queryWrapper.eq("status",1);
-            queryWrapper.orderByDesc("top","create_time");
+            queryWrapper.orderByDesc("create_time");
 
             IPage<Article> page1 = articleService.page(new Page<>(page, showCount),queryWrapper );
             return Result.ok().data(200,page1.getRecords(),page1.getTotal());
@@ -169,6 +173,65 @@ public class BlogController {
             article.setViews(article.getViews()+1);
             articleService.updateById(article);
             return Result.ok();
+        }catch (Exception e){
+            log.error("博客显示失败!",e);
+            return Result.error(500,e.getMessage());
+        }
+    }
+
+
+    //我的博客
+    @GetMapping("/myblog/{page}/{showCount}")
+    public Object myblog(@PathVariable("page") Integer page,@PathVariable("showCount") Integer showCount) {
+        try {
+            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+            QueryWrapper<Article> queryWrapper= new QueryWrapper<Article>();
+            queryWrapper.eq("is_delete",0);
+            queryWrapper.eq("create_by",loginManager.getUserId());
+            queryWrapper.orderByDesc("top","create_time");
+
+            IPage<Article> page1 = articleService.page(new Page<>(page, showCount),queryWrapper );
+            ArrayList<Map> list = new ArrayList<>();
+            page1.getRecords().forEach(article -> {
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("title", article.getTitle());
+                result.put("content", article.getContent());
+                result.put("blogViews", article.getViews());
+                result.put("time", article.getCreateTime());
+
+                User user = userService.lambdaQuery().eq(User::getId, article.getCreateBy()).one();
+                result.put("userName",user.getUsername());
+
+                //评论数
+                Integer count = commentService.lambdaQuery().eq(Comment::getTopicId, article.getId()).eq(Comment::getIsDelete, 0).count();
+                result.put("discussCount",count);
+
+                //标签
+                List<ArticleTags> articleTags = articleTagsService.lambdaQuery().eq(ArticleTags::getArticleId, article.getId()).list();
+                ArrayList<String> strings = new ArrayList<>();
+                articleTags.forEach(articleTags1 -> {
+                    strings.add(tagsService.lambdaQuery().eq(Tags::getId,articleTags1.getTagId()).one().getTag());
+                });
+                result.put("tags",strings);
+
+                //赞赏
+                if (article.getAppreciation()==1){
+                    UserDonate userDonate = userDonateService.lambdaQuery().eq(UserDonate::getIsDelete, 0)
+                            .eq(UserDonate::getCreateBy, article.getCreateBy()).one();
+                    if (ObjectUtil.isEmpty(userDonate)){
+                        result.put("userReward","1");//赞赏二维码未设置
+                    }else {
+                        result.put("userReward",userDonate.getDonateJson());
+                    }
+
+                }else {
+                    result.put("userReward","0");//不可以进行赞赏
+                }
+                list.add(result);
+            });
+
+
+            return Result.ok().data(200,list,page1.getTotal());
         }catch (Exception e){
             log.error("博客显示失败!",e);
             return Result.error(500,e.getMessage());

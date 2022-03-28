@@ -3,7 +3,6 @@ package cn.keovi.blog.service.consumer.controller;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.ShearCaptcha;
 import cn.hutool.core.lang.Validator;
-import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.service.EmailService;
 import cn.keovi.blog.service.consumer.service.LoginService;
 import cn.keovi.blog.service.consumer.service.UserService;
@@ -34,8 +33,7 @@ public class UserLoginController extends BaseController{
 
 
 
-    @Autowired
-    private UserService userService;
+
 
     @Autowired
     private EmailService emailService;

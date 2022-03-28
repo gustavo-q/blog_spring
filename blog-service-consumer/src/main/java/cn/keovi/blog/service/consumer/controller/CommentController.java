@@ -4,8 +4,13 @@ import cn.keovi.blog.service.consumer.service.CommentService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.CommentDto;
+import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.Comment;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -87,5 +92,24 @@ public class CommentController {
         }
     }
 
+    //用户最近评论
+    @GetMapping("/userNewDiscuss")
+    public Result userNewDiscuss() {
+        try {
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
+             QueryWrapper<Comment> queryWrapper= new QueryWrapper<Comment>();
+            queryWrapper.eq("is_delete",0);
+            queryWrapper.eq("create_by",loginManager.getUserId());
+            queryWrapper.orderByDesc("create_time");
+
+            IPage<Comment> page1 = commentService.page(new Page<>(1, 10),queryWrapper );
+            return Result.ok().data(200,page1.getRecords());
+        } catch (Exception e) {
+            log.error("文章显示错误!", e);
+            return Result.error(500, e.getMessage());
+
+        }
+
+    }
 
 }

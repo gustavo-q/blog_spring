@@ -95,14 +95,13 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Result register(UserDto userDto) {
         if (userService.lambdaQuery()
-                .eq(User::getEmail, userDto.getEmail())
+                .eq(User::getEmail, userDto.getEmail()).or()
                 .eq(User::getUsername,userDto.getUsername())
                 .eq(User::getIsDelete, 0).count() > 0) {
             return Result.error(500, "邮箱或者账号存在");
         }
-        if (redisTemplate.opsForValue().get(userDto.getEmail()) == null) {
-            return Result.error("注册失败！");
-        }
+        System.out.println(redisTemplate.opsForValue().get(userDto.getEmail()));
+        if (StringUtils.isBlank(redisTemplate.opsForValue().get(userDto.getEmail())))  return Result.error("验证码错误！");
         if (userDto.getEmailCode()!=null && userDto.getEmailCode().equals(redisTemplate.opsForValue().get(userDto.getEmail()))) {
             User user = User.builder().username(userDto.getUsername())
                     .email(userDto.getEmail())
