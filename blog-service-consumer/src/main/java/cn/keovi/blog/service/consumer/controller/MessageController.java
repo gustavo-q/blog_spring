@@ -57,7 +57,7 @@ public class MessageController {
             ArrayList<JSONObject> jsonObjects = new ArrayList<>();
             page1.getRecords().forEach(message -> {
                 JSONObject tableProps = JSON.parseObject(JSON.toJSONString(message));
-                System.out.println(message);
+//                System.out.println(message);
                 tableProps.put("name", userService.lambdaQuery().eq(User::getId, message.getCreateBy()).one().getUsername());
                 jsonObjects.add(tableProps);
             });

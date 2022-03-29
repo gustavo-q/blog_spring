@@ -28,7 +28,7 @@ public class UserLike {
     /**
      * 未点赞：0，点赞：1
      */
-    @TableField(value = "like")
+    @TableField(value = "`like`")
     private Integer like;
 
     /**
