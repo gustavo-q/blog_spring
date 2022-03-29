@@ -20,37 +20,47 @@
         last_update_by
     </sql>
 
-    <select id="pageList" resultMap="BaseResultMap">
-        select b.id        as id,
-               b.parent_id as parentId,
-               b.content   as content,
-               b.create_by as createBy
-        from (select *
-              from comment
-              where topic_id = #{topicId}
-                and is_delete = 0
-                and parent_id = 0
-              order by create_time desc
-                      limit #{startIndex}, #{pageSize}) as b
 
-        union
+    <select id="pageList" resultType="cn.keovi.crm.vo.CommentVo">
+        select b.id                    as id,
+               b.content               as content,
+               b.create_time           as createTime,
+               ifnull(us.username, '') as userName,
+               ifnull(us.avatar, '')   as avatar,
+               b.is_delete             as isDelete
+        from comment as b
+                     left join `user` as us on us.id = b.create_by
+        where b.topic_id = #{topicId}
+          and b.parent_id = 0
+        order by b.create_time desc
+                limit #{startIndex}, #{pageSize}
+    </select>
 
-        select id        as id,
-               parent_id as parentId,
-               content   as content,
-               create_by as createBy
-        from comment
-        where parent_id in (
-                select s.create_by
-                from (select *
-                      from comment
-                      where topic_id = #{topicId}
-                        and is_delete = 0
-                        and parent_id = 0
-                              limit #{startIndex}
-                          , #{pageSize}) as s
-                )
-          and is_delete = 0
-          and topic_id = #{topicId}
+
+    <select id="listByChild" resultType="java.util.Map">
+        select b.id                    as id,
+               b.content               as content,
+               b.create_time           as createTime,
+               ifnull(us.username, '') as userName,
+               ifnull(us.avatar, '')   as avatar
+        from comment as b
+                     left join `user` as us on us.id = b.create_by
+        where b.topic_id = #{topicId}
+          and b.is_delete = 0
+          and b.parent_id = #{id}
+        order by b.create_time asc
+    </select>
+    <select id="pageAllList" resultType="cn.keovi.crm.vo.CommentVo">
+     select b.id                    as id,
+               b.content               as content,
+               b.create_time           as createTime,
+               ifnull(us.username, '') as userName,
+               ifnull(us.avatar, '')   as avatar,
+               b.is_delete             as isDelete
+        from comment as b
+                     left join `user` as us on us.id = b.create_by
+        where b.topic_id = #{topicId}
+          and b.parent_id = 0
+        order by b.create_time desc
     </select>
 </mapper>

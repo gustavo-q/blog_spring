@@ -6,12 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="4424bf3a-62ee-4681-a58c-062b305f7649" name="Changes" comment="前台首页显示">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/src/main/java/cn/keovi/crm/po/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/blog-bean/target/classes/cn/keovi/crm/po/Comment.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/BlogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/controller/UserLoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/mapper/CommentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/java/cn/keovi/blog/service/consumer/serviceImpl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/blog-service-consumer/src/main/resources/mapper/CommentMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +72,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="MyBatisLogPluginindexNum" value="19881" />
+    <property name="MyBatisLogPluginindexNum" value="24244" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -186,6 +188,7 @@
       <workItem from="1648258764594" duration="19243000" />
       <workItem from="1648349368100" duration="14355000" />
       <workItem from="1648429603239" duration="23726000" />
+      <workItem from="1648516926398" duration="21624000" />
     </task>
     <task id="LOCAL-00001" summary="修改拦截器">
       <created>1648216502140</created>

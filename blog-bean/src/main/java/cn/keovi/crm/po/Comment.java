@@ -60,6 +60,7 @@ public class Comment {
      * 创建时间
      */
     @TableField(value = "create_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
     /**
@@ -73,7 +74,6 @@ public class Comment {
      * 创建人
      */
     @TableField(value = "create_by")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Long createBy;
 
     /**

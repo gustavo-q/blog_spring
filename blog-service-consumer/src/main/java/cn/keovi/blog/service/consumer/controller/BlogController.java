@@ -198,6 +198,7 @@ public class BlogController {
                 result.put("content", article.getContent());
                 result.put("blogViews", article.getViews());
                 result.put("time", article.getCreateTime());
+                result.put("id",article.getId());
 
                 User user = userService.lambdaQuery().eq(User::getId, article.getCreateBy()).one();
                 result.put("userName",user.getUsername());
