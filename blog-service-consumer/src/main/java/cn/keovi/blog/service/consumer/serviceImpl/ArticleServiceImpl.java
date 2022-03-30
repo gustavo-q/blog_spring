@@ -15,6 +15,7 @@ import cn.keovi.crm.po.ArticleCategory;
 import cn.keovi.crm.po.ArticleTags;
 import cn.keovi.crm.po.Tags;
 import cn.keovi.exception.ServiceException;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ import javax.annotation.Resource;
  * @Date 2021/12/23/21:07
  */
 @Service
-public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService{
+public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
 
     @Resource
     private LoginManager loginManager;
@@ -59,18 +60,18 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
 
     @Override
-    public List<Map<String,Object>> pageList(BaseDto baseDto) {
-        if (loginManager.getUserSession()==null) throw new ServiceException("登录失效");
-        if (loginManager.getUserSession().getRoleId()!=1) baseDto.setId(loginManager.getUserId());
+    public List<Map<String, Object>> pageList(BaseDto baseDto) {
+        if (loginManager.getUserSession() == null) throw new ServiceException("登录失效");
+        if (loginManager.getUserSession().getRoleId() != 1) baseDto.setId(loginManager.getUserId());
         List<Article> articles = articleMapper.pageList(baseDto);
         if (CollectionUtil.isEmpty(articles)) return null;
-        List<Map<String,Object>> mapList = new ArrayList<>();
+        List<Map<String, Object>> mapList = new ArrayList<>();
         articles.forEach(article -> {
-            Map<String,Object> map = MapUtil.newHashMap();
+            Map<String, Object> map = MapUtil.newHashMap();
             ArticleCategory articleCategory = articleCategoryService.lambdaQuery().eq(ArticleCategory::getId, article.getCategoryId()).one();
-            if (ObjectUtil.isNotEmpty(articleCategory)){
-                BeanUtil.copyProperties(article,map);
-                map.put("categoryText",articleCategory.getType());
+            if (ObjectUtil.isNotEmpty(articleCategory)) {
+                BeanUtil.copyProperties(article, map);
+                map.put("categoryText", articleCategory.getType());
             }
             mapList.add(map);
         });
@@ -79,8 +80,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public long pageListCount(BaseDto baseDto) {
-        if (loginManager.getUserSession()==null) throw new ServiceException("登录失效");
-        if (loginManager.getUserSession().getRoleId()!=1) baseDto.setId(loginManager.getUserId());
+        if (loginManager.getUserSession() == null) throw new ServiceException("登录失效");
+        if (loginManager.getUserSession().getRoleId() != 1) baseDto.setId(loginManager.getUserId());
         return articleMapper.pageListCount(baseDto);
     }
 
@@ -89,51 +90,57 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public ArticleDto articleById(Long id) {
         Article article = lambdaQuery().eq(Article::getId, id).one();
-       ArticleDto articleDto = new ArticleDto();
-        BeanUtils.copyProperties(article,articleDto);
-        if (article.getTop()!=null && article.getTop()==1) articleDto.setTop(true);
-        if (article.getAppreciation()!=null && article.getAppreciation()==1) articleDto.setAppreciation(true);
-        if (article.getCommentEnabled()!=null && article.getCommentEnabled()==1) articleDto.setCommentEnabled(true);
+        ArticleDto articleDto = new ArticleDto();
+        BeanUtils.copyProperties(article, articleDto);
+        if (article.getTop() != null && article.getTop() == 1) articleDto.setTop(true);
+        if (article.getAppreciation() != null && article.getAppreciation() == 1) articleDto.setAppreciation(true);
+        if (article.getCommentEnabled() != null && article.getCommentEnabled() == 1) articleDto.setCommentEnabled(true);
         List<ArticleTags> list = articleTagsService.lambdaQuery().eq(ArticleTags::getArticleId, id).list();
-        if (CollectionUtil.isNotEmpty(list))  articleDto.setTagList(list.stream().map(ArticleTags::getTagId).collect(Collectors.toList()));
+        if (CollectionUtil.isNotEmpty(list))
+            articleDto.setTagList(list.stream().map(ArticleTags::getTagId).collect(Collectors.toList()));
         return articleDto;
     }
-
 
 
     //add
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void addArticle(ArticleDto articleDto) {
-        if (loginManager.getUserId()==null) throw new ServiceException("登录失效");
+        if (loginManager.getUserId() == null) throw new ServiceException("登录失效");
         Article article = new Article();
-        if (articleDto.getId()!=null){
+        if (articleDto.getId() != null) {
             article.setId(articleDto.getId());
             article.setLastUpdateBy(loginManager.getUserId());
             article.setLastUpdateTime(new Date());
-        }else {
+        } else {
             article.setCreateBy(loginManager.getUserId());
             article.setCreateTime(new Date());
         }
         article.setStatus(articleDto.getStatus());
-        if (articleDto.getStatus()==1){
-            article.setTop(articleDto.getTop()?1:0);
-            article.setCommentEnabled(articleDto.getCommentEnabled()?1:0);
-            article.setAppreciation(articleDto.getAppreciation()?1:0);
-        }
+
+        //设置置顶，评论和赞赏
+        if (articleDto.getTop()==null) article.setTop(0);
+        if (articleDto.getCommentEnabled()==null) article.setCommentEnabled(0);
+        if (articleDto.getAppreciation()==null) article.setAppreciation(0);
+        article.setTop(articleDto.getTop() ? 1 : 0);
+        article.setCommentEnabled(articleDto.getCommentEnabled() ? 1 : 0);
+        article.setAppreciation(articleDto.getAppreciation() ? 1 : 0);
+
+
+
         article.setTitle(articleDto.getTitle());
         article.setCategoryId(articleDto.getCategoryId());
         article.setContent(articleDto.getContent());
         boolean b = saveOrUpdate(article);
         if (!b) throw new ServiceException("添加失败");
         //添加tags
-        articleTagsService.lambdaUpdate().eq(ArticleTags::getArticleId,article.getId()).remove();
-        if (CollectionUtil.isNotEmpty(articleDto.getTagList())){
-            for (Object i :articleDto.getTagList()){
-                ArticleTags articleTags=new ArticleTags();
+        articleTagsService.lambdaUpdate().eq(ArticleTags::getArticleId, article.getId()).remove();
+        if (CollectionUtil.isNotEmpty(articleDto.getTagList())) {
+            for (Object i : articleDto.getTagList()) {
+                ArticleTags articleTags = new ArticleTags();
                 if (i instanceof Integer) {
                     articleTags.setTagId(((Integer) i).longValue());
-                }else {
+                } else {
                     Tags tags = Tags.builder()
                             .createBy(loginManager.getUserId())
                             .createTime(new Date())
@@ -150,14 +157,13 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     }
 
 
-
     //文章归档
     @Override
-    public List<Map<String,Object>> statisticalBlogByMonth() {
-        List<Map<String,Object>> mapList = articleMapper.statisticalBlogByMonth();
-        mapList.forEach(map ->{
-            map.put("year",map.get("time").toString().split("-")[0]);
-            map.put("month",map.get("time").toString().split("-")[1]);
+    public List<Map<String, Object>> statisticalBlogByMonth() {
+        List<Map<String, Object>> mapList = articleMapper.statisticalBlogByMonth();
+        mapList.forEach(map -> {
+            map.put("year", map.get("time").toString().split("-")[0]);
+            map.put("month", map.get("time").toString().split("-")[1]);
         });
         return mapList;
     }

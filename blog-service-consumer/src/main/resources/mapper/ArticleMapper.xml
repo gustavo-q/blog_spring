@@ -44,7 +44,7 @@
         <if test="id != null">
             and create_by = #{id}
         </if>
-        order by top desc, create_time desc
+        order by create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
 

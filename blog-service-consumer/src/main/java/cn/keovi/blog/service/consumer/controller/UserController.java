@@ -109,8 +109,9 @@ public class UserController {
             if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
             User user1 = userService.lambdaQuery().eq(User::getId, user.getId()).one();
             if (!user1.getUsername().equals(user.getUsername()) || !user.getEmail().equals(user1.getEmail())) {
-                if (userService.lambdaQuery().eq(User::getUsername, user.getUsername()).or()
-                        .eq(User::getEmail, user.getEmail()).eq(User::getIsDelete, 0).count() > 0) {
+                if (userService.lambdaQuery().and(i->i.eq(User::getUsername, user.getUsername()).or()
+                        .eq(User::getEmail, user.getEmail())).eq(User::getIsDelete, 0)
+                        .ne(User::getId,user.getId()).count() > 0) {
                     return Result.error("用户名或者邮箱已存在");
                 }
             }
