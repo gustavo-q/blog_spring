@@ -8,7 +8,9 @@ import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.Menu;
+import cn.keovi.exception.BusinessException;
 import cn.keovi.exception.ServiceException;
+import cn.keovi.handler.AllExceptionHandler;
 import cn.keovi.utils.MD5Util;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +74,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public CurrentUserInfoDto currentUserInfo() {
-        if (loginManager.getUserSession() == null) throw new ServiceException("登录失效!");
+        if (loginManager.getUserSession() == null) throw new BusinessException(401,"登录失效！");
 
         User user = userService.lambdaQuery().eq(User::getId, loginManager.getUserId()).one();
         if (user == null) throw new ServiceException("该用户不存在");

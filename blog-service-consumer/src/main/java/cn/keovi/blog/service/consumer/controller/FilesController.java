@@ -26,7 +26,7 @@ public class FilesController {
     FilesService filesService;
 
 
-    //文章新增修改
+    //上传文件
     @PostMapping("/saveFiles")
         public Result saveFiles(@RequestParam(value = "file")MultipartFile file,@RequestParam(value = "source")String source) {
         try {

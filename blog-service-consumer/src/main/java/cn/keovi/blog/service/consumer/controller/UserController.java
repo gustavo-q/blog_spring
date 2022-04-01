@@ -7,6 +7,7 @@ import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.MenuService;
+import cn.keovi.blog.service.consumer.service.UserDonateService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
@@ -14,6 +15,8 @@ import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.User;
 
+import cn.keovi.crm.po.UserDonate;
+import cn.keovi.exception.BusinessException;
 import cn.keovi.exception.ServiceException;
 import cn.keovi.utils.MD5Util;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -51,6 +54,8 @@ public class UserController {
 
     @Autowired
     MenuService menuService;
+
+
 
     @Autowired
     private RedisTemplate<String, String> redisTemplate;
@@ -109,9 +114,9 @@ public class UserController {
             if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
             User user1 = userService.lambdaQuery().eq(User::getId, user.getId()).one();
             if (!user1.getUsername().equals(user.getUsername()) || !user.getEmail().equals(user1.getEmail())) {
-                if (userService.lambdaQuery().and(i->i.eq(User::getUsername, user.getUsername()).or()
-                        .eq(User::getEmail, user.getEmail())).eq(User::getIsDelete, 0)
-                        .ne(User::getId,user.getId()).count() > 0) {
+                if (userService.lambdaQuery().and(i -> i.eq(User::getUsername, user.getUsername()).or()
+                                .eq(User::getEmail, user.getEmail())).eq(User::getIsDelete, 0)
+                        .ne(User::getId, user.getId()).count() > 0) {
                     return Result.error("用户名或者邮箱已存在");
                 }
             }
@@ -191,9 +196,9 @@ public class UserController {
         try {
             CurrentUserInfoDto currentUserInfoDto = userService.currentUserInfo();
             return Result.ok().data(200, currentUserInfoDto);
-        } catch (Exception e) {
+        } catch (BusinessException e) {
             log.error("获取该用户的信息失败", e);
-            return Result.error(500, e.getMessage());
+            return Result.error(e.getCode(), e.getMessage());
         }
 
     }
@@ -241,15 +246,16 @@ public class UserController {
 
     //修改密码
     @PostMapping("/editPass")
-    public Object editPass(@RequestBody JsonNode map) {
+    public Object editPass(@RequestBody JsonNode map,@RequestParam("email") String email) {
         try {
             if (loginManager.getUserSession() == null) return Result.error(401, "登录失效！");
             if (!map.get("newPass").asText().equals(map.get("agreePass").asText()))
                 throw new ServiceException("两次输入新密码不一致!");
             User user = userService.lambdaQuery().eq(User::getId, loginManager.getUserId()).eq(User::getIsDelete, 0).one();
             if (ObjectUtil.isEmpty(user)) throw new ServiceException("未知错误!");
-            if (!MD5Util.checkedPassword(map.get("oldPass").asText(), user.getPassword()))
-                return Result.error("旧密码错误!");
+            if (!MD5Util.checkedPassword(map.get("oldPass").asText(), user.getPassword()))   return Result.error("旧密码错误!");
+            if (redisTemplate.opsForValue().get(email)==null ) return Result.error(500, "验证码错误！!");
+            if (!redisTemplate.opsForValue().get(email).equals(map.get("emailCode").asText())) return Result.error(500, "验证码错误!");
             boolean update = userService.lambdaUpdate().set(User::getPassword, MD5Util.encrypt(map.get("newPass").asText()))
                     .set(User::getLastUpdateBy, loginManager.getUserId())
                     .set(User::getLastUpdateTime, new Date())
@@ -262,17 +268,55 @@ public class UserController {
         }
     }
 
+
+    //修改邮箱
+    @PostMapping("/editEmail")
+    public Object editEmail(@RequestBody JsonNode map,@RequestParam("email") String email) {
+        try {
+            if (loginManager.getUserSession() == null) return Result.error(401, "登录失效！");
+            if (redisTemplate.opsForValue().get(email)==null  ) return Result.error(500, "验证码错误！!");
+            if (redisTemplate.opsForValue().get(map.get("newEmail").asText())==null  ) return Result.error(500, "验证码错误！!");
+            if (!redisTemplate.opsForValue().get(email).equals(map.get("emailCode1").asText())) return Result.error(500, "验证码错误!");
+            if (!redisTemplate.opsForValue().get(map.get("newEmail").asText()).equals(map.get("emailCode2").asText())) return Result.error(500, "验证码错误!");
+            boolean update = userService.lambdaUpdate().set(User::getEmail, map.get("newEmail").asText())
+                    .set(User::getLastUpdateBy, loginManager.getUserId())
+                    .set(User::getLastUpdateTime, new Date())
+                    .eq(User::getId, loginManager.getUserId()).update();
+            if (!update) return Result.error("修改邮箱失败!");
+            return Result.ok(200, "修改邮箱成功!");
+        } catch (Exception e) {
+            log.error("修改邮箱失败", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
     //验证username
     @GetMapping("/verifyname")
     public Object verifyname(@RequestParam String username) {
         try {
-            System.out.println(username);
             if (userService.lambdaQuery().eq(User::getUsername, username).count() > 0) {
                 return Result.error(500, "用户名已存在");
             }
             return Result.ok(200, "验证成功");
         } catch (Exception e) {
             log.error("验证用户名失败", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+    //修改username
+    @PostMapping("/editUsername")
+    public Object editUsername(@RequestBody JsonNode map,@RequestParam String username) {
+        try {
+            if (loginManager.getUserSession() == null) return Result.error(401, "登录失效！");
+            if (username.equals(map.get("username1").asText())) return Result.ok();
+            if (userService.lambdaQuery().eq(User::getUsername,map.get("username1").asText()).count()>0) return Result.error(500, "用户名已存在");
+            if (!userService.lambdaUpdate().set(User::getUsername, map.get("username1").asText()).eq(User::getId,loginManager.getUserId()).update()) {
+                return Result.error(500, "用户名修改失败");
+            }
+            return Result.ok(200, "用户名修改成功");
+        } catch (Exception e) {
+            log.error("用户名修改失败", e);
             return Result.error(500, e.getMessage());
         }
     }
@@ -314,6 +358,27 @@ public class UserController {
             return Result.error(500, e.getMessage());
         }
     }
+
+
+    //修改头像
+    @PostMapping("/editAvatarImage")
+    public Object editAvatarImage(@RequestBody JsonNode map) {
+        try {
+            if (loginManager.getUserSession() == null) return Result.error(401, "登录失效！");
+            //用户头像
+            boolean update = userService.lambdaUpdate().set(User::getAvatar, map.get("url").asText())
+                    .set(User::getLastUpdateTime, new Date())
+                    .set(User::getLastUpdateBy, loginManager.getUserId())
+                    .eq(User::getId, loginManager.getUserId()).update();
+            if (!update) return Result.error(500, "头像更新失败");
+            return Result.ok(200, "头像更新成功");
+        } catch (Exception e) {
+            log.error("头像更新失败", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
 
 
 }

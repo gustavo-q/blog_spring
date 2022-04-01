@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  */
 public interface LoginService {
 
-    Result login(JsonNode map);
+    Object login(JsonNode map);
 
     Result register(UserDto userDto);
 

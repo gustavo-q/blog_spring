@@ -49,7 +49,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result login(JsonNode map) {
+    public Object login(JsonNode map) {
         //密码是否相同
         User us = userService.lambdaQuery().eq(User::getEmail, map.get("username").asText()).or()
                 .eq(User::getUsername,map.get("username").asText()).one();

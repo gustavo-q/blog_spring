@@ -8,6 +8,7 @@ import cn.keovi.blog.service.consumer.service.LoginService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.crm.dto.UserDto;
 import cn.keovi.constants.Result;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class UserLoginController extends BaseController{
 
 
 
-    //邮箱登录
+    //邮箱退出
     @GetMapping("/logout")
     public Object logout() {
         try {
@@ -93,7 +94,9 @@ public class UserLoginController extends BaseController{
     @PostMapping("/sendEmail")
     public Object sendEmail(@RequestBody JsonNode map){
        try{
+           if (StringUtils.isBlank(map.get("email").asText())) return Result.error("请输入邮箱");
            String email = map.get("email").asText();
+
            if (Validator.isEmail(email)){
                emailService.sendSimpleMail(email);
            }else {

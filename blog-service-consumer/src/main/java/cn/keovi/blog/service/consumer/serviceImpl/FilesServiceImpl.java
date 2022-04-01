@@ -49,14 +49,7 @@ public class FilesServiceImpl extends ServiceImpl<FilesMapper, Files> implements
             url2=uploadFile(file);
             System.out.println(url2);
 
-            //用户头像
-            if (source.equals("avatarImage")){
-                boolean update = userService.lambdaUpdate().set(User::getAvatar, url2)
-                        .set(User::getLastUpdateTime, new Date())
-                        .set(User::getLastUpdateBy, loginManager.getUserId())
-                        .eq(User::getId, loginManager.getUserId()).update();
-                if (!update) throw new ServiceException("头像更新失败");
-            }
+
 
             //保存file表
             //名
