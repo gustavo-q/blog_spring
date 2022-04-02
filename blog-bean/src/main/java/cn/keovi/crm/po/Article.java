@@ -93,13 +93,13 @@ public class Article {
     @TableField(value = "last_update_by")
     private Long lastUpdateBy;
 
-    //置顶
+    //置顶0否 1是
     private Integer top;
 
-    //评论
+    //评论0否 1是
     private Integer commentEnabled;
 
-    //赞赏
+    //赞赏0否 1是
     private Integer appreciation;
 
 

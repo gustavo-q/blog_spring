@@ -93,6 +93,10 @@ public class CommentController {
     public Result deleteTap(@PathVariable Long id) {
         try {
             if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+            if (commentService.lambdaQuery().eq(Comment::getId, id).one().getParentId() == 0) {
+                commentService.lambdaUpdate().set(Comment::getIsDelete, 1).set(Comment::getLastUpdateTime, new Date())
+                        .set(Comment::getLastUpdateBy, loginManager.getUserId()).eq(Comment::getParentId, id).update();
+            }
             if (commentService.lambdaUpdate().set(Comment::getIsDelete, 1).set(Comment::getLastUpdateTime, new Date())
                     .set(Comment::getLastUpdateBy, loginManager.getUserId()).eq(Comment::getId, id).update()) {
                 log.info("删除成功,id{}", id);
@@ -154,7 +158,6 @@ public class CommentController {
             return Result.error(500, e.getMessage());
         }
     }
-
 
 
 }

@@ -34,21 +34,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         if (CollectionUtil.isNotEmpty(comments)) {
             comments.forEach(comment -> {
                 List<Map> byChild = commentMapper.listByChild(comment.getId(), commentDto.getTopicId());
-                if (CollectionUtil.isNotEmpty(byChild)) {
-                    if (comment.getIsDelete() == 1) {
-                        comment.setContent("该评论已删除");
-                    }
                     comment.setChild(byChild);
-                }
-
             });
-            for (int i = 0; i < comments.size(); i++) {
-                //没有关联行程就删除
-                if (CollectionUtil.isEmpty(comments.get(i).getChild()) && comments.get(i).getIsDelete() == 1) {
-                    comments.remove(i);
-                    i--;
-                }
-            }
         }
         return comments;
     }

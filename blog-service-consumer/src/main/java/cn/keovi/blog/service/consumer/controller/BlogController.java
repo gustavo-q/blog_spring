@@ -198,9 +198,11 @@ public class BlogController {
             result.put("content", one.getContent());
             result.put("blogViews", one.getViews());
             result.put("time", one.getCreateTime());
+            result.put("commentEnabled",one.getCommentEnabled());
 
             User user = userService.lambdaQuery().eq(User::getId, one.getCreateBy()).one();
             result.put("userName", user.getUsername());
+            result.put("avatar", user.getAvatar());
 
             //评论数
             Integer count = commentService.lambdaQuery().eq(Comment::getTopicId, id).eq(Comment::getIsDelete, 0).count();

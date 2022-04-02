@@ -2,6 +2,7 @@ package cn.keovi.blog.service.consumer.mapper;
 
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Article;
+import cn.keovi.crm.vo.ArticleVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 public interface ArticleMapper extends BaseMapper<Article> {
 
-    List<Article> pageList(BaseDto baseDto);
+    List<ArticleVo> pageList(BaseDto baseDto);
 
     long pageListCount(BaseDto baseDto);
 

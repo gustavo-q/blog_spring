@@ -26,41 +26,41 @@
     </sql>
 
 
-    <select id="pageList" resultType="cn.keovi.crm.po.Article">
-        select id                as id,
-               ifnull(title, "") as title,
-               `status`          as status,
-               create_time       as createTime,
-               last_update_time  as lastUpdateTime,
-               category_id       as categoryId
-        from article
-                where is_delete = 0
+    <select id="pageList" resultType="cn.keovi.crm.vo.ArticleVo">
+        select ar.id                as   id,
+               ifnull(ar.title, "") as   title,
+               ar.`status`          as   status,
+               ar.create_time       as   createTime,
+               ar.last_update_time  as   lastUpdateTime,
+               ar.category_id       as   categoryId,
+               ifnull(us.username,"") as username
+        from article ar left join user us on ar.create_by = us.id
+                where ar.is_delete = 0
         <if test="keyword != null and keyword != ''">
-            and title like CONCAT('%', #{keyword}, '%')
+            and ar.title like CONCAT('%', #{keyword}, '%')
         </if>
         <if test="status != null">
-            and status = #{status}
+            and ar.status = #{status}
         </if>
         <if test="id != null">
-            and create_by = #{id}
+            and ar.create_by = #{id}
         </if>
-        order by create_time desc
+        order by ar.create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
 
     <select id="pageListCount" resultType="long">
         select count(1)
-        from article
-                where is_delete = 0
+      from article ar left join user us on ar.create_by = us.id
+                where ar.is_delete = 0
         <if test="keyword != null and keyword != ''">
-            and (title like CONCAT('%', #{keyword}, '%') or
-                 create_by like CONCAT('%', #{keyword}, '%'))
+            and ar.title like CONCAT('%', #{keyword}, '%')
         </if>
         <if test="status != null">
-            and status = #{status}
+            and ar.status = #{status}
         </if>
         <if test="id != null">
-            and create_by = #{id}
+            and ar.create_by = #{id}
         </if>
     </select>
 

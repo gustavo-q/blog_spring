@@ -14,6 +14,7 @@ import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.ArticleCategory;
 import cn.keovi.crm.po.ArticleTags;
 import cn.keovi.crm.po.Tags;
+import cn.keovi.crm.vo.ArticleVo;
 import cn.keovi.exception.ServiceException;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -63,7 +64,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     public List<Map<String, Object>> pageList(BaseDto baseDto) {
         if (loginManager.getUserSession() == null) throw new ServiceException("登录失效");
         if (loginManager.getUserSession().getRoleId() != 1) baseDto.setId(loginManager.getUserId());
-        List<Article> articles = articleMapper.pageList(baseDto);
+        List<ArticleVo> articles = articleMapper.pageList(baseDto);
         if (CollectionUtil.isEmpty(articles)) return null;
         List<Map<String, Object>> mapList = new ArrayList<>();
         articles.forEach(article -> {
