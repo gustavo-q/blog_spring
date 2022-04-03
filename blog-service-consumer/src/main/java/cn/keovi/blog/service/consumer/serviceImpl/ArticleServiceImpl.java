@@ -63,7 +63,8 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public List<Map<String, Object>> pageList(BaseDto baseDto) {
         if (loginManager.getUserSession() == null) throw new ServiceException("登录失效");
-        if (loginManager.getUserSession().getRoleId() != 1) baseDto.setId(loginManager.getUserId());
+        if (loginManager.getUserSession().getRoleId() != 1 && loginManager.getUserSession().getRoleId() != 2)
+            baseDto.setId(loginManager.getUserId());
         List<ArticleVo> articles = articleMapper.pageList(baseDto);
         if (CollectionUtil.isEmpty(articles)) return null;
         List<Map<String, Object>> mapList = new ArrayList<>();
@@ -93,9 +94,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         Article article = lambdaQuery().eq(Article::getId, id).one();
         ArticleDto articleDto = new ArticleDto();
         BeanUtils.copyProperties(article, articleDto);
-        if (article.getTop() != null && article.getTop() == 1) articleDto.setTop(true);
-        if (article.getAppreciation() != null && article.getAppreciation() == 1) articleDto.setAppreciation(true);
-        if (article.getCommentEnabled() != null && article.getCommentEnabled() == 1) articleDto.setCommentEnabled(true);
+        articleDto.setTop(article.getTop() == 1);
+        articleDto.setAppreciation(article.getAppreciation() == 1);
+        articleDto.setCommentEnabled(article.getCommentEnabled() == 1);
         List<ArticleTags> list = articleTagsService.lambdaQuery().eq(ArticleTags::getArticleId, id).list();
         if (CollectionUtil.isNotEmpty(list))
             articleDto.setTagList(list.stream().map(ArticleTags::getTagId).collect(Collectors.toList()));
@@ -117,16 +118,20 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             article.setCreateBy(loginManager.getUserId());
             article.setCreateTime(new Date());
         }
-        article.setStatus(articleDto.getStatus());
+        //发布前需要审核
+        if (articleDto.getStatus() == 1) {  //发布
+            article.setStatus(2);   //审核
 
+        } else {
+            article.setStatus(articleDto.getStatus());
+        }
         //设置置顶，评论和赞赏
-        if (articleDto.getTop()==null) article.setTop(0);
-        if (articleDto.getCommentEnabled()==null) article.setCommentEnabled(0);
-        if (articleDto.getAppreciation()==null) article.setAppreciation(0);
+        if (articleDto.getTop() == null) article.setTop(0);
+        if (articleDto.getCommentEnabled() == null) article.setCommentEnabled(0);
+        if (articleDto.getAppreciation() == null) article.setAppreciation(0);
         article.setTop(articleDto.getTop() ? 1 : 0);
         article.setCommentEnabled(articleDto.getCommentEnabled() ? 1 : 0);
         article.setAppreciation(articleDto.getAppreciation() ? 1 : 0);
-
 
 
         article.setTitle(articleDto.getTitle());

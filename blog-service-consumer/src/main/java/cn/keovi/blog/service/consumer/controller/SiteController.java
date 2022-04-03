@@ -1,33 +1,27 @@
 package cn.keovi.blog.service.consumer.controller;
 
-import cn.hutool.core.net.NetUtil;
-import cn.keovi.annotation.AccessLimit;
-import cn.keovi.annotation.IgnoreAuth;
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
+import cn.keovi.blog.service.consumer.mapper.ArticleMapper;
+import cn.keovi.blog.service.consumer.mapper.SiteMapper;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.SiteService;
 import cn.keovi.blog.service.consumer.service.UserService;
+import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.Site;
 import cn.keovi.crm.po.User;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  * @ClassName SiteController
@@ -49,15 +43,21 @@ public class SiteController {
     UserMapper userMapper;
 
     @Autowired
+    SiteMapper siteMapper;
+
+    @Autowired
+    ArticleMapper articleMapper;
+
+    @Autowired
     ArticleService articleService;
 
     @Autowired
     SiteService siteService;
 
     @Autowired
-    private RedisTemplate<String, String> redisTemplate;
+    private LoginManager loginManager;
 
-    //博客显示
+    //名片
     @GetMapping
     public Result site() {
         try {
@@ -68,12 +68,12 @@ public class SiteController {
             result.put("qq", admin.getQq());
             result.put("wechat", admin.getWechat());
             //访客
-            result.put("visitor",siteService.getById(1).getVisitor());
+            result.put("visitor", siteService.lambdaQuery().eq(Site::getIsDelete, 0).count());
             //文章
-            result.put("article",articleService.lambdaQuery().eq(Article::getIsDelete,0)
-                    .eq(Article::getStatus,1).count());
+            result.put("article", articleService.lambdaQuery().eq(Article::getIsDelete, 0)
+                    .eq(Article::getStatus, 1).count());
 
-            return Result.ok().data(200,result);
+            return Result.ok().data(200, result);
         } catch (Exception e) {
             log.error("site失败!", e);
             return Result.error(500, e.getMessage());
@@ -82,20 +82,155 @@ public class SiteController {
 
     //访问量
     @GetMapping("/visitor")
-    public Result visitor() {
-        String localhostStr = NetUtil.getLocalhostStr();
-        System.out.println(localhostStr);
+    public Result visitor(HttpServletRequest request, HttpServletResponse response) {
 
-        if (redisTemplate.opsForValue().get(localhostStr) == null) {
-            //在规定周期内第一次访问，存入redis
-            redisTemplate.opsForValue().set(localhostStr, "1",
-                    1,
-                    TimeUnit.MINUTES);
-            siteService.lambdaUpdate().set(Site::getVisitor,siteService.getById(1).getVisitor()+1).update();
-        }else {
-            redisTemplate.expire(localhostStr,1,TimeUnit.MINUTES);
-        }
+        siteService.visitor(request, response);
         return Result.ok();
     }
 
+
+    //首页展示
+    @GetMapping("/getCardsData")
+    public Result getCardsData() {
+        try {
+            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+
+            User user = userService.lambdaQuery().eq(User::getId, loginManager.getUserId()).one();
+            HashMap<String, Object> result = new HashMap<>();
+            if (user.getRoleId() == 1 || user.getRoleId() == 2) {
+                result.put("visitor", siteService.lambdaQuery().eq(Site::getIsDelete, 0).count());
+                result.put("articleTotal", articleService.lambdaQuery().eq(Article::getIsDelete, 0)
+                        .eq(Article::getStatus, 1).count());
+                result.put("userTotal", userService.lambdaQuery().eq(User::getIsDelete, 0).eq(User::getStatus, 0).count());
+            } else {
+
+            }
+            result.put("myArticle", articleService.lambdaQuery().eq(Article::getIsDelete, 0)
+                    .eq(Article::getStatus, 1).eq(Article::getCreateBy, loginManager.getUserId()).count());
+
+            return Result.ok().data(200, result);
+        } catch (Exception e) {
+            log.error("getCardsData失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
+    //曲线图数据
+    @GetMapping("/getLineData")
+    public Result getLineData() {
+        try {
+            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+
+            HashMap<String, Object> result = new HashMap<>();
+            if (loginManager.getUserSession().getRoleId() == 1 || loginManager.getUserSession().getRoleId() == 2) {
+                List<String> monData = getMonData(DateUtil.today());
+
+                //访问量
+                List<Map> mapList = siteMapper.getLineData();
+                //文章总数
+                List<Map> mapList1 = articleMapper.getLineData();
+                //用户
+                List<Map> mapList2 = userMapper.getLineData();
+
+
+                result.put("visitor", compareData(monData, mapList));
+                result.put("articleTotal", compareData(monData, mapList1));
+                result.put("userTotal", compareData(monData, mapList2));
+                result.put("monData", monData);
+            } else {
+
+            }
+            return Result.ok().data(200, result);
+        } catch (Exception e) {
+            log.error("getCardsData失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
+
+    @GetMapping("/getBarData")
+    public Result getBarData() {
+        try {
+            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+
+            HashMap<String, Object> result = new HashMap<>();
+            if (loginManager.getUserSession().getRoleId() == 1 || loginManager.getUserSession().getRoleId() == 2) {
+                List<String> monData = getMonData(DateUtil.today());
+
+                //访问量
+                List<Map> mapList = siteMapper.getLineData();
+                //文章总数
+                List<Map> mapList1 = articleMapper.getLineData();
+                //用户
+                List<Map> mapList2 = userMapper.getLineData();
+
+
+                result.put("visitor", compareData(monData, mapList));
+                result.put("articleTotal", compareData(monData, mapList1));
+                result.put("userTotal", compareData(monData, mapList2));
+                result.put("monData", monData);
+            } else {
+
+            }
+            return Result.ok().data(200, result);
+        } catch (Exception e) {
+            log.error("getCardsData失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
+
+    //获取前六个月的日期 yyyy-mm   date:yyyy-mm-dd
+    private List<String> getMonData(String date) {
+        List<String> list = new ArrayList<>();
+        int year = Integer.parseInt(date.split("-")[0]);
+        int month = Integer.parseInt(date.split("-")[1]);
+        for (int i = 5; i >= 0; i--) {
+            if (month > 6) {
+                if (month - i >= 10) {
+                    list.add(year + "-" + String.valueOf(month - i));
+                } else {
+                    list.add(year + "-0" + String.valueOf(month - i));
+                }
+            } else {
+                if (month - i <= 0) {
+                    if (month - i + 12 >= 10) {
+                        list.add(String.valueOf(year - 1) + "-" + String.valueOf(month - i + 12));
+                    } else {
+                        list.add(String.valueOf(year - 1) + "-0" + String.valueOf(month - i + 12));
+
+                    }
+                } else {
+                    if (month - i >= 10) {
+                        list.add(String.valueOf(year) + "-" + String.valueOf(month - i));
+                    } else {
+                        list.add(String.valueOf(year) + "-0" + String.valueOf(month - i));
+
+                    }
+                }
+            }
+        }
+        return list;
+    }
+
+    private List<Integer> compareData(List<String> monData, List<Map> mapList) {
+        List<Integer> integerList = new ArrayList<>();
+        for (int i = 0; i < monData.size(); i++) {
+            int num = 0;
+            for (int j = 0; j < mapList.size(); j++) {
+                if (mapList.get(j).containsValue(monData.get(i))) {
+                    num++;
+                    Number nu = (Number) mapList.get(j).get("count");
+                    integerList.add(nu.intValue());
+                }
+            }
+            if (num == 0) {
+                integerList.add(0);
+            }
+        }
+        return integerList;
+    }
 }

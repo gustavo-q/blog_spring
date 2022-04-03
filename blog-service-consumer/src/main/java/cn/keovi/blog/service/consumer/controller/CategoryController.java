@@ -50,11 +50,12 @@ public class CategoryController {
 
     //新增修改分类
     @PostMapping("/addCategory")
-    public Result addCategory(@RequestBody ArticleCategory articleCategory) {
+    public Object addCategory(@RequestBody ArticleCategory articleCategory) {
         try {
             if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
 
             if (articleCategory.getId() != null) {
+                if (articleService.lambdaQuery().eq(Article::getCategoryId,articleCategory.getId()).eq(Article::getIsDelete,0).count()>0) return Result.error("此分类下有文章，不允许修改！");
                 articleCategory.setLastUpdateBy(loginManager.getUserId());
                 articleCategory.setLastUpdateTime(new Date());
                 if (!articleCategoryService.lambdaQuery().eq(ArticleCategory::getId, articleCategory.getId()).one().getType().equals(articleCategory.getType())) {
@@ -82,9 +83,10 @@ public class CategoryController {
 
     //删除分类
     @GetMapping("/deleteCategory")
-    public Result deleteCategory(@RequestParam Long id) {
+    public Object deleteCategory(@RequestParam Long id) {
         try {
             if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+            if (articleService.lambdaQuery().eq(Article::getCategoryId,id).eq(Article::getIsDelete,0).count()>0) return Result.error("此分类下有文章，不允许删除！");
             if (articleCategoryService.lambdaUpdate().set(ArticleCategory::getIsDelete, 1).set(ArticleCategory::getLastUpdateTime, new Date())
                     .set(ArticleCategory::getLastUpdateBy, loginManager.getUserId()).eq(ArticleCategory::getId, id).update()) {
                 log.info("删除成功,id{}", id);
@@ -100,7 +102,7 @@ public class CategoryController {
 
     //分页
     @PostMapping("/pageList")
-    public Result pageList(@RequestBody BaseDto baseDto) {
+    public Object pageList(@RequestBody BaseDto baseDto) {
         try {
             List<ArticleCategory> articleCategories = articleCategoryMapper.pageList(baseDto);
             long count = articleCategoryMapper.pageListCount(baseDto);
@@ -114,10 +116,10 @@ public class CategoryController {
     }
 
 
-    //获取所以分类
+    //获取所有分类
     @GetMapping("/getAllCategory")
     @IgnoreAuth
-    public Result getAllCategory() {
+    public Object getAllCategory() {
         try {
             List<ArticleCategory> articleCategories = articleCategoryService.lambdaQuery().eq(ArticleCategory::getIsDelete, 0)
                     .eq(ArticleCategory::getStatus, 0).list();
@@ -138,5 +140,23 @@ public class CategoryController {
         }
 
     }
+
+    //获取所有分类及分类下的文章数
+    @GetMapping("/getCategoryByArticleCount")
+    @IgnoreAuth
+    public Object getCategoryByArticleCount() {
+        try {
+            List<Map> mapList = articleCategoryService.getCategoryByArticleCount();
+            return Result.ok().data(200, mapList);
+        } catch (Exception e) {
+            log.error("查询分类列表失败!", e);
+            return Result.error(500, e.getMessage());
+
+        }
+
+    }
+
+
+
 
 }

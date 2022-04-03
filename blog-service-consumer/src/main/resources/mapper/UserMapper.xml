@@ -46,11 +46,11 @@
             and (username like CONCAT('%', #{keyword}, '%') or
                  email like CONCAT('%', #{keyword}, '%'))
         </if>
-         <if test="status != null ">
-           and status = #{status}
+        <if test="status != null">
+            and status = #{status}
         </if>
-         <if test="id != null ">
-           and id = #{id}
+        <if test="id != null">
+            and id = #{id}
         </if>
         order by role_id asc, create_time desc
                 limit #{startIndex}, #{pageSize}
@@ -63,11 +63,21 @@
             and (username like CONCAT('%', #{keyword}, '%') or
                  email like CONCAT('%', #{keyword}, '%'))
         </if>
-         <if test="status != null ">
-           and status = #{status}
+        <if test="status != null">
+            and status = #{status}
         </if>
-         <if test="id != null ">
-           and id = #{id}
+        <if test="id != null">
+            and id = #{id}
         </if>
+    </select>
+    <select id="getLineData" resultType="java.util.Map">
+        select count(1) as count, DATE_FORMAT(create_time, '%Y-%m') as time
+        from `user`
+        where DATE_FORMAT(( create_time - INTERVAL 1 MONTH )
+            , '%Y-%m' )>= DATE_FORMAT( CURDATE() - interval 6 month
+            , '%Y-%m' )
+          and is_delete = 0
+          and status=0
+        group by DATE_FORMAT( create_time, '%Y-%m' )
     </select>
 </mapper>

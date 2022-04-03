@@ -27,14 +27,15 @@
 
 
     <select id="pageList" resultType="cn.keovi.crm.vo.ArticleVo">
-        select ar.id                as   id,
-               ifnull(ar.title, "") as   title,
-               ar.`status`          as   status,
-               ar.create_time       as   createTime,
-               ar.last_update_time  as   lastUpdateTime,
-               ar.category_id       as   categoryId,
-               ifnull(us.username,"") as username
-        from article ar left join user us on ar.create_by = us.id
+        select ar.id                   as id,
+               ifnull(ar.title, "")    as title,
+               ar.`status`             as status,
+               ar.create_time          as createTime,
+               ar.last_update_time     as lastUpdateTime,
+               ar.category_id          as categoryId,
+               ifnull(us.username, "") as username
+        from article ar
+                     left join user us on ar.create_by = us.id
                 where ar.is_delete = 0
         <if test="keyword != null and keyword != ''">
             and ar.title like CONCAT('%', #{keyword}, '%')
@@ -51,7 +52,8 @@
 
     <select id="pageListCount" resultType="long">
         select count(1)
-      from article ar left join user us on ar.create_by = us.id
+        from article ar
+                     left join user us on ar.create_by = us.id
                 where ar.is_delete = 0
         <if test="keyword != null and keyword != ''">
             and ar.title like CONCAT('%', #{keyword}, '%')
@@ -65,7 +67,21 @@
     </select>
 
     <select id="statisticalBlogByMonth" resultType="java.util.Map">
-        select concat(year(create_time),'-',month(create_time)) as time,count(id) as count from article
-         where is_delete=0 and status=1 group by time
+        select concat(year(create_time),'-', month(create_time)) as time,count(id) as count
+        from article
+        where is_delete=0 and status=1
+        group by time
     </select>
+    <select id="getLineData" resultType="java.util.Map">
+        select count(1) as count, DATE_FORMAT(create_time, '%Y-%m') as time
+        from article
+        where DATE_FORMAT(( create_time - INTERVAL 1 MONTH )
+            , '%Y-%m' )>= DATE_FORMAT( CURDATE() - interval 6 month
+            , '%Y-%m' )
+          and is_delete = 0
+          and status=1
+        group by DATE_FORMAT( create_time, '%Y-%m' )
+    </select>
+
+
 </mapper>

@@ -75,6 +75,7 @@ public class TagsController {
             if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
             if (tagsService.lambdaUpdate().set(Tags::getIsDelete, 1).set(Tags::getLastUpdateTime,new Date())
                     .set(Tags::getLastUpdateBy,loginManager.getUserId()).eq(Tags::getId, id).update()) {
+                articleTagsService.lambdaUpdate().eq(ArticleTags::getTagId,id).remove();
                 log.info("删除成功,id{}", id);
                 return Result.ok("删除成功！");
             }

@@ -22,4 +22,6 @@ public interface ArticleMapper extends BaseMapper<Article> {
 
     List<Map<String,Object>> statisticalBlogByMonth();
 
+    List<Map> getLineData();
+
 }

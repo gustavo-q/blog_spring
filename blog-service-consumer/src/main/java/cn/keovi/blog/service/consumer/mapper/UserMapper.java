@@ -5,6 +5,7 @@ import cn.keovi.crm.po.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName UserMapper
@@ -16,4 +17,7 @@ public interface UserMapper extends BaseMapper<User> {
     List<User> findList(BaseDto baseDto);
 
     long findListCount(BaseDto baseDto);
+
+    List<Map> getLineData();
+
 }

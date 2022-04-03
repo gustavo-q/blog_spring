@@ -98,11 +98,11 @@ public class EmailServiceImpl implements EmailService {
                 "</body>";
 
         //验证码
-        String code = RandomUtil.randomNumbers(6);
+        String code = RandomUtil.randomString(6);
 
         if (StringUtils.isNotBlank(redisTemplate.opsForValue().get(to)))  redisTemplate.delete(to);
         //存入redis
-        redisTemplate.opsForValue().set(to, code, 5, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set(to, code, 1, TimeUnit.MINUTES);
 
         //发送邮箱
         String content = StrUtil.format(str, code);

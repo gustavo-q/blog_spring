@@ -198,7 +198,7 @@
               <value>
                 <TableGenerateConfig>
                   <option name="deleteByPrimayKeyEnabled" value="false" />
-                  <option name="generatedKey" value="" />
+                  <option name="generatedKey" value="id" />
                   <option name="insertMethodEnabled" value="false" />
                   <option name="insertSelectiveMethodEnabled" value="false" />
                   <option name="javaModelName" value="Site" />
