@@ -59,7 +59,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     private UserLikeService userLikeService;
 
 
-
     @Override
     public List<Map<String, Object>> pageList(BaseDto baseDto) {
         if (loginManager.getUserSession() == null) throw new ServiceException("登录失效");
@@ -103,11 +102,11 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //tag
         List<ArticleTags> list = articleTagsService.lambdaQuery().eq(ArticleTags::getArticleId, id).list();
         if (CollectionUtil.isNotEmpty(list)) {
-            List<Long> collect = list.stream().map(ArticleTags::getTagId).collect(Collectors.toList());
+            List<Object> collect = list.stream().map(ArticleTags::getTagId).collect(Collectors.toList());
             articleDto.setTagList(collect);
-            List<String> list1= new ArrayList<>();
-            collect.forEach(c->{
-                list1.add(tagsService.lambdaQuery().eq(Tags::getId,c).one().getTag());
+            List<String> list1 = new ArrayList<>();
+            collect.forEach(c -> {
+                list1.add(tagsService.lambdaQuery().eq(Tags::getId, c).one().getTag());
             });
             articleDto.setTagListText(list1);
         }
@@ -188,19 +187,16 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Override
     public List<Map> getMyLoveList(Integer page, Integer showCount) {
-            //startIndex
-            page= (page - 1) * showCount;
+        //startIndex
+        page = (page - 1) * showCount;
         if (loginManager.getUserId() == null) throw new ServiceException("登录失效");
 
         List<UserLike> list1 = userLikeService.lambdaQuery().eq(UserLike::getCreateBy, loginManager.getUserId())
-                .eq(UserLike::getLike,1).eq(UserLike::getIsDelete, 0).list();
-
-        System.out.println("                    放放"+list1.size());
-
+                .eq(UserLike::getLike, 1).eq(UserLike::getIsDelete, 0).list();
 
         List<Long> collect = list1.stream().map(UserLike::getArticleId).collect(Collectors.toList());
 
-        List<Article> articles =articleMapper.getMyLoveList(page,showCount,collect);
+        List<Article> articles = articleMapper.getMyLoveList(page, showCount, collect);
 
 
         ArrayList<Map> list = new ArrayList<>();
@@ -236,6 +232,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         if (loginManager.getUserId() == null) throw new ServiceException("登录失效");
 
         return userLikeService.lambdaQuery().eq(UserLike::getCreateBy, loginManager.getUserId())
-                .eq(UserLike::getLike,1).eq(UserLike::getIsDelete, 0).count();
+                .eq(UserLike::getLike, 1).eq(UserLike::getIsDelete, 0).count();
     }
 }

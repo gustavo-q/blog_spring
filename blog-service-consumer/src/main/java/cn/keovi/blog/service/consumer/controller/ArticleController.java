@@ -138,8 +138,10 @@ public class ArticleController {
             //通过
             if (map.get("audit").asInt()==0) {
                 article.setStatus(1);
-            }else {
-                article.setStatus(2);
+            }
+            //没通过
+            if (map.get("audit").asInt()==1) {
+                article.setStatus(3);
             }
             article.setLastUpdateTime(new Date());
             article.setLastUpdateBy(loginManager.getUserId());

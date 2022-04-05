@@ -316,7 +316,7 @@ public class BlogController {
     }
 
 
-    //我的博客
+    //我点赞的博客
     @GetMapping("/getMyLoveList/{page}/{showCount}")
     public Object getMyLoveList(@PathVariable("page") Integer page, @PathVariable("showCount") Integer showCount) {
         try {
