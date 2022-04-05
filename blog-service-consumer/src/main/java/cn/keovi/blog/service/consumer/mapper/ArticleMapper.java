@@ -4,6 +4,7 @@ import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.vo.ArticleVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -23,5 +24,10 @@ public interface ArticleMapper extends BaseMapper<Article> {
     List<Map<String,Object>> statisticalBlogByMonth();
 
     List<Map> getLineData();
+
+    List<Map> getMyLineData(Long id);
+
+    List<Article> getMyLoveList(@Param("page") Integer page, @Param("showCount")Integer showCount, @Param("collect")List<Long> collect);
+
 
 }

@@ -198,7 +198,7 @@ public class BlogController {
             result.put("content", one.getContent());
             result.put("blogViews", one.getViews());
             result.put("time", one.getCreateTime());
-            result.put("commentEnabled",one.getCommentEnabled());
+            result.put("commentEnabled", one.getCommentEnabled());
 
             User user = userService.lambdaQuery().eq(User::getId, one.getCreateBy()).one();
             result.put("userName", user.getUsername());
@@ -309,6 +309,21 @@ public class BlogController {
 
 
             return Result.ok().data(200, list, page1.getTotal());
+        } catch (Exception e) {
+            log.error("博客显示失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
+    //我的博客
+    @GetMapping("/getMyLoveList/{page}/{showCount}")
+    public Object getMyLoveList(@PathVariable("page") Integer page, @PathVariable("showCount") Integer showCount) {
+        try {
+            List<Map> list = articleService.getMyLoveList(page, showCount);
+            Integer count = articleService.getMyLoveCount();
+
+            return Result.ok().data(200, list, count.longValue());
         } catch (Exception e) {
             log.error("博客显示失败!", e);
             return Result.error(500, e.getMessage());
@@ -433,9 +448,6 @@ public class BlogController {
             return Result.error(500, e.getMessage());
         }
     }
-
-
-
 
 
 }

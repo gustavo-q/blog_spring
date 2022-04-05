@@ -4,33 +4,22 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ObjectUtil;
-import cn.keovi.blog.service.consumer.service.ArticleCategoryService;
-import cn.keovi.blog.service.consumer.service.ArticleTagsService;
-import cn.keovi.blog.service.consumer.service.TagsService;
+import cn.keovi.blog.service.consumer.service.*;
 import cn.keovi.blog.service.consumer.session.LoginManager;
-import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.ArticleDto;
 import cn.keovi.crm.dto.BaseDto;
-import cn.keovi.crm.po.ArticleCategory;
-import cn.keovi.crm.po.ArticleTags;
-import cn.keovi.crm.po.Tags;
+import cn.keovi.crm.po.*;
 import cn.keovi.crm.vo.ArticleVo;
 import cn.keovi.exception.ServiceException;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import cn.keovi.crm.po.Article;
 import cn.keovi.blog.service.consumer.mapper.ArticleMapper;
-import cn.keovi.blog.service.consumer.service.ArticleService;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
@@ -58,6 +47,17 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Autowired
     TagsService tagsService;
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    CommentService commentService;
+
+
+    @Autowired
+    private UserLikeService userLikeService;
+
 
 
     @Override
@@ -97,9 +97,21 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         articleDto.setTop(article.getTop() == 1);
         articleDto.setAppreciation(article.getAppreciation() == 1);
         articleDto.setCommentEnabled(article.getCommentEnabled() == 1);
+        //分类
+        String type = articleCategoryService.lambdaQuery().eq(ArticleCategory::getId, article.getCategoryId()).one().getType();
+        articleDto.setCategoryText(type);
+        //tag
         List<ArticleTags> list = articleTagsService.lambdaQuery().eq(ArticleTags::getArticleId, id).list();
-        if (CollectionUtil.isNotEmpty(list))
-            articleDto.setTagList(list.stream().map(ArticleTags::getTagId).collect(Collectors.toList()));
+        if (CollectionUtil.isNotEmpty(list)) {
+            List<Long> collect = list.stream().map(ArticleTags::getTagId).collect(Collectors.toList());
+            articleDto.setTagList(collect);
+            List<String> list1= new ArrayList<>();
+            collect.forEach(c->{
+                list1.add(tagsService.lambdaQuery().eq(Tags::getId,c).one().getTag());
+            });
+            articleDto.setTagListText(list1);
+        }
+
         return articleDto;
     }
 
@@ -172,5 +184,58 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
             map.put("month", map.get("time").toString().split("-")[1]);
         });
         return mapList;
+    }
+
+    @Override
+    public List<Map> getMyLoveList(Integer page, Integer showCount) {
+            //startIndex
+            page= (page - 1) * showCount;
+        if (loginManager.getUserId() == null) throw new ServiceException("登录失效");
+
+        List<UserLike> list1 = userLikeService.lambdaQuery().eq(UserLike::getCreateBy, loginManager.getUserId())
+                .eq(UserLike::getLike,1).eq(UserLike::getIsDelete, 0).list();
+
+        System.out.println("                    放放"+list1.size());
+
+
+        List<Long> collect = list1.stream().map(UserLike::getArticleId).collect(Collectors.toList());
+
+        List<Article> articles =articleMapper.getMyLoveList(page,showCount,collect);
+
+
+        ArrayList<Map> list = new ArrayList<>();
+        articles.forEach(article -> {
+            HashMap<String, Object> result = new HashMap<>();
+            result.put("title", article.getTitle());
+            result.put("content", article.getContent());
+            result.put("blogViews", article.getViews());
+            result.put("time", article.getCreateTime());
+            result.put("id", article.getId());
+
+            User user = userService.lambdaQuery().eq(User::getId, article.getCreateBy()).one();
+            result.put("userName", user.getUsername());
+
+            //评论数
+            Integer count = commentService.lambdaQuery().eq(Comment::getTopicId, article.getId()).eq(Comment::getIsDelete, 0).count();
+            result.put("discussCount", count);
+
+            //标签
+            List<ArticleTags> articleTags = articleTagsService.lambdaQuery().eq(ArticleTags::getArticleId, article.getId()).list();
+            ArrayList<String> strings = new ArrayList<>();
+            articleTags.forEach(articleTags1 -> {
+                strings.add(tagsService.lambdaQuery().eq(Tags::getId, articleTags1.getTagId()).one().getTag());
+            });
+            result.put("tags", strings);
+            list.add(result);
+        });
+        return list;
+    }
+
+    @Override
+    public Integer getMyLoveCount() {
+        if (loginManager.getUserId() == null) throw new ServiceException("登录失效");
+
+        return userLikeService.lambdaQuery().eq(UserLike::getCreateBy, loginManager.getUserId())
+                .eq(UserLike::getLike,1).eq(UserLike::getIsDelete, 0).count();
     }
 }

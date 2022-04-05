@@ -2,6 +2,7 @@ package cn.keovi.blog.service.consumer.interceptor;
 
 
 import cn.keovi.annotation.IgnoreAuth;
+import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
@@ -10,6 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
@@ -20,12 +22,14 @@ import java.io.PrintWriter;
 @Component
 public class AuthorizationInterceptor implements HandlerInterceptor {
 
+    @Autowired
+    private LoginManager loginManager;
 
 
     public static final String LOGIN_TOKEN_KEY = "corTicket";
 
 
-	@Override
+    @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         //支持跨域请求
@@ -45,28 +49,30 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         /**
          * 不需要验证权限的方法直接放过
          */
-        if(annotation!=null) {
+        if (annotation != null) {
             return true;
         }
 
         //从header中获取token
         String token = request.getHeader(LOGIN_TOKEN_KEY);
-        if(StringUtils.isNotBlank(token)) {
-            return true;
+        if (StringUtils.isNotBlank(token)) {
+            if (loginManager.getUserSession() != null) {
+                return true;
+            }
         }
 
-		PrintWriter writer = null;
-		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json; charset=utf-8");
-		try {
-		    writer = response.getWriter();
-		    writer.print(JSONObject.toJSONString(Result.error(401, "请先登录")));
-		} finally {
-		    if(writer != null){
-		        writer.close();
-		    }
-		}
+        PrintWriter writer = null;
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=utf-8");
+        try {
+            writer = response.getWriter();
+            writer.print(JSONObject.toJSONString(Result.error(401, "请先登录")));
+        } finally {
+            if (writer != null) {
+                writer.close();
+            }
+        }
 //				throw new EIException("请先登录", 401);
-		return false;
+        return false;
     }
 }

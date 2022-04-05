@@ -22,7 +22,7 @@
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
         id, title, content, category_id, views, `status`, is_delete,
-        create_time, last_update_time, create_by, last_update_by,top,commentEnabled,appreciation
+        create_time, last_update_time, create_by, last_update_by,top,comment_enabled,appreciation
     </sql>
 
 
@@ -83,5 +83,30 @@
         group by DATE_FORMAT( create_time, '%Y-%m' )
     </select>
 
+    <select id="getMyLineData" resultType="java.util.Map">
+        select count(1) as count, DATE_FORMAT(create_time, '%Y-%m') as time
+        from article
+        where DATE_FORMAT(( create_time - INTERVAL 1 MONTH )
+            , '%Y-%m' )>= DATE_FORMAT( CURDATE() - interval 6 month
+            , '%Y-%m' )
+          and is_delete = 0
+          and create_by = #{id}
+          and status=1
+        group by DATE_FORMAT( create_time, '%Y-%m' )
+    </select>
+
+
+    <select id="getMyLoveList" resultType="cn.keovi.crm.po.Article">
+        select
+        <include refid="Base_Column_List"/>
+        from article where    status = 1
+                       and is_delete = 0
+                       and id in
+        <foreach item="item" collection="collect" index="item" open="("
+                 separator="," close=")">
+            #{item}
+        </foreach>
+        order by top, create_time desc limit #{page}, #{showCount}
+    </select>
 
 </mapper>

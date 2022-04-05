@@ -36,7 +36,7 @@ public class userLikeController {
     private LoginManager loginManager;
 
 
-    //点赞数
+    //点赞总数
     @GetMapping("/getBlogLikeCount/{id}")
     @IgnoreAuth
     public Result getBlogLikeCount(@PathVariable("id") Integer id) {
@@ -52,7 +52,7 @@ public class userLikeController {
     }
 
 
-    //点赞数
+    //是否点赞
     @GetMapping("/isUserLike/{blogId}/{id}")
     @IgnoreAuth
     public Object isUserLike(@PathVariable("blogId") Integer blogId, @PathVariable("id") Integer id) {
@@ -70,7 +70,7 @@ public class userLikeController {
     }
 
 
-    //点赞数
+    //保存点赞
     @PostMapping("/saveUserLike")
     @Transactional
     public Object saveUserLike(@RequestBody JsonNode map) {

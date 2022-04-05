@@ -7,11 +7,13 @@ import cn.keovi.blog.service.consumer.mapper.SiteMapper;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.SiteService;
+import cn.keovi.blog.service.consumer.service.TagsService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.Site;
+import cn.keovi.crm.po.Tags;
 import cn.keovi.crm.po.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +55,10 @@ public class SiteController {
 
     @Autowired
     SiteService siteService;
+
+    @Autowired
+    TagsService tagsService;
+
 
     @Autowired
     private LoginManager loginManager;
@@ -103,7 +109,7 @@ public class SiteController {
                         .eq(Article::getStatus, 1).count());
                 result.put("userTotal", userService.lambdaQuery().eq(User::getIsDelete, 0).eq(User::getStatus, 0).count());
             } else {
-
+                result.put("myTag",tagsService.lambdaQuery().eq(Tags::getIsDelete,0).eq(Tags::getCreateBy,loginManager.getUserId()).count());
             }
             result.put("myArticle", articleService.lambdaQuery().eq(Article::getIsDelete, 0)
                     .eq(Article::getStatus, 1).eq(Article::getCreateBy, loginManager.getUserId()).count());
@@ -123,8 +129,8 @@ public class SiteController {
             if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
 
             HashMap<String, Object> result = new HashMap<>();
+            List<String> monData = getMonData(DateUtil.today());
             if (loginManager.getUserSession().getRoleId() == 1 || loginManager.getUserSession().getRoleId() == 2) {
-                List<String> monData = getMonData(DateUtil.today());
 
                 //访问量
                 List<Map> mapList = siteMapper.getLineData();
@@ -137,49 +143,51 @@ public class SiteController {
                 result.put("visitor", compareData(monData, mapList));
                 result.put("articleTotal", compareData(monData, mapList1));
                 result.put("userTotal", compareData(monData, mapList2));
-                result.put("monData", monData);
             } else {
-
-            }
-            return Result.ok().data(200, result);
-        } catch (Exception e) {
-            log.error("getCardsData失败!", e);
-            return Result.error(500, e.getMessage());
-        }
-    }
-
-
-
-    @GetMapping("/getBarData")
-    public Result getBarData() {
-        try {
-            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
-
-            HashMap<String, Object> result = new HashMap<>();
-            if (loginManager.getUserSession().getRoleId() == 1 || loginManager.getUserSession().getRoleId() == 2) {
-                List<String> monData = getMonData(DateUtil.today());
-
-                //访问量
-                List<Map> mapList = siteMapper.getLineData();
                 //文章总数
-                List<Map> mapList1 = articleMapper.getLineData();
-                //用户
-                List<Map> mapList2 = userMapper.getLineData();
-
-
-                result.put("visitor", compareData(monData, mapList));
+                List<Map> mapList1 = articleMapper.getMyLineData(loginManager.getUserId());
                 result.put("articleTotal", compareData(monData, mapList1));
-                result.put("userTotal", compareData(monData, mapList2));
-                result.put("monData", monData);
-            } else {
-
             }
+            result.put("monData", monData);
             return Result.ok().data(200, result);
         } catch (Exception e) {
             log.error("getCardsData失败!", e);
             return Result.error(500, e.getMessage());
         }
     }
+
+
+
+//    @GetMapping("/getBarData")
+//    public Result getBarData() {
+//        try {
+//            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
+//
+//            HashMap<String, Object> result = new HashMap<>();
+//            if (loginManager.getUserSession().getRoleId() == 1 || loginManager.getUserSession().getRoleId() == 2) {
+//                List<String> monData = getMonData(DateUtil.today());
+//
+//                //访问量
+//                List<Map> mapList = siteMapper.getLineData();
+//                //文章总数
+//                List<Map> mapList1 = articleMapper.getLineData();
+//                //用户
+//                List<Map> mapList2 = userMapper.getLineData();
+//
+//
+//                result.put("visitor", compareData(monData, mapList));
+//                result.put("articleTotal", compareData(monData, mapList1));
+//                result.put("userTotal", compareData(monData, mapList2));
+//                result.put("monData", monData);
+//            } else {
+//
+//            }
+//            return Result.ok().data(200, result);
+//        } catch (Exception e) {
+//            log.error("getCardsData失败!", e);
+//            return Result.error(500, e.getMessage());
+//        }
+//    }
 
 
 

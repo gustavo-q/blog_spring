@@ -27,4 +27,8 @@ public interface ArticleService extends IService<Article> {
 
     List<Map<String,Object>> statisticalBlogByMonth();
 
+    List<Map> getMyLoveList(Integer page, Integer showCount);
+
+    Integer getMyLoveCount();
+
 }

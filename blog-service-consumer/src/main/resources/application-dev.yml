@@ -2,10 +2,10 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/blog_spring?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://180.163.101.78:3306/blog_spring?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
       username: root
       #password: hello
-      password:
+      password: mysql123
       driver-class-name: com.mysql.cj.jdbc.Driver
       initial-size: 10
       max-active: 100

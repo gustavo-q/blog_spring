@@ -21,7 +21,11 @@ public class ArticleDto {
 
     private Integer categoryId;
 
-    private List<Object> tagList;
+    private List<Long> tagList;
+
+    private String categoryText;
+
+    private List<String> tagListText;
 
     private String content;
 
