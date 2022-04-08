@@ -13,7 +13,7 @@ import java.util.List;
  * @Date 2022/01/18/16:08
  */
 public interface MenuMapper extends BaseMapper<Menu> {
-    List<Menu> selectMenuByRoleId(Integer roleId);
+    List<Menu> selectMenuByRoleId(Long roleId);
 
     List<Menu> findList(BaseDto baseDto);
 

@@ -26,11 +26,11 @@ public class UserSession implements Serializable {
 
   private Long id;
   private String userName;
-  private Integer roleId;
+  private Long roleId;
   private String email;
-  private Integer qq;
+  private Long qq;
   private String wechat;
-  private Integer mobile;
+  private Long mobile;
   private String intro;
   private Integer sex;
 

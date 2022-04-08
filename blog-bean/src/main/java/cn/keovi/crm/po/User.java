@@ -38,7 +38,7 @@ public class User{
      * 角色编号
      */
     @TableField(value = "role_id")
-    private Integer roleId;
+    private Long roleId;
 
     /**
      * 用户名
@@ -62,7 +62,7 @@ public class User{
      * QQ
      */
     @TableField(value = "qq")
-    private Integer qq;
+    private Long qq;
 
     /**
      * WeChat
@@ -80,7 +80,7 @@ public class User{
      * 电话
      */
     @TableField(value = "mobile")
-    private Integer mobile;
+    private Long mobile;
 
     /**
      * 简介

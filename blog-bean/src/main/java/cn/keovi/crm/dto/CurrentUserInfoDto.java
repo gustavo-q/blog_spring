@@ -20,14 +20,14 @@ import java.util.List;
 @NoArgsConstructor
 public class CurrentUserInfoDto {
 
-    private Integer roleId;
+    private Long roleId;
     private String username;
     private String avatar;
     private String intro;
-    private Integer qq;
+    private Long qq;
     private String wechat;
     private String email;
-    private Integer mobile;
+    private Long mobile;
     private List<String> menus;
     private Integer sex;
     private Long id;

@@ -107,7 +107,7 @@ public class LoginServiceImpl implements LoginService {
                     .email(userDto.getEmail())
                     .password(MD5Util.encrypt(userDto.getPassword()))
                     .createTime(DateUtil.date())
-                    .roleId(3)
+                    .roleId(3L)
                     .build();
             userService.save(user);
             return Result.ok("注册成功");
