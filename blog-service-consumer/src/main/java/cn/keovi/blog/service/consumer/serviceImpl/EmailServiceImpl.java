@@ -71,7 +71,7 @@ public class EmailServiceImpl implements EmailService {
                 "                <div style=\"line-height:1.5;font-size:14px;margin-bottom:25px;color:#4d4d4d;\">\n" +
                 "                    <strong style=\"display:block;margin-bottom:15px;\">尊敬的用户：<span style=\"color:#f60;font-size: 16px;\"></span>您好！</strong>\n" +
                 "                    <strong style=\"display:block;margin-bottom:15px;\">\n" +
-                "                        您正在进行<span style=\"color: red\">注册账号</span>操作，请在验证码输入框中输入：<span style=\"color:#f60;font-size: 24px\">{}</span>，以完成操作。\n" +
+                "                        您正在进行<span style=\"color: red\">发送邮件</span>操作，请在验证码输入框中输入：<span style=\"color:#f60;font-size: 24px\">{}</span>，以完成操作。\n" +
                 "                    </strong>\n" +
                 "                </div>\n" +
                 "                <div style=\"margin-bottom:30px;\">\n" +

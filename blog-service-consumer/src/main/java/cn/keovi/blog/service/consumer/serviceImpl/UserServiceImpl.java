@@ -116,7 +116,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
 
 
+    @Transactional
+    public CurrentUserInfoDto currentWxUserInfo(Long userId) {
+        User user = userService.lambdaQuery().eq(User::getId, userId).one();
+        if (user == null) throw new ServiceException("该用户不存在");
+        CurrentUserInfoDto currentUserInfoDto = CurrentUserInfoDto.builder()
+                .username(user.getUsername())
+                .mobile(user.getMobile())
+                .avatar(user.getAvatar())
+                .email(user.getEmail())
+                .intro(user.getIntro())
+                .qq(user.getQq())
+                .wechat(user.getWechat())
+                .roleId(user.getRoleId())
+                .sex(user.getSex())
+                .id(userId)
+                .build();
 
+        return currentUserInfoDto;
+    }
 
 
 }

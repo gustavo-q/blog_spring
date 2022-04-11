@@ -11,7 +11,7 @@
  Target Server Version : 50737
  File Encoding         : 65001
 
- Date: 07/04/2022 23:59:39
+ Date: 10/04/2022 23:44:11
 */
 
 SET NAMES utf8mb4;
@@ -38,7 +38,7 @@ CREATE TABLE `announcement`  (
 -- Records of announcement
 -- ----------------------------
 INSERT INTO `announcement` VALUES (6, 'test', 'test', 0, 0, '2022-04-06 19:39:09', 27, NULL, NULL);
-INSERT INTO `announcement` VALUES (7, '哒咩', 'You can\'t let someone else\'s opinion tear you down. \n你不能被别人的看法打倒。', 1, 0, '2022-04-07 20:45:45', 27, NULL, NULL);
+INSERT INTO `announcement` VALUES (7, '哒咩', 'You can\'t let someone else\'s opinion tear you down. \n你不能被别人的看法打倒。', 1, 0, '2022-04-07 20:45:45', 27, '2022-04-08 15:03:03', 27);
 INSERT INTO `announcement` VALUES (8, '号外', 'Whatever happens tomorrow, we have had today', 0, 0, '2022-04-07 21:03:51', 27, NULL, NULL);
 INSERT INTO `announcement` VALUES (9, '...', 'Human life is limited, and serving the people is infinite. ', 0, 0, '2022-04-07 21:04:07', 27, NULL, NULL);
 INSERT INTO `announcement` VALUES (10, 'how are you', 'Positive thinking initiates more happiness! ', 0, 0, '2022-04-07 21:04:21', 27, NULL, NULL);
@@ -64,7 +64,7 @@ CREATE TABLE `article`  (
   `comment_enabled` int(1) NULL DEFAULT NULL COMMENT '评论 0否 1是',
   `appreciation` int(15) NULL DEFAULT 0 COMMENT '赞赏',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article
@@ -76,12 +76,21 @@ INSERT INTO `article` VALUES (57, '2022/4/6', '  今天是我来上海的第20�
 INSERT INTO `article` VALUES (58, '爱的一种解释', '爱是什么？\n一个精灵坐在碧绿的枝叶间沉思。\n风儿若有若无。\n一只鸟儿飞过来，停在枝上，望着远处将要成熟的稻田。\n精灵取出一束黄澄澄的稻谷问道：“你爱这稻谷吗？”\n“爱。”\n“为什么？”\n“它驱赶我的饥饿。”\n鸟儿啄完稻谷，轻轻梳理着光润的羽毛。\n“现在你爱这稻谷吗？”精灵又取出一束黄澄澄的稻谷。\n鸟儿抬头望着远处的一湾泉水回答：“现在我爱那一湾泉水，我有点渴了。”\n精灵摘下一片树叶，里面盛了一汪泉水。\n鸟儿喝完泉水，准备振翅飞去。\n“请再回答我一个问题，”精灵伸出指尖，鸟儿停在上面。\n“你要去做什么更重要的事吗？我这里又稻谷也有泉水。”\n“我要去那片开着风信子的山谷，去看那朵风信子。”\n“为什么？它能驱赶你的饥饿？”\n“不能。”\n“它能滋润你的干渴？”\n“不能。”\n“那你为什么要去看它呢？”\n“我需要它啊。”\n“为什么需要？”\n“我爱它啊。”\n“为什么爱它？”\n“我日日夜夜都在思念它。”\n“为什么思念它？”\n“我爱它。”\n精灵沉默了片刻，又提出一个问题：\n“你为什么只爱那一朵风信子呢？山谷里有无数朵风信子。”\n“因为它是唯一的一朵啊。”\n“为什么？它和其他所有的风信子有什么不同的地方吗？”\n“有的。”\n“哪里不同呢？”\n“只有它才是我爱的那一朵啊。”\n精灵忽然轻轻笑了起来，鸟儿振翅而去。', 33, 1, 1, 0, '2022-04-07 20:05:11', '2022-04-07 20:07:44', 27, 27, 0, 1, 1);
 INSERT INTO `article` VALUES (59, '做一个努力的人', '有一次，在我参加的一个晚会上，主持人问一个小男孩：你长大以后要做什么样的人？孩子看看我们这些企业家，然后说：做企业家。在场的人忽地笑着鼓起了掌。我也拍了拍手，但听着并不舒服。我想，这孩子对于企业究竟知道多少呢？他是不是因为当着我们的面才说要当企业家的呢？他是不是受了大人的影响，以为企业家风光，都是有钱的人，才要当企业家的呢？\n\n　　这一切当然都是一个谜。但不管怎样，作为一个人的人生志向，我以为当什么并不重要；不管是谁，最重要的是从小要立志做一个努力的人。\n\n　　我小的时候也曾有人问过同样的问题，我的回答不外乎当教师、解放军和科学家之类。时光一晃流走了二十多年，当年的孩子，如今已是四十出头的大人。但仔细想一想，当年我在大人们跟前表白过的志向，实际一个也没有实现。我身边的其他人差不多也是如此。有的想当教师，后来却成了个体户；想当解放军的，有人竟做了囚犯。我上大学时有两个同窗好友，他们现在都是我国电子行业里才华出众的人，一个成长为“康佳”集团的老总，一个领导着TCL集团。我们三个不期而然地成为中国彩电骨干企业的经营者，可是当年大学毕业时，无论有多大的想像力，我们也不敢想十几年后会成现在的样子。一切都是我们在奋斗中见机行事，一步一步努力得来的。与其说我们是有理想的人，不如说我们是一直在努力的人。\n\n　　并非我们不重视理想，而是因为树雄心壮志易，为理想努力难，人生自古就如此。有谁会想到，十多年前的今天，我曾是一个在街头彷徨，为生存犯愁的人？当时的我，一无所有，前途渺茫，真不知路在何处。然而，我却没有灰心失望，回想起来，支撑着我走过这段坎坷岁月的正是我的意志品格。当许多人以为我已不行、该不行了的时候，我仍做着从地上爬起来的努力，我坚信人生就像马拉多纳踢球，往往是在快要倒下去的时候“进球”获得生机的。事实也正是如此，就在“山重水复疑无路”的时候，香港一家企业倒闭给了我东山再起的机会，使我能够与掌握世界最新技术的英国科技人员合作，开发技术先进的彩色电视机，从此一举走出困境。\n\n　　有人说，“努力”与“拥有”是人生一左一右的两道风景。但我以为，人生最美最不能逊色的风景应该是努力。努力是人生的一种精神状态，是对生命的一种赤子之情。努力是拥有之母，拥有是努力之子。一心努力可谓条条大路通罗马，只想获取可谓道路逼仄，天地窄小。所以，与其规定自己一定要成为一个什么样的人物，获得什么东西，不如磨练自己做一个努力的人。志向再高，没有努力，志向终难坚守；没有远大目标，因为努力，终会找到奋斗的方向。做一个努力的人，可以说是人生最切实际的目标，是人生最大的境界。\n\n　　许多人因为给自己定的目标太高太功利，因为难以成功而变得灰头土脸，最终灰心失望。究其原因，往往就是因为太关注拥有，而忽略做一个努力的人。对于今天的孩子们，如果只关注他们将来该做个什么样的人物，不把意志品质作为一个做人的目标提出来，最终我们只能培养出狭隘、自私、脆弱和境界不高的人。遗憾的是，我们在这方面做得并不尽如人意。', 33, 1, 1, 0, '2022-04-07 20:05:46', '2022-04-07 20:07:48', 27, 27, 0, 1, 1);
 INSERT INTO `article` VALUES (60, '放弃，也是一种选择', '很喜欢这样一幅对联：得失失得　何必患得患失/舍得得舍/不妨不舍不得。也许人生的过程就是一个不断放弃，又不断得到的过程。关键是要学会放弃，因为放弃，也是人生的一种选择。\n　　放弃一颗树，你会得到整个森林！放弃一滴水，你就拥有整个大海！放弃一片洼地，你就会占领一座高山！况且有些事情放弃了并不等于失去，当你放弃了对梦的追求，回归现实，你会发现那美好的一天正等待着你，并为你敞开了一扇通往未来的大门。\n　　一颗善良的心，苦苦挣扎着在寻找慰藉。因为太爱，而决定离去，不能给予，也不要去索取。望着你认真的眼神，心里的不舍在蔓延，可我怎能将你匆匆的步伐为我停驻，回你一个微笑，默默的祝你旅行愉快。\n　　许多的事情，总是在经历过以后才会懂得。一如感情，痛过了，才会懂得如何保护自己；傻过了，才会懂得适时地坚持与放弃，在得到与失去中我们慢慢地认识自己。既然默默相守已失去意义，莫不如立即斩断心中那情思屡屡，放弃你所珍爱的，期待的，重新选择。其实，生活并不需要这么些无谓的执着，没有什么就真的不能割舍。学会放弃，生活会更容易。\n　　放弃是一种勇气，但放弃决不是对自己的背叛，放弃自私，放弃虚伪，你就会变得高尚，你生活的天空将是晴空万里。放弃一段飘渺的感情，你就会变得塌实，如释重负，轻轻爽爽。\n　　放弃，不是怯懦，不是自卑，也不是自暴自弃，更不是陷入绝境时渴望得到的一种解脱，而是在痛定思痛后的做出的一种选择。\n　　放弃，不是噩梦方醒，不是六月飞雪，也不是逃避，更不是偃旗息鼓，甘拜下风，而是在发现了对与错、真与伪、善与恶、美与丑之后做出的一种选择。\n　　放弃意味着什么？放弃是一种勇气，但放弃之后，我们将走向何处，值得深思。\n　　放弃，也是一种选择……', 33, 4, 1, 0, '2022-04-07 20:07:37', '2022-04-07 20:07:52', 27, 27, 0, 1, 1);
-INSERT INTO `article` VALUES (61, '随手记', '“你要记得那些大雨中为你撑伞的人，帮你挡住外来之物的人，黑暗中默默抱紧你的人，逗你笑的人，陪你彻夜聊天的人，坐车来看望你的人，陪你哭过的人，在医院陪你的人，总是以你为重的人，是这些人组成你生命中一点一滴的温暖，是这些温暖使你成为善良的人 。”——村上春树', 30, 4, 1, 0, '2022-04-07 20:15:11', '2022-04-07 20:16:06', 26, 27, 0, 1, 1);
+INSERT INTO `article` VALUES (61, '随手记', '“你要记得那些大雨中为你撑伞的人，帮你挡住外来之物的人，黑暗中默默抱紧你的人，逗你笑的人，陪你彻夜聊天的人，坐车来看望你的人，陪你哭过的人，在医院陪你的人，总是以你为重的人，是这些人组成你生命中一点一滴的温暖，是这些温暖使你成为善良的人 。”——村上春树', 30, 5, 1, 0, '2022-04-07 20:15:11', '2022-04-07 20:16:06', 26, 27, 0, 1, 1);
 INSERT INTO `article` VALUES (62, '毒鸡汤', '\n- 很多人不断地规划自己的人生，每天压力很大。其实不管你怎么过。都会后悔的。想想你这前几十年就明白了。\n- 三十岁时，大部分人都卡在初级职位上。现有的工作升不上去，又无法承担转行的时间成本，更来不及再去读书。父母开始多病;自己收入有限，也没有存款。更大的痛苦，是看到身边没有背景但努力又聪明的人已经小有成就，有背景的人已经开始过上贵族生活了。\n- 我有一些漂亮又受过教育的姐妹，本来有机会嫁给官富二代，但很多被那些长得不错、有名校高学历、刚毕业在知名外企工作、加班到很晚还健身的男生所吸引。觉得人家上进又有潜力。五六年后，她们悔得肠子都青了\n- 年轻时总是缺乏对自己的正确认识。时而觉得自己能力超群，海阔天空，时而觉得一无是处，平凡无能。长大后，经历得多了，逐渐认清自己，才发现自己原来是一无是处，平凡无能。\n- 路上看到两个长得不好看也看起来很穷的男女热吻。我说两个物质生活质量很差的人，彼此相伴。朋友立刻反驳我：物质生活质量不行就不会幸福吗?他们如此相爱，比那些有钱又美但离婚的名人强多了!我说我根本没说他们不幸福呀，你努力反驳的，可能是你自己内心的声音吧。\n- 在这个以貌取人的时代，其实真的没什么人会在意你的口红是哪个奢侈品牌，更没什么人能看清你腰上的奢侈品是真是假，但是腿粗、肚子大，在十米开外就能看的一清二楚！\n- 找到男朋友后一定要对他好一点，不要欺负他、伤害他、有负于他，毕竟他已经瞎了。\n- 我对这个社会之中真正能够去追求自己理想的人，我就绝对特别地佩服这些人，因为这个社会有太多的人，分不清楚什么是自己想要的，什么是别人希望你得到的\n- 老一辈人完全不用担心小一辈人在他们走过的路上摔跟头，因为你们走的根本不是一条道，！，。\n- 总觉得叛逆其实就是懒惰和逃避，因为许多人所指的自我叛逆——就是不爱上学、痛恨家长、觉得社会不公平。可是他们从没想过，你想要公平就得努力奋斗一份真正的事业。\n- 在爱的一瞬间的时候，谁的责任并不重要，但是很多时候，真正每天牵肠挂肚，二十四小时没有一分钟，在不想着你，不关心你的人是谁，绝对不是你在想你妈，是你妈在想着你。\n- 有歌星，有笑星，而我们准备当斜星，就是有点偏的感觉。我觉得能给人群带来欢乐的人，才是真正的伟人。微笑才是最好的化妆品。\n- 艺人是所有行业中最软的职业，我只能当孙子。我不能说任何人不好。比如我去吃串，有人要我签名，要我唱歌，要跟我拍照，不同意，人家跟你嚷嚷，你就得跟人家道歉，拍照。虽然你已经很累了。我不敢抗衡，如果我一抗衡就会有更多人攻击我。我只能这样安慰自己，没新闻才是坏新闻\n- 一个好的人生，就是要做一个好的小丑，因为你永远都在耍那几个球，人生一共就五个球，什么事业、爱情、家庭之类的，这些球里面只有一个球是橡皮做的，就是事业，事业掉地上还能再弹起来，剩下都是玻璃做的，只要掉地上就碎了，所以说人生如果能做一个好的小丑是一非常好的事情。\n- 一个歌手，在台上哭来哭去的，说自己以前多苦多郁闷，这个事让我觉得非常怪异。我觉得这个事情不应该说，你已经成功了，就没有资格再去说以前苦的事情了，你一切的苦已经换得今天的成绩了，为什么还说自己苦？世界上谁不苦？谁没有风里来雨里去的日子啊\n- 孝敬父母是多余的话，因为没有人的父母是容易的。你觉得父母不容易，是因为你没有责任感，一个责任感低的人看一个责任感高的人就会觉得别人不容易。\n- 现实就像大楼，你时过境迁阅历暴涨总以为闭着眼都能数清多少层时，却总忘了算上还有地下室。\n- 屋漏偏逢连夜雨，儿到荒年饭量增！那是在一个风雨交加的夜晚，经历了一年半的时间，我们忍受了冰寒，忆往昔，看将来，满园春色关不住，一枝红杏出墙来，祖国跨上千里马，铁马冰河入梦来，君不见黄河之水天上来，人生就是这样，努力是春耕，勤劳才能掷有声。\n- 我有孩子我绝对不想让他成为成功人士，我只想让他做自己就行了，他想成为gay，他想去旅游，他想去抛弃一切，去整容、人体改造，只要他不犯法，我觉得什么都对，但是他有一天跟我说他要成功，我就开始着急了，一个人真的渴望成功，这个人一辈子都不会幸福的。\n- 我也没什么办法化解（质疑），我就是只能说，就是说别人骂街我就当娱乐，因为你让他们开心也是娱乐，你让他们骂你也是娱乐。鲁迅先生说过一句经典的话，就是说对敌人最大的蔑视是掉过头去不予理睬。明白吧，就是骂你跟爱你都是好事，他起码还理我呢。', 33, 2, 1, 0, '2022-04-07 20:15:37', '2022-04-07 20:16:00', 27, 27, 0, 1, 1);
-INSERT INTO `article` VALUES (63, '失落', '你是否有这样的感觉？\n\n一觉醒来，发现身边空无一人，顿感失落；\n\n想到某些精彩的段子，却无人可以分享，满眼失望；\n\n完成某项成就，想明白某项事情，可身边无一人理解，只剩空虚。\n\n成年人的世界，孤独随处可见，如影随形。\n\n多少人越是用力去化解孤独，却越是坠入孤独的深渊，动弹不得。\n\n难道孤独真的很可怕，非要去消弭吗？其实不然，关键在于我们如何去看待、如何去和解。\n\n毕竟孤独是常态，最好的化解方式就是与其和平相处，并在其中获得成长。', 30, 0, 3, 0, '2022-04-07 20:18:05', '2022-04-07 20:33:41', 26, 29, 0, 1, 1);
-INSERT INTO `article` VALUES (64, '孤独', '   将“孤独”二字拆解为孩童、瓜果、瓢虫，宛如一幅盛夏的景日图，然而这一切与你无关，这便是孤独。', 30, 2, 1, 0, '2022-04-07 20:19:17', '2022-04-07 20:34:14', 26, 29, 0, 1, 1);
+INSERT INTO `article` VALUES (63, '失落', '你是否有这样的感觉？\n\n一觉醒来，发现身边空无一人，顿感失落；\n\n想到某些精彩的段子，却无人可以分享，满眼失望；\n\n完成某项成就，想明白某项事情，可身边无一人理解，只剩空虚。\n\n成年人的世界，孤独随处可见，如影随形。\n\n多少人越是用力去化解孤独，却越是坠入孤独的深渊，动弹不得。\n\n难道孤独真的很可怕，非要去消弭吗？其实不然，关键在于我们如何去看待、如何去和解。\n\n毕竟孤独是常态，最好的化解方式就是与其和平相处，并在其中获得成长。', 30, 0, 3, 0, '2022-04-07 20:18:05', '2022-04-08 14:53:43', 26, 26, 0, 1, 1);
+INSERT INTO `article` VALUES (64, '孤独', '   将“孤独”二字拆解为孩童、瓜果、瓢虫，宛如一幅盛夏的景日图，然而这一切与你无关，这便是孤独。', 30, 4, 1, 0, '2022-04-07 20:19:17', '2022-04-07 20:34:14', 26, 29, 0, 1, 1);
 INSERT INTO `article` VALUES (65, '2022/4/7', '  今天没去做核酸，然后被楼下阿姨大爷发现了，挨了一顿骂。晚上给我们发了一袋米和面条还有油，说明还得封很久。芭比Q了！', 30, 1, 1, 0, '2022-04-07 20:57:15', '2022-04-07 20:57:34', 27, 27, 0, 1, 1);
-INSERT INTO `article` VALUES (66, 'Yesterday', 'Yesterday, all my troubles seemed so far away.\n往日，一切烦恼仿佛那么遥远\nNow it looks as though they’re here to stay.\n如今却似乎都缠绕着我不肯离去\nOh, I believe in yesterday.\n我沉迷于昨日\nSuddenly, I’m not half the man I used to be,\n突然间，我已不再是曾经的自己\nThere’s a shadow hanging over me.\n阴云笼罩着我的一切\nOh, yesterday came suddenly.\n昨日来得那么突然\nWhy she had to go I don’t know she wouldn’t say.\n她为何离去，我无从知晓，她也不曾提起\nI said something wrong, now I long for yesterday.\n或许是我说错过什么，现在的我是多么渴望往昔\nYesterday, love was such an easy game to play.\n往日，爱情触手可及\nNow I need a place to hide away.\n如今我却需要隐藏自我\nOh, I believe in yesterday.\n哦，我沉迷于昨天\nWhy she had to go I don’t know she wouldn’t say.\n她为何离去，我无从知晓，她也不曾提起\nI said something wrong, now I long for yesterday.\n或许是我说错过什么，现在的我是多么渴望往昔\nYesterday, love was such an easy game to play.\n往日，爱情触手可及\nNow I need a place to hide away.\n如今我却需要隐藏自我\nOh, I believe in yesterday.\n哦，我沉迷于昨天', 33, 0, 2, 0, '2022-04-07 21:10:15', NULL, 8, NULL, 0, 1, 1);
+INSERT INTO `article` VALUES (66, 'Yesterday', 'Yesterday, all my troubles seemed so far away.\n往日，一切烦恼仿佛那么遥远\nNow it looks as though they’re here to stay.\n如今却似乎都缠绕着我不肯离去\nOh, I believe in yesterday.\n我沉迷于昨日\nSuddenly, I’m not half the man I used to be,\n突然间，我已不再是曾经的自己\nThere’s a shadow hanging over me.\n阴云笼罩着我的一切\nOh, yesterday came suddenly.\n昨日来得那么突然\nWhy she had to go I don’t know she wouldn’t say.\n她为何离去，我无从知晓，她也不曾提起\nI said something wrong, now I long for yesterday.\n或许是我说错过什么，现在的我是多么渴望往昔\nYesterday, love was such an easy game to play.\n往日，爱情触手可及\nNow I need a place to hide away.\n如今我却需要隐藏自我\nOh, I believe in yesterday.\n哦，我沉迷于昨天\nWhy she had to go I don’t know she wouldn’t say.\n她为何离去，我无从知晓，她也不曾提起\nI said something wrong, now I long for yesterday.\n或许是我说错过什么，现在的我是多么渴望往昔\nYesterday, love was such an easy game to play.\n往日，爱情触手可及\nNow I need a place to hide away.\n如今我却需要隐藏自我\nOh, I believe in yesterday.\n哦，我沉迷于昨天', 33, 2, 1, 0, '2022-04-07 21:10:15', '2022-04-08 11:06:30', 8, 8, 0, 1, 1);
+INSERT INTO `article` VALUES (67, '数据结构和算法⾯试题', 'Q1：什么是 AVL 树？\nAVL 树 是平衡⼆叉查找树，增加和删除节点后通过树形旋转重新达到平衡。右旋是以某个节点为中⼼，\n将它沉⼊当前右⼦节点的位置，⽽让当前的左⼦节点作为新树的根节点，也称为顺时针旋转。同理左旋\n是以某个节点为中⼼，将它沉⼊当前左⼦节点的位置，⽽让当前的右⼦节点作为新树的根节点，也称为\n逆时针旋转。\n\nQ2：什么是红⿊树？\n红⿊树 是 1972 年发明的，称为对称⼆叉 B 树，1978 年正式命名红⿊树。主要特征是在每个节点上增\n加⼀个属性表示节点颜⾊，可以红⾊或⿊⾊。红⿊树和 AVL 树 类似，都是在进⾏插⼊和删除时通过旋\n转保持⾃身平衡，从⽽获得较⾼的查找性能。与 AVL 树 相⽐，红⿊树不追求所有递归⼦树的⾼度差不\n超过 1，保证从根节点到叶尾的最⻓路径不超过最短路径的 2 倍，所以最差时间复杂度是 O(logn)。红\n⿊树通过重新着⾊和左右旋转，更加⾼效地完成了插⼊和删除之后的⾃平衡调整。\n红⿊树在本质上还是⼆叉查找树，它额外引⼊了 5 个约束条件： ① 节点只能是红⾊或⿊⾊。 ② 根节点\n必须是⿊⾊。 ③ 所有 NIL 节点都是⿊⾊的。 ④ ⼀条路径上不能出现相邻的两个红⾊节点。 ⑤ 在任何\n递归⼦树中，根节点到叶⼦节点的所有路径上包含相同数⽬的⿊⾊节点。\n这五个约束条件保证了红⿊树的新增、删除、查找的最坏时间复杂度均为 O(logn)。如果⼀个树的左⼦\n节点或右⼦节点不存在，则均认定为⿊⾊。红⿊树的任何旋转在 3 次之内均可完成。\n更多红⿊树的介绍可以看这篇⽂章：我画了 20 张图，给⼥朋友讲清楚红⿊树\n\nQ3：AVL 树和红⿊树的区别？\n红⿊树的平衡性不如 AVL 树，它维持的只是⼀种⼤致的平衡，不严格保证左右⼦树的⾼度差不超过 1。\n这导致节点数相同的情况下，红⿊树的⾼度可能更⾼，也就是说平均查找次数会⾼于相同情况的 AVL\n树。\n在插⼊时，红⿊树和 AVL 树都能在⾄多两次旋转内恢复平衡，在删除时由于红⿊树只追求⼤致平衡，因\n此红⿊树⾄多三次旋转可以恢复平衡，⽽ AVL 树最多需要 O(logn) 次。AVL 树在插⼊和删除时，将向上\n回溯确定是否需要旋转，这个回溯的时间成本最差为 O(logn)，⽽红⿊树每次向上回溯的步⻓为 2，回\n溯成本低。因此⾯对频繁地插⼊与删除红⿊树更加合适。\n\nQ4：B 树和B+ 树的区别？\nB 树中每个节点同时存储 key 和 data，⽽ B+ 树中只有叶⼦节点才存储 data，⾮叶⼦节点只存储 key。\nInnoDB 对 B+ 树进⾏了优化，在每个叶⼦节点上增加了⼀个指向相邻叶⼦节点的链表指针，形成了带\n有顺序指针的 B+ 树，提⾼区间访问的性能。\nB+ 树的优点在于： ① 由于 B+ 树在⾮叶⼦节点上不含数据信息，因此在内存⻚中能够存放更多的\nkey，数据存放得更加紧密，具有更好的空间利⽤率，访问叶⼦节点上关联的数据也具有更好的缓存命\n中率。 ② B+树的叶⼦结点都是相连的，因此对整棵树的遍历只需要⼀次线性遍历叶⼦节点即可。⽽ B\n树则需要进⾏每⼀层的递归遍历，相邻的元素可能在内存中不相邻，所以缓存命中性没有 B+树好。但\n是 B 树也有优点，由于每个节点都包含 key 和 value，因此经常访问的元素可能离根节点更近，访问也\n更迅速。\n\nQ5：排序有哪些分类？\n排序可以分为内部排序和外部排序，在内存中进⾏的称为内部排序，当数据量很⼤时⽆法全部拷⻉到内\n存需要使⽤外存，称为外部排序。\n内部排序包括⽐较排序和⾮⽐较排序，⽐较排序包括插⼊/选择/交换/归并排序，⾮⽐较排序包括计数/\n基数/桶排序。\n插⼊排序包括直接插⼊/希尔排序，选择排序包括直接选择/堆排序，交换排序包括冒泡/快速排序。\n\nQ6：直接插⼊排序的原理？\n稳定，平均/最差时间复杂度 O(n²)，元素基本有序时最好时间复杂度 O(n)，空间复杂度 O(1)。\n每⼀趟将⼀个待排序记录按其关键字的⼤⼩插⼊到已排好序的⼀组记录的适当位置上，直到所有待排序\n记录全部插⼊为⽌。\n直接插⼊没有利⽤到要插⼊的序列已有序的特点，插⼊第 i 个元素时可以通过⼆分查找找到插⼊位置\ninsertIndex，再把 i~insertIndex 之间的所有元素后移⼀位，把第 i 个元素放在插⼊位置上。\n```\npublic void insertionSort(int[] nums) {\n for (int i = 1; i < nums.length; i++) {\n int insertNum = nums[i];\n int insertIndex;\n for (insertIndex = i - 1; insertIndex >= 0 && nums[insertIndex] >\ninsertNum; insertIndex--) {\n nums[insertIndex + 1] = nums[insertIndex];\n }\n nums[insertIndex + 1] = insertNum;\n }\n}\npublic void binaryInsertionSort(int[] nums) {\n for (int i = 1; i < nums.length; i++) {\n int insertNum = nums[i];\n int insertIndex = -1;\n int start = 0;\n int end = i - 1;\n while (start <= end) {\n int mid = start + (end - start) / 2;\n if (insertNum > nums[mid])\n start = mid + 1;\n else if (insertNum < nums[mid])\n end = mid - 1;\n else {\n insertIndex = mid + 1;\n break;\n }\n }\n if (insertIndex == -1)\n insertIndex = start;\n if (i - insertIndex >= 0)\n System.arraycopy(nums, insertIndex, nums, insertIndex + 1, i -\ninsertIndex);\n nums[insertIndex] = insertNum;\n```\n\nQ7：希尔排序的原理？\n```\n⼜称缩⼩增量排序，是对直接插⼊排序的改进，不稳定，平均时间复杂度 O(n^1.3^)，最差时间复杂度\nO(n²)，最好时间复杂度 O(n)，空间复杂度 O(1)。\n把记录按下标的⼀定增量分组，对每组进⾏直接插⼊排序，每次排序后减⼩增量，当增量减⾄ 1 时排序\n完毕。\n```\n\nQ8：直接选择排序的原理？\n不稳定，时间复杂度 O(n²)，空间复杂度 O(1)。\n每次在未排序序列中找到最⼩元素，和未排序序列的第⼀个元素交换位置，再在剩余未排序序列中重复\n该操作直到所有元素排序完毕。\n ```\n\npublic void selectSort(int[] nums) {\n int minIndex;\n for (int index = 0; index < nums.length - 1; index++){\n minIndex = index;\n for (int i = index + 1;i < nums.length; i++){\n if(nums[i] < nums[minIndex])\n minIndex = i;\n }\n if (index != minIndex){\n swap(nums, index, minIndex);\n }\n }\n}\n```\n\nQ9：堆排序的原理？\n是对直接选择排序的改进，不稳定，时间复杂度 O(nlogn)，空间复杂度 O(1)。\n将待排序记录看作完全⼆叉树，可以建⽴⼤根堆或⼩根堆，⼤根堆中每个节点的值都不⼩于它的⼦节点\n值，⼩根堆中每个节点的值都不⼤于它的⼦节点值。\n以⼤根堆为例，在建堆时⾸先将最后⼀个节点作为当前节点，如果当前节点存在⽗节点且值⼤于⽗节\n点，就将当前节点和⽗节点交换。在移除时⾸先暂存根节点的值，然后⽤最后⼀个节点代替根节点并作\n为当前节点，如果当前节点存在⼦节点且值⼩于⼦节点，就将其与值较⼤的⼦节点进⾏交换，调整完堆\n后返回暂存的值。\n\nQ10：冒泡排序的原理？\n稳定，平均/最坏时间复杂度 O(n²)，元素基本有序时最好时间复杂度 O(n)，空间复杂度 O(1)。\n```\npublic void add(int[] nums, int i, int num){\n nums[i] = num;\n int curIndex = i;\n while (curIndex > 0) {\n int parentIndex = (curIndex - 1) / 2;\n if (nums[parentIndex] < nums[curIndex])\n swap(nums, parentIndex, curIndex);\n else break;\n curIndex = parentIndex;\n }\n}\npublic int remove(int[] nums, int size){\n int result = nums[0];\n nums[0] = nums[size - 1];\n int curIndex = 0;\n while (true) {\n int leftIndex = curIndex * 2 + 1;\n int rightIndex = curIndex * 2 + 2;\n if (leftIndex >= size) break;\n int maxIndex = leftIndex;\n if (rightIndex < size && nums[maxIndex] < nums[rightIndex])\n maxIndex = rightIndex;\n if (nums[curIndex] < nums[maxIndex])\n swap(nums, curIndex, maxIndex);\n else break;\n curIndex = maxIndex;\n }\n return result;\n}\n```\n\n⽐较相邻的元素，如果第⼀个⽐第⼆个⼤就进⾏交换，对每⼀对相邻元素做同样的⼯作，从开始第⼀对\n到结尾的最后⼀对，每⼀轮排序后末尾元素都是有序的，针对 n 个元素重复以上步骤 n -1 次排序完\n毕。\n当序列已经有序时仍会进⾏不必要的⽐较，可以设置⼀个标志记录是否有元素交换，如果没有直接结束\n⽐较。\n\nQ11：快速排序的原理？\n是对冒泡排序的⼀种改进，不稳定，平均/最好时间复杂度 O(nlogn)，元素基本有序时最坏时间复杂度\nO(n²)，空间复杂度 O(logn)。\n⾸先选择⼀个基准元素，通过⼀趟排序将要排序的数据分割成独⽴的两部分，⼀部分全部⼩于等于基准\n元素，⼀部分全部⼤于等于基准元素，再按此⽅法递归对这两部分数据进⾏快速排序。\n快速排序的⼀次划分从两头交替搜索，直到 low 和 high 指针重合，⼀趟时间复杂度 O(n)，整个算法的\n时间复杂度与划分趟数有关。\n最好情况是每次划分选择的中间数恰好将当前序列等分，经过 log(n) 趟划分便可得到⻓度为 1 的⼦表，\n这样时间复杂度 O(nlogn)。\n最坏情况是每次所选中间数是当前序列中的最⼤或最⼩元素，这使每次划分所得⼦表其中⼀个为空表 ，\n这样⻓度为 n 的数据表需要 n 趟划分，整个排序时间复杂度 O(n²)。\n```\npublic void bubbleSort(int[] nums) {\n for (int i = 0; i < nums.length - 1; i++) {\n for (int index = 0; index < nums.length - 1 - i; index++) {\n if (nums[index] > nums[index + 1])\n swap(nums, index, index + 1)\n }\n }\n}\npublic void betterBubbleSort(int[] nums) {\n boolean swap;\n for (int i = 0; i < nums.length - 1; i++) {\n swap = true;\n for (int index = 0; index < nums.length - 1 - i; index++) {\n if (nums[index] > nums[index + 1]) {\n swap(nums, index ,index + 1);\n swap = false;\n }\n }\n if (swap) break;\n }\n}\n```\n\nQ12：归并排序的原理？\n归并排序基于归并操作，是⼀种稳定的排序算法，任何情况时间复杂度都为 O(nlogn)，空间复杂度为\nO(n)。\n基本原理：应⽤分治法将待排序序列分成两部分，然后对两部分分别递归排序，最后进⾏合并，使⽤⼀\n个辅助空间并设定两个指针分别指向两个有序序列的起始元素，将指针对应的较⼩元素添加到辅助空\n间，重复该步骤到某⼀序列到达末尾，然后将另⼀序列剩余元素合并到辅助空间末尾。\n适⽤场景：数据量⼤且对稳定性有要求的情况。\n```\npublic void quickSort(int[] nums, int start, int end) {\n if (start < end) {\n int pivotIndex = getPivotIndex(nums, start, end);\n quickSort(nums, start, pivotIndex - 1);\n quickSort(nums, pivotIndex + 1, end);\n }\n}\npublic int getPivotIndex(int[] nums, int start, int end) {\n int pivot = nums[start];\n int low = start;\n int high = end;\n while (low < high) {\n while (low <= high && nums[low] <= pivot)\n low++;\n while (low <= high && nums[high] > pivot)\n high--;\n if (low < high)\n swap(nums, low, high);\n }\n swap(nums, start, high);\n return high;\n}\nint[] help;\npublic void mergeSort(int[] arr) {\n int[] help = new int[arr.length];\n sort(arr, 0, arr.length - 1);\n}\npublic void sort(int[] arr, int start, int end) {\n if (start == end) return;\n int mid = start + (end - start) / 2;\n sort(arr, start, mid);\n sort(arr, mid + 1, end);\n```\n\nQ13：排序算法怎么选择？\n数据量规模较⼩，考虑直接插⼊或直接选择。当元素分布有序时直接插⼊将⼤⼤减少⽐较和移动记录的\n次数，如果不要求稳定性，可以使⽤直接选择，效率略⾼于直接插⼊。\n数据量规模中等，选择希尔排序。\n数据量规模较⼤，考虑堆排序（元素分布接近正序或逆序）、快速排序（元素分布随机）和归并排序\n（稳定性）。\n⼀般不使⽤冒泡。', 28, 3, 1, 0, '2022-04-08 11:13:26', '2022-04-08 11:13:33', 27, 27, 0, 1, 1);
+INSERT INTO `article` VALUES (68, '《 坚 持 》', '当你的内心种下一个愿景，把它搁置在空想的阶段愈久，付诸行动的可能性就愈小。拖久了，往往不了了之。因此，每当有目标的火花闪现，就应趁早起用意志力，付出必要的努力，把悬停在脑中的“念”，落为现实里具体的“行”。\n \n在执行目标的漫长过程中，可能需要以理想身份的样子去牵引，以孤独克己的心境去承接，以专注的精神去排除干扰，以“动心忍性，而后增益其所不能”的精神去自勉。\n\n 但即便如此，面对未知的结果，很多人还是容易动摇心神，放弃的念头一次次诱惑着你的决定。要知道：我们最终会变成什么样的人，很大程度上不取决于开始时的发心，而是在后续的行动里，尤其是那些快要坚持不下去的时刻，你是转身逃跑，还是咬紧牙关再续一程。\n\n命运的转机与馈赠，偏爱不轻易言弃的孤勇者。\n \n如果此时，你正寻求一次对现状的改变。那就行动起来吧！先从一日的坚持开始，而后一周、一月、数月……让坚持逐渐积聚成摆脱过去惯性的新势能。\n \n当你能把一件事以年计地做下去，慢慢也会体验到：这件事并不是需要“坚持”的，它甚至不是生活的一部分，而是你自己生活的本身。', 30, 0, 3, 1, '2022-04-08 14:56:03', '2022-04-08 14:58:15', 26, 26, 0, 1, 1);
+INSERT INTO `article` VALUES (69, '《坚持》', '当你的内心种下一个愿景，把它搁置在空想的阶段愈久，付诸行动的可能性就愈小。拖久了，往往不了了之。因此，每当有目标的火花闪现，就应趁早起用意志力，付出必要的努力，把悬停在脑中的“念”，落为现实里具体的“行”。\n \n在执行目标的漫长过程中，可能需要以理想身份的样子去牵引，以孤独克己的心境去承接，以专注的精神去排除干扰，以“动心忍性，而后增益其所不能”的精神去自勉。\n\n 但即便如此，面对未知的结果，很多人还是容易动摇心神，放弃的念头一次次诱惑着你的决定。要知道：我们最终会变成什么样的人，很大程度上不取决于开始时的发心，而是在后续的行动里，尤其是那些快要坚持不下去的时刻，你是转身逃跑，还是咬紧牙关再续一程。\n\n命运的转机与馈赠，偏爱不轻易言弃的孤勇者。\n \n如果此时，你正寻求一次对现状的改变。那就行动起来吧！先从一日的坚持开始，而后一周、一月、数月……让坚持逐渐积聚成摆脱过去惯性的新势能。\n \n当你能把一件事以年计地做下去，慢慢也会体验到：这件事并不是需要“坚持”的，它甚至不是生活的一部分，而是你自己生活的本身。', 30, 0, 3, 0, '2022-04-08 14:58:36', NULL, 26, NULL, 0, 1, 1);
+INSERT INTO `article` VALUES (70, '【夜读】这4个好习惯，请逼自己养成', '人们常说，一年之计在于春。我们常常在春天做好一年的规划，为未来打好坚实的基础。好的人生需要养成好的习惯，下面这4个好习惯，请逼自己养成。\n\n::: hljs-center\n\n规律的生活\n\n:::\n　　\n　　健康的身体是实现一切理想的基础，但我们耗损最多、辜负最深的却常常是自己的身体。身体的零件需要呵护，你总是用它，不保养，不休息，等到零件转不动了，疾病也会趁虚而入。\n\n　　不要等到身体出现问题，才惊觉健康的可贵。要养成规律的生活习惯，充足的睡眠、合理的饮食，才能赋予我们更好的状态。人生不是短跑冲刺，身体好，我们才有底气成为最后的赢家。\n\n::: hljs-center\n\n积极的心态\n\n:::\n\n\n　　遇到急事时，我们都容易产生焦虑的情绪。但其实，要发生的始终会发生，我们无法逃避，只能勇敢面对。\n\n　　当我们做好了该做的准备，兵来将挡，水来土掩，车到山前，总会找到路。与其慌恐不安，不如学会积极乐观地去面对未知的好与坏。放下过度的担心和焦虑，扎扎实实过好每一天，就是我们勇敢迈向未来的底气。\n\n::: hljs-center\n\n不懈的坚持\n\n:::\n\n　　台上一分钟，台下十年功，如果你期待在未来有所成就，就必须付出百倍的努力。无数光鲜亮丽的背后，都是日复一日、年复一年的坚持。\n\n　　持之以恒地做某件事，对这件事始终保持兴趣和热忱，想不成功都难。今天的你，比别人多一点执着，就会多一点机会；比别人多一点坚持，就会多一点收获。\n\n做好身边小事\n\n　　人品是为人处世的最佳通行证。你有值得信赖的人品，别人才会愿意和你深交，进而给予你支持和帮助。人品好坏是藏不住的，想要赢得认可，最好的方式就是先从身边的小事做起，做个正直友善、遵守规则、尊重他人、诚信立身的人。\n\n　　有德如玉，当养之。愿我们都能修炼好自己的品德，言行如一、内外兼修，内不欺己、外不欺人。如此，才能在人生的道路上走得更稳、更远、更有底气。', 30, 0, 3, 0, '2022-04-08 15:03:28', '2022-04-08 15:07:22', 26, 26, 0, 1, 1);
+INSERT INTO `article` VALUES (71, '1', '1', 30, 0, 3, 1, '2022-04-08 15:04:05', '2022-04-08 22:42:50', 26, 26, 0, 1, 1);
+INSERT INTO `article` VALUES (72, 'test', 'test', 33, 0, 3, 0, '2022-04-08 15:05:30', '2022-04-08 15:10:14', 28, 28, 0, 1, 1);
+INSERT INTO `article` VALUES (73, '2', '2', 31, 0, 3, 1, '2022-04-08 15:07:46', '2022-04-08 22:42:48', 26, 26, 0, 1, 1);
+INSERT INTO `article` VALUES (74, '《杀死一个知更鸟》', '你永远也不可能真正了解一个人，除非你站在他的角度考虑问题……”', 30, 0, 2, 0, '2022-04-08 16:06:59', '2022-04-08 22:42:43', 26, 26, 0, 1, 1);
+INSERT INTO `article` VALUES (75, '托尔斯泰', 't', 31, 0, 0, 0, '2022-04-09 13:44:00', NULL, 27, NULL, 0, 1, 1);
 
 -- ----------------------------
 -- Table structure for article_category
@@ -102,15 +111,15 @@ CREATE TABLE `article_category`  (
 -- ----------------------------
 -- Records of article_category
 -- ----------------------------
-INSERT INTO `article_category` VALUES (26, '后端', 0, '2022-04-06 19:13:28', '2022-04-06 19:13:39', 27, 27, 0);
-INSERT INTO `article_category` VALUES (27, '前端', 0, '2022-04-06 19:13:45', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (28, '算法', 0, '2022-04-06 19:13:55', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (29, '工具', 0, '2022-04-06 19:14:36', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (30, '日常', 0, '2022-04-06 19:14:42', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (31, '资源', 0, '2022-04-06 19:15:40', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (32, '实用', 0, '2022-04-06 19:15:49', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (33, '闲聊', 0, '2022-04-06 19:16:01', NULL, 27, NULL, 0);
-INSERT INTO `article_category` VALUES (34, '数据库', 0, '2022-04-06 19:16:08', NULL, 27, NULL, 0);
+INSERT INTO `article_category` VALUES (26, '后端', 0, '2022-04-06 19:13:28', '2022-04-09 15:00:46', 27, 27, 0);
+INSERT INTO `article_category` VALUES (27, '前端', 0, '2022-04-06 19:13:45', '2022-04-09 15:00:59', 27, 27, 0);
+INSERT INTO `article_category` VALUES (28, '算法', 0, '2022-04-06 19:13:55', '2022-04-09 15:00:01', 27, NULL, 0);
+INSERT INTO `article_category` VALUES (29, '工具', 0, '2022-04-06 19:14:36', '2022-04-09 15:00:01', 27, NULL, 0);
+INSERT INTO `article_category` VALUES (30, '日常', 0, '2022-04-06 19:14:42', '2022-04-09 15:00:01', 27, NULL, 0);
+INSERT INTO `article_category` VALUES (31, '资源', 0, '2022-04-06 19:15:40', '2022-04-09 15:00:01', 27, NULL, 0);
+INSERT INTO `article_category` VALUES (32, '实用', 0, '2022-04-06 19:15:49', '2022-04-09 15:01:12', 27, 27, 0);
+INSERT INTO `article_category` VALUES (33, '闲聊', 0, '2022-04-06 19:16:01', '2022-04-09 15:00:01', 27, NULL, 0);
+INSERT INTO `article_category` VALUES (34, '数据库', 0, '2022-04-06 19:16:08', '2022-04-09 15:00:01', 27, NULL, 0);
 
 -- ----------------------------
 -- Table structure for article_tags
@@ -121,7 +130,7 @@ CREATE TABLE `article_tags`  (
   `tag_id` bigint(15) NULL DEFAULT NULL COMMENT '标签id',
   `article_id` bigint(15) NULL DEFAULT NULL COMMENT '文章id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 106 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 128 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of article_tags
@@ -136,10 +145,21 @@ INSERT INTO `article_tags` VALUES (98, 27, 59);
 INSERT INTO `article_tags` VALUES (99, 27, 60);
 INSERT INTO `article_tags` VALUES (100, 28, 61);
 INSERT INTO `article_tags` VALUES (101, 29, 62);
-INSERT INTO `article_tags` VALUES (102, 28, 63);
 INSERT INTO `article_tags` VALUES (103, 28, 64);
 INSERT INTO `article_tags` VALUES (104, 30, 65);
 INSERT INTO `article_tags` VALUES (105, 31, 66);
+INSERT INTO `article_tags` VALUES (106, 32, 67);
+INSERT INTO `article_tags` VALUES (107, 28, 63);
+INSERT INTO `article_tags` VALUES (110, 33, 68);
+INSERT INTO `article_tags` VALUES (111, 33, 69);
+INSERT INTO `article_tags` VALUES (118, 28, 71);
+INSERT INTO `article_tags` VALUES (120, 33, 70);
+INSERT INTO `article_tags` VALUES (121, 33, 73);
+INSERT INTO `article_tags` VALUES (122, 34, 72);
+INSERT INTO `article_tags` VALUES (124, 28, 74);
+INSERT INTO `article_tags` VALUES (125, 23, 75);
+INSERT INTO `article_tags` VALUES (126, 27, 75);
+INSERT INTO `article_tags` VALUES (127, 24, 75);
 
 -- ----------------------------
 -- Table structure for comment
@@ -156,7 +176,7 @@ CREATE TABLE `comment`  (
   `create_by` bigint(10) NULL DEFAULT NULL COMMENT '创建人',
   `last_update_by` bigint(10) NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of comment
@@ -170,6 +190,11 @@ INSERT INTO `comment` VALUES (58, 0, '61', '好诗！', 0, '2022-04-07 20:39:46'
 INSERT INTO `comment` VALUES (59, 58, '61', '真好', 1, '2022-04-07 20:39:53', '2022-04-07 21:14:56', 27, 27);
 INSERT INTO `comment` VALUES (60, 58, '61', '嘻嘻', 0, '2022-04-07 20:42:53', NULL, 26, NULL);
 INSERT INTO `comment` VALUES (61, 53, '54', '就这？', 0, '2022-04-07 20:44:14', NULL, 26, NULL);
+INSERT INTO `comment` VALUES (62, 0, '64', 'hello\n', 0, '2022-04-08 17:04:59', NULL, 27, NULL);
+INSERT INTO `comment` VALUES (63, 62, '64', '你好呀', 0, '2022-04-08 17:05:17', NULL, 27, NULL);
+INSERT INTO `comment` VALUES (64, 62, '64', 'blog', 0, '2022-04-08 17:05:38', NULL, 27, NULL);
+INSERT INTO `comment` VALUES (65, 0, '64', '孤独', 0, '2022-04-08 17:05:47', NULL, 27, NULL);
+INSERT INTO `comment` VALUES (66, 65, '64', '写的不错', 0, '2022-04-08 17:05:57', NULL, 27, NULL);
 
 -- ----------------------------
 -- Table structure for files
@@ -187,7 +212,7 @@ CREATE TABLE `files`  (
   `create_by` bigint(10) NULL DEFAULT NULL COMMENT '创建人',
   `last_update_by` bigint(10) NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 78 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 80 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of files
@@ -197,6 +222,8 @@ INSERT INTO `files` VALUES (74, 'd10855d12a39827dfcf18ab947e7ab7.jpg', 'http://1
 INSERT INTO `files` VALUES (75, '3eb6e72ff724e5847a064b0814038afc.gif', 'http://180.163.101.78:9000/public/9c28498492d444618401b473dc1a8fac_3eb6e72ff724e5847a064b0814038afc.gif', 6320, 'gif', 0, '2022-04-06 21:20:57', NULL, 8, NULL);
 INSERT INTO `files` VALUES (76, 'WIN_20210406_09_57_04_Pro.jpg', 'http://180.163.101.78:9000/public/3dd2c5fb7abe4ed5946aa491358167e6_WIN_20210406_09_57_04_Pro.jpg', 56205, 'jpg', 0, '2022-04-07 20:29:24', NULL, 29, NULL);
 INSERT INTO `files` VALUES (77, '微信图片_20220402214238.jpg', 'http://180.163.101.78:9000/public/e2bcfa64ca584f18853abd622ddec551_微信图片_20220402214238.jpg', 279975, 'jpg', 0, '2022-04-07 20:41:04', NULL, 26, NULL);
+INSERT INTO `files` VALUES (78, '1.JPG', 'http://180.163.101.78:9000/public/00f5afafad65416282de80ff61ebe321_1.JPG', 158737, 'JPG', 0, '2022-04-09 18:00:18', NULL, 8, NULL);
+INSERT INTO `files` VALUES (79, '1.JPG', 'http://180.163.101.78:9000/public/cc5ba12994cd4c909c5cc0faee6199eb_1.JPG', 158737, 'JPG', 0, '2022-04-09 18:01:05', NULL, 8, NULL);
 
 -- ----------------------------
 -- Table structure for menu
@@ -274,7 +301,7 @@ CREATE TABLE `message`  (
   `last_update_by` bigint(15) NULL DEFAULT NULL COMMENT '更新人',
   `last_update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of message
@@ -284,6 +311,7 @@ INSERT INTO `message` VALUES (26, 'come on!', 0, 26, '2022-04-07 20:19:59', NULL
 INSERT INTO `message` VALUES (27, '好奇\n', 0, 29, '2022-04-07 20:35:33', NULL, NULL);
 INSERT INTO `message` VALUES (28, '我心中有团火，他们看到的只是烟。而你们在人群中看到了我的火，于是狂奔，生怕晚一点，我就会淹没在转瞬的岁月里，你们带着热情，带着对爱毫无理由的相信，跑得上气不接下气', 0, 27, '2022-04-07 20:38:16', NULL, NULL);
 INSERT INTO `message` VALUES (29, 'Before finding the right person, the only thing you need to do is to make yourself good enough. ', 0, 27, '2022-04-07 21:00:35', NULL, NULL);
+INSERT INTO `message` VALUES (30, '怪怪', 0, 27, '2022-04-09 21:29:36', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for role_menu
@@ -375,7 +403,7 @@ CREATE TABLE `site`  (
   `is_delete` int(1) NULL DEFAULT 0 COMMENT '0 未删除  1已删除',
   `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 98 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 110 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of site
@@ -419,6 +447,18 @@ INSERT INTO `site` VALUES (94, '220.196.192.84', 0, '2022-04-07 21:00:42');
 INSERT INTO `site` VALUES (95, '220.196.192.84', 0, '2022-04-07 21:02:18');
 INSERT INTO `site` VALUES (96, '220.196.192.84', 0, '2022-04-07 21:14:24');
 INSERT INTO `site` VALUES (97, '220.196.192.84', 0, '2022-04-07 21:36:28');
+INSERT INTO `site` VALUES (98, '220.196.192.20', 0, '2022-04-08 11:13:43');
+INSERT INTO `site` VALUES (99, '223.84.238.131', 0, '2022-04-08 14:53:05');
+INSERT INTO `site` VALUES (100, '220.196.192.59', 0, '2022-04-08 14:59:17');
+INSERT INTO `site` VALUES (101, '220.196.192.59', 0, '2022-04-08 15:40:48');
+INSERT INTO `site` VALUES (102, '39.144.39.48', 0, '2022-04-08 16:47:07');
+INSERT INTO `site` VALUES (103, '39.144.39.48', 0, '2022-04-08 17:00:55');
+INSERT INTO `site` VALUES (104, '39.144.39.48', 0, '2022-04-08 17:02:12');
+INSERT INTO `site` VALUES (105, '39.144.43.160', 0, '2022-04-09 13:11:41');
+INSERT INTO `site` VALUES (106, '39.144.43.160', 0, '2022-04-09 16:38:14');
+INSERT INTO `site` VALUES (107, '39.144.43.160', 0, '2022-04-09 17:00:50');
+INSERT INTO `site` VALUES (108, '39.144.43.160', 0, '2022-04-09 17:02:35');
+INSERT INTO `site` VALUES (109, '39.144.43.160', 0, '2022-04-09 17:05:36');
 
 -- ----------------------------
 -- Table structure for tags
@@ -434,21 +474,24 @@ CREATE TABLE `tags`  (
   `create_by` bigint(10) NULL DEFAULT NULL COMMENT '创建人',
   `last_update_by` bigint(10) NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tags
 -- ----------------------------
-INSERT INTO `tags` VALUES (22, 'mysql', 0, 0, '2022-04-06 20:01:51', NULL, 27, NULL);
-INSERT INTO `tags` VALUES (23, '基础', 0, 0, '2022-04-06 20:01:51', NULL, 27, NULL);
-INSERT INTO `tags` VALUES (24, '建议', 0, 0, '2022-04-06 20:28:35', NULL, 27, NULL);
+INSERT INTO `tags` VALUES (22, 'mysql', 0, 0, '2022-04-06 20:01:51', '2022-04-09 14:59:30', 27, 27);
+INSERT INTO `tags` VALUES (23, '基础', 0, 0, '2022-04-06 20:01:51', '2022-04-09 14:59:31', 27, 27);
+INSERT INTO `tags` VALUES (24, '建议', 0, 0, '2022-04-06 20:28:35', '2022-04-09 14:59:28', 27, 27);
 INSERT INTO `tags` VALUES (25, 'MarkDown', 0, 0, '2022-04-06 21:10:58', '2022-04-06 21:16:06', 8, 8);
 INSERT INTO `tags` VALUES (26, '日记', 0, 0, '2022-04-06 21:22:00', NULL, 8, NULL);
-INSERT INTO `tags` VALUES (27, '美文', 0, 0, '2022-04-07 20:05:11', NULL, 27, NULL);
+INSERT INTO `tags` VALUES (27, '美文', 0, 0, '2022-04-07 20:05:11', '2022-04-09 14:59:27', 27, 27);
 INSERT INTO `tags` VALUES (28, '文艺', 0, 0, '2022-04-07 20:15:11', NULL, 26, NULL);
-INSERT INTO `tags` VALUES (29, '毒鸡汤', 0, 0, '2022-04-07 20:15:37', NULL, 27, NULL);
-INSERT INTO `tags` VALUES (30, '日记', 0, 0, '2022-04-07 20:57:15', NULL, 27, NULL);
+INSERT INTO `tags` VALUES (29, '毒鸡汤', 0, 0, '2022-04-07 20:15:37', '2022-04-09 14:59:25', 27, 27);
+INSERT INTO `tags` VALUES (30, '日记', 0, 0, '2022-04-07 20:57:15', '2022-04-09 14:59:23', 27, 27);
 INSERT INTO `tags` VALUES (31, '歌词', 0, 0, '2022-04-07 21:10:15', NULL, 8, NULL);
+INSERT INTO `tags` VALUES (32, '数据结构', 0, 0, '2022-04-08 11:13:26', '2022-04-09 14:59:21', 27, 27);
+INSERT INTO `tags` VALUES (33, '夜读', 0, 0, '2022-04-08 14:56:03', NULL, 26, NULL);
+INSERT INTO `tags` VALUES (34, '闲着', 0, 0, '2022-04-08 15:05:30', NULL, 28, NULL);
 
 -- ----------------------------
 -- Table structure for user
@@ -477,7 +520,7 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (8, 1, 'admin', 0, 'FTnF43ZOT0tqFvcHCS2xtaPWlzmpeA==', 'http://180.163.101.78:9000/public/984db29d0bc543c491b9671095efd3f8_IMG_1500.JPG', 1574802397, 'llllllxxxxxxxxxxxxxxxx', 'l1574802397@163.com', 1231232132, '帅气 21', 0, '2021-12-28 00:00:00', '2022-04-06 17:43:46', 8, 0);
+INSERT INTO `user` VALUES (8, 1, 'admin', 0, 'FTnF43ZOT0tqFvcHCS2xtaPWlzmpeA==', 'http://180.163.101.78:9000/public/cc5ba12994cd4c909c5cc0faee6199eb_1.JPG', 1574802397, 'llllllxxxxxxxxxxxxxxxx', 'l1574802397@163.com', 1231232132, '帅气 ', 0, '2021-12-28 00:00:00', '2022-04-09 21:46:16', 8, 0);
 INSERT INTO `user` VALUES (26, 3, 'xxx', 0, 'YhaNmDcXXQoUdQl1kFa+n19eyqz7CQ==', 'http://180.163.101.78:9000/public/16caa19f5ef34e62ac0c24297665c648_2046185.jpg', 111111, 'xxxxx', '2518435628@qq.com', 666666, '“不是所有的鱼都会生活在同一片海里。”', 0, '2022-04-05 19:49:29', '2022-04-05 20:52:21', 26, 0);
 INSERT INTO `user` VALUES (27, 2, 'lgq', 0, '03UMGZmoIi9K71PE6TRtPyfuwmm2tg==', 'http://180.163.101.78:9000/public/42ee69997de2448184b115208bfe6d53_IMG_1507.JPG', 1574802397, 'lllxxxxxxxxxx', '1574802397@qq.com', 15779434844, '嘿嘿', 0, '2022-04-06 18:13:21', '2022-04-07 20:06:24', 27, 0);
 INSERT INTO `user` VALUES (28, 3, 'zq', 1, 'LNa9KnU84QrcOUm6Wau+VuBX8g+IPg==', NULL, 1254789631, 'zq0922', 'l1574802397@gmail.com', 13452149875, 'xx', 0, '2022-03-22 18:19:24', NULL, NULL, 0);
@@ -518,7 +561,7 @@ CREATE TABLE `user_like`  (
   `last_update_by` bigint(15) NULL DEFAULT NULL COMMENT '更新人',
   `last_update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_like
@@ -527,6 +570,8 @@ INSERT INTO `user_like` VALUES (20, 1, 54, 0, '2022-04-06 20:50:51', 27, NULL, N
 INSERT INTO `user_like` VALUES (21, 0, 55, 0, '2022-04-06 21:03:34', 27, 27, '2022-04-06 21:23:48');
 INSERT INTO `user_like` VALUES (22, 1, 56, 0, '2022-04-06 21:24:00', 27, NULL, NULL);
 INSERT INTO `user_like` VALUES (23, 1, 61, 0, '2022-04-07 20:41:17', 27, 27, '2022-04-07 20:41:18');
+INSERT INTO `user_like` VALUES (24, 1, 67, 0, '2022-04-08 11:13:52', 27, NULL, NULL);
+INSERT INTO `user_like` VALUES (25, 1, 66, 0, '2022-04-09 13:11:55', 27, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for user_role
@@ -550,5 +595,21 @@ CREATE TABLE `user_role`  (
 INSERT INTO `user_role` VALUES (1, 'superAdmin', '超级管理员', 0, NULL, '2022-04-07 21:07:50', NULL, 8);
 INSERT INTO `user_role` VALUES (2, 'admin', '管理员', 0, '2022-03-28 19:42:54', '2022-04-05 14:42:05', 8, 8);
 INSERT INTO `user_role` VALUES (3, 'user', '普通用户', 0, NULL, '2022-04-04 02:46:10', NULL, 8);
+
+-- ----------------------------
+-- Table structure for wx_user
+-- ----------------------------
+DROP TABLE IF EXISTS `wx_user`;
+CREATE TABLE `wx_user`  (
+  `id` bigint(15) NOT NULL AUTO_INCREMENT,
+  `openid` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL COMMENT 'openid',
+  `user_id` bigint(15) NULL DEFAULT NULL COMMENT '用户id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wx_user
+-- ----------------------------
+INSERT INTO `wx_user` VALUES (1, 'odI03444hzaCvABSYberbAmRaM_8', NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

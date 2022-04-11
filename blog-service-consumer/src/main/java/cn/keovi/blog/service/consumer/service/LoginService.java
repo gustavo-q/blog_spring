@@ -4,6 +4,8 @@ import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.UserDto;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import java.util.Map;
+
 /**
  * @ClassName LoginService
  * @Description
@@ -17,4 +19,8 @@ public interface LoginService {
     Result register(UserDto userDto);
 
     void logout();
+
+    Object wxlogin(JsonNode map);
+
+    Object bindEmail(JsonNode map);
 }

@@ -29,4 +29,5 @@ public interface UserService extends IService<User>{
 
     void resetPas(int id);
 
+    CurrentUserInfoDto currentWxUserInfo(Long userId);
 }
