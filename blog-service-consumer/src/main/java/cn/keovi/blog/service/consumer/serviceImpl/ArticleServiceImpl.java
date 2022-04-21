@@ -82,7 +82,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public long pageListCount(BaseDto baseDto) {
         if (loginManager.getUserSession() == null) throw new ServiceException("登录失效");
-        if (loginManager.getUserSession().getRoleId() != 1) baseDto.setId(loginManager.getUserId());
+        if (loginManager.getUserSession().getRoleId() != 1 && loginManager.getUserSession().getRoleId() != 2) baseDto.setId(loginManager.getUserId());
         return articleMapper.pageListCount(baseDto);
     }
 

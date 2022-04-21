@@ -158,39 +158,6 @@ public class SiteController {
 
 
 
-//    @GetMapping("/getBarData")
-//    public Result getBarData() {
-//        try {
-//            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
-//
-//            HashMap<String, Object> result = new HashMap<>();
-//            if (loginManager.getUserSession().getRoleId() == 1 || loginManager.getUserSession().getRoleId() == 2) {
-//                List<String> monData = getMonData(DateUtil.today());
-//
-//                //访问量
-//                List<Map> mapList = siteMapper.getLineData();
-//                //文章总数
-//                List<Map> mapList1 = articleMapper.getLineData();
-//                //用户
-//                List<Map> mapList2 = userMapper.getLineData();
-//
-//
-//                result.put("visitor", compareData(monData, mapList));
-//                result.put("articleTotal", compareData(monData, mapList1));
-//                result.put("userTotal", compareData(monData, mapList2));
-//                result.put("monData", monData);
-//            } else {
-//
-//            }
-//            return Result.ok().data(200, result);
-//        } catch (Exception e) {
-//            log.error("getCardsData失败!", e);
-//            return Result.error(500, e.getMessage());
-//        }
-//    }
-
-
-
     //获取前六个月的日期 yyyy-mm   date:yyyy-mm-dd
     private List<String> getMonData(String date) {
         List<String> list = new ArrayList<>();
