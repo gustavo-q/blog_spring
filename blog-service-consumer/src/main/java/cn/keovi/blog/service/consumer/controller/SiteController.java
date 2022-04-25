@@ -11,15 +11,17 @@ import cn.keovi.blog.service.consumer.service.TagsService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
+import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.Site;
 import cn.keovi.crm.po.Tags;
 import cn.keovi.crm.po.User;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -208,4 +210,28 @@ public class SiteController {
         }
         return integerList;
     }
+
+
+
+    //用户列表
+    @PostMapping("/pageList")
+    public Object pageList(@RequestBody BaseDto baseDto) {
+        try {
+            QueryWrapper<Site> queryWrapper =new QueryWrapper<>();
+            queryWrapper.eq("is_delete",0);
+            queryWrapper.orderByDesc("create_time");
+            if (StringUtils.isNotBlank(baseDto.getKeyword())){
+                queryWrapper.like("ip",baseDto.getKeyword());
+            }
+            Page<Site> page = siteService.page(new Page<>(baseDto.getCurrentPage(), baseDto.getPageSize()), queryWrapper);
+            return Result.ok().data(200,page.getRecords(),page.getTotal());
+        } catch (Exception e) {
+            log.error("登录失败!", e);
+            return Result.error(500, e.getMessage());
+
+        }
+
+    }
+
+
 }

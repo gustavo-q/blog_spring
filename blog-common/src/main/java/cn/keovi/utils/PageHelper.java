@@ -1,5 +1,6 @@
 package cn.keovi.utils;
 
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.resultset.ResultSetHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -193,7 +194,7 @@ public class PageHelper implements Interceptor {
 
 
         //自定义count语句（提升效率）
-        if(page.isCustomCountSql() && BlankUtil.isNotEmpty(page.getCountSqlPrefix())) {
+        if(page.isCustomCountSql() && StringUtils.isNotBlank(page.getCountSqlPrefix())) {
             int firstFromIndex = sql.toLowerCase().indexOf("from");
             int lastGroupByIndex = sql.toLowerCase().lastIndexOf("group");  //最后一个group by
             int lastParenthesisIndex = sql.toLowerCase().lastIndexOf(")");//最后一个右括号

@@ -19,4 +19,7 @@ public class WxMappingJackson2HttpMessageConverter extends MappingJackson2HttpMe
         mediaTypes.add(MediaType.TEXT_HTML);
         setSupportedMediaTypes(mediaTypes);
     }
+
+
+
 }

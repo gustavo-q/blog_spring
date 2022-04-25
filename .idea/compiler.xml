@@ -9,11 +9,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="blog-service-consumer" />
         <module name="blog-bean" />
+        <module name="tools" />
+        <module name="untils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="blog_common" target="8" />
       <module name="blog_spring" target="8" />
+      <module name="untils" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -21,6 +24,8 @@
       <module name="blog-bean" options="-parameters" />
       <module name="blog-common" options="-parameters" />
       <module name="blog-service-consumer" options="-parameters" />
+      <module name="tools" options="-parameters" />
+      <module name="untils" options="-parameters" />
     </option>
   </component>
 </project>

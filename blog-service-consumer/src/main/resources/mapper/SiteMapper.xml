@@ -8,10 +8,11 @@
         <result column="ip" jdbcType="VARCHAR" property="ip"/>
         <result column="is_delete" jdbcType="INTEGER" property="isDelete"/>
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="addr" jdbcType="VARCHAR" property="addr"/>
     </resultMap>
     <sql id="Base_Column_List">
         <!--@mbg.generated-->
-        id, ip, is_delete, create_time
+        id, ip, is_delete, create_time,addr
     </sql>
     <select id="getLineData" resultType="java.util.Map">
         select count(1) as count, DATE_FORMAT(create_time, '%Y-%m') as time

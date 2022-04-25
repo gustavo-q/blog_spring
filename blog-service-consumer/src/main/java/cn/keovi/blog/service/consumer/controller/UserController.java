@@ -2,20 +2,16 @@ package cn.keovi.blog.service.consumer.controller;
 
 
 import cn.hutool.core.util.ObjectUtil;
-import cn.hutool.crypto.SecureUtil;
 import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
 import cn.keovi.blog.service.consumer.service.MenuService;
-import cn.keovi.blog.service.consumer.service.UserDonateService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.dto.CurrentUserInfoDto;
 import cn.keovi.crm.po.User;
-
-import cn.keovi.crm.po.UserDonate;
 import cn.keovi.exception.BusinessException;
 import cn.keovi.exception.ServiceException;
 import cn.keovi.utils.MD5Util;

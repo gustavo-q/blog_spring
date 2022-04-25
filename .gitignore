@@ -1,3 +1,4 @@
 blog-bean/target/blog-bean-1.0-SNAPSHOT.jar
 .idea/
 blog-bean/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+tools/target/

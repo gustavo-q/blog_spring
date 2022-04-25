@@ -42,4 +42,7 @@ public class Site {
      */
     @TableField(value = "create_time")
     private Date createTime;
+
+    @TableField(value = "addr")
+    private String addr;
 }
