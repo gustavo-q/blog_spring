@@ -31,7 +31,8 @@
         from comment as b
                      left join `user` as us on us.id = b.create_by
         where b.topic_id = #{topicId}
-          and b.parent_id = 0 and b.is_delete=0
+          and b.parent_id = 0
+          and b.is_delete = 0
         order by b.create_time desc
                 limit #{startIndex}, #{pageSize}
     </select>
@@ -51,7 +52,7 @@
         order by b.create_time asc
     </select>
     <select id="pageAllList" resultType="cn.keovi.crm.vo.CommentVo">
-     select b.id                    as id,
+        select b.id                    as id,
                b.content               as content,
                b.create_time           as createTime,
                ifnull(us.username, '') as userName,
@@ -62,5 +63,14 @@
         where b.topic_id = #{topicId}
           and b.parent_id = 0
         order by b.create_time desc
+    </select>
+    <select id="getLineData" resultType="java.util.Map">
+    select count(1) as count, DATE_FORMAT(create_time, '%Y-%m') as time
+        from comment
+        where DATE_FORMAT(( create_time - INTERVAL 1 MONTH )
+            , '%Y-%m' )>= DATE_FORMAT( CURDATE() - interval 6 month
+            , '%Y-%m' )
+          and is_delete = 0
+        group by DATE_FORMAT( create_time, '%Y-%m' )
     </select>
 </mapper>

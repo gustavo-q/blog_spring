@@ -1,18 +1,23 @@
 package cn.keovi.blog.service.consumer.controller;
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.map.MapUtil;
 import cn.keovi.annotation.IgnoreAuth;
 import cn.keovi.blog.service.consumer.service.MessageService;
 import cn.keovi.blog.service.consumer.service.UserService;
 import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
+import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Article;
 import cn.keovi.crm.po.Message;
+import cn.keovi.crm.po.Site;
 import cn.keovi.crm.po.User;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.checkerframework.checker.units.qual.A;
@@ -98,6 +103,32 @@ public class MessageController {
             return Result.error(500, "添加留言失败");
         } catch (Exception e) {
             log.error("留言添加失败!", e);
+            return Result.error(500, e.getMessage());
+        }
+    }
+
+
+    //日志列表
+    @PostMapping("/pageList")
+    public Object pageList(@RequestBody BaseDto baseDto) {
+        try {
+            QueryWrapper<Message> queryWrapper = new QueryWrapper<Message>();
+            queryWrapper.eq("is_delete", 0);
+            if(StringUtils.isNotBlank(baseDto.getKeyword())){
+                queryWrapper.like("message",baseDto.getKeyword());
+            }
+            queryWrapper.orderByDesc("create_time");
+            IPage<Message> page1 = messageService.page(new Page<>(baseDto.getCurrentPage(), baseDto.getPageSize()), queryWrapper);
+            ArrayList<Map> jsonObjects = new ArrayList<>();
+            page1.getRecords().forEach(message -> {
+                Map<String, Object> map = MapUtil.newHashMap();
+                BeanUtil.copyProperties(message, map);
+                map.put("name", userService.lambdaQuery().eq(User::getId, message.getCreateBy()).one().getUsername());
+                jsonObjects.add(map);
+            });
+            return Result.ok().data(200, jsonObjects, page1.getTotal());
+        } catch (Exception e) {
+            log.error("留言显示失败!", e);
             return Result.error(500, e.getMessage());
         }
     }

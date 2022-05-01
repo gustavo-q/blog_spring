@@ -49,6 +49,7 @@ public class LoginServiceImpl implements LoginService {
     private final String AppSecret = "5b0c083b5c790efed8aebb34503707ac";
     private final String AppID = "wx45e193b0f51dbcaa";
     final String CORTICKET = "corTicket";
+    final String avatar = "http://180.163.101.78:9000/public/8a2962fe1eaf4f4fb96c93c13c55210f_photo_2021-04-20_14-34-58.jpg";
 
     @Resource
     private RestTemplate restTemplate;
@@ -132,6 +133,7 @@ public class LoginServiceImpl implements LoginService {
                     .password(MD5Util.encrypt(userDto.getPassword()))
                     .createTime(DateUtil.date())
                     .roleId(3L)
+                    .avatar(avatar)
                     .build();
             userService.save(user);
             return Result.ok("注册成功");

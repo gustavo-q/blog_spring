@@ -36,6 +36,7 @@
                ifnull(mobile, null)           as mobile,
                ifnull(sex, null)              as sex,
                ifnull(intro, "")              as intro,
+               ifnull(avatar, "")              as avatar,
                ifnull(status, null)           as status,
                ifnull(create_time, null)      as createTime,
                ifnull(last_update_time, null) as lastUpdateTime,

@@ -22,4 +22,7 @@ public interface CommentMapper extends BaseMapper<Comment> {
     List<Map> listByChild(@Param("id")Long id, @Param("topicId")String topicId);
 
     List<CommentVo> pageAllList(CommentDto commentDto);
+
+    List<Map> getLineData();
+
 }

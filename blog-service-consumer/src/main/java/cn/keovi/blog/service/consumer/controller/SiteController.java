@@ -3,6 +3,7 @@ package cn.keovi.blog.service.consumer.controller;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;
 import cn.keovi.blog.service.consumer.mapper.ArticleMapper;
+import cn.keovi.blog.service.consumer.mapper.CommentMapper;
 import cn.keovi.blog.service.consumer.mapper.SiteMapper;
 import cn.keovi.blog.service.consumer.mapper.UserMapper;
 import cn.keovi.blog.service.consumer.service.ArticleService;
@@ -60,6 +61,9 @@ public class SiteController {
 
     @Autowired
     TagsService tagsService;
+
+    @Autowired
+    CommentMapper commentMapper;
 
 
     @Autowired
@@ -140,11 +144,13 @@ public class SiteController {
                 List<Map> mapList1 = articleMapper.getLineData();
                 //用户
                 List<Map> mapList2 = userMapper.getLineData();
-
+                //评论
+                List<Map> mapList3 = commentMapper.getLineData();
 
                 result.put("visitor", compareData(monData, mapList));
                 result.put("articleTotal", compareData(monData, mapList1));
                 result.put("userTotal", compareData(monData, mapList2));
+                result.put("commentTotal", compareData(monData, mapList3));
             } else {
                 //文章总数
                 List<Map> mapList1 = articleMapper.getMyLineData(loginManager.getUserId());
@@ -213,7 +219,7 @@ public class SiteController {
 
 
 
-    //用户列表
+    //日志列表
     @PostMapping("/pageList")
     public Object pageList(@RequestBody BaseDto baseDto) {
         try {
