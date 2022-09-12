@@ -461,7 +461,6 @@ public class BlogController {
     @IgnoreAuth
     public Object getMyBlogByTag(@PathVariable("page") Integer page, @PathVariable("showCount") Integer showCount, @PathVariable("tagId") Integer tagId) {
         try {
-            if (loginManager.getUserId() == null) return Result.error(401, "登录失效！");
             List<Long> articles = articleTagsService.lambdaQuery().eq(ArticleTags::getTagId, tagId).list().stream().map(ArticleTags::getArticleId).collect(Collectors.toList());
             if (CollectionUtil.isEmpty(articles)) return Result.ok();
             QueryWrapper<Article> queryWrapper = new QueryWrapper<Article>();

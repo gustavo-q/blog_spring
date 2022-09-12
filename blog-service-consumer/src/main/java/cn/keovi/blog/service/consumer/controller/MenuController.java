@@ -6,10 +6,12 @@ import cn.keovi.blog.service.consumer.session.LoginManager;
 import cn.keovi.constants.Result;
 import cn.keovi.crm.dto.BaseDto;
 import cn.keovi.crm.po.Menu;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -109,6 +111,26 @@ public class MenuController {
         }
 
     }
+
+    //获取menu名称
+    @PostMapping("/getMenuName")
+    public Result getMenuName(@RequestBody JsonNode map) {
+        try {
+            if (loginManager.getUserId()==null) return Result.error(401,"登录失效！");
+            List<String> list = new ArrayList<>();
+            map.get("menus").forEach(menu-> {
+//                System.out.println(menu.toString());
+                list.add(menuService.lambdaQuery().eq(Menu::getName,menu.asText()).eq(Menu::getIsDelete,0).one().getDescription());
+            });
+            return Result.ok().data(200,list);
+        } catch (Exception e) {
+            log.error("获取menu名称失败!", e);
+            return Result.error(500, e.getMessage());
+
+        }
+
+    }
+
 
 
 }

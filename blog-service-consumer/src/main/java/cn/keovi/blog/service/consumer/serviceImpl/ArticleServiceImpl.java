@@ -153,6 +153,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //添加tags
         articleTagsService.lambdaUpdate().eq(ArticleTags::getArticleId, article.getId()).remove();
         if (CollectionUtil.isNotEmpty(articleDto.getTagList())) {
+
             for (Object i : articleDto.getTagList()) {
                 ArticleTags articleTags = new ArticleTags();
                 if (i instanceof Integer) {

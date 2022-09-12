@@ -120,8 +120,7 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Result register(UserDto userDto) {
         if (userService.lambdaQuery()
-                .eq(User::getEmail, userDto.getEmail()).or()
-                .eq(User::getUsername, userDto.getUsername())
+                .and(i->i.eq(User::getEmail, userDto.getEmail()).or().eq(User::getUsername, userDto.getUsername()))
                 .eq(User::getIsDelete, 0).count() > 0) {
             return Result.error(500, "邮箱或者账号存在");
         }

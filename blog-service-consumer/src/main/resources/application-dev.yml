@@ -2,10 +2,10 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://180.163.101.78:3306/blog_spring?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://43.143.41.61:3306/blog_spring?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
       username: root
       #password: hello
-      password: mysql123
+      password: keovi123
       driver-class-name: com.mysql.cj.jdbc.Driver
       initial-size: 10
       max-active: 100
@@ -33,4 +33,53 @@ spring:
 #        wall:
 #          config:
 #            multi-statement-allow: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  application:
+    name: blog
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      enabled: true
+      file-size-threshold: 0
+      max-request-size: 100MB
+  redis:
+    database: 0
+    password: keovi123    # 密码（默认为空）
+    timeout: 10000ms  # 连接超时时长（毫秒）
+    port: 6379
+    host: 43.143.41.61
+
+
+
+logging:
+  #  config: classpath:logging-config.xml
+  level:
+    cn.keovi.blog.service.consumer.mapper: debug #dao所在的包文件
+    org.springframework.jdbc.core: error
+    root: info
+    org.hibernate: ERROR
+debug: false
+
+
+#Mybatis
+mybatis:
+  #????
+  type-aliases-package: cn.keovi.crm
+  #???myBatis????????Mapper????
+  mapper-locations: classpath:mapper/*.xml
+  #????
+  configuration:
+    map-underscore-to-camel-case: true
+
+mybatis-plus:
+  mapper-locations: mapper/*Mapper.xml
+  global-config:
+    db-config:
+      logic-delete-field: flag # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+
 
